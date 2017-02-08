@@ -2232,6 +2232,9 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   position: absolute;
   z-index: 1070;
   display: block;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 3px 17px rgba(0, 0, 0, 0.5);
   text-align: left;
   text-align: start;
   text-decoration: none;
@@ -2252,55 +2255,55 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   opacity: 0;
   line-break: auto; }
   .tooltip.in {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-    opacity: 0.9; }
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    opacity: 1; }
   .tooltip.tooltip-top, .tooltip.bs-tether-element-attached-bottom {
-    margin-top: -3px;
-    padding: 5px 0; }
+    margin-top: 0px;
+    padding: 8px 0; }
     .tooltip.tooltip-top .tooltip-inner:before, .tooltip.bs-tether-element-attached-bottom .tooltip-inner:before {
       bottom: 0;
       left: 50%;
-      margin-left: -5px;
-      border-width: 5px 5px 0;
-      border-top-color: #000;
+      margin-left: -8px;
+      border-width: 8px 8px 0;
+      border-top-color: #fff;
       content: ""; }
   .tooltip.tooltip-right, .tooltip.bs-tether-element-attached-left {
-    margin-left: 3px;
-    padding: 0 5px; }
+    margin-left: 0px;
+    padding: 0 8px; }
     .tooltip.tooltip-right .tooltip-inner:before, .tooltip.bs-tether-element-attached-left .tooltip-inner:before {
       top: 50%;
       left: 0;
-      margin-top: -5px;
-      border-width: 5px 5px 5px 0;
-      border-right-color: #000;
+      margin-top: -8px;
+      border-width: 8px 8px 8px 0;
+      border-right-color: #fff;
       content: ""; }
   .tooltip.tooltip-bottom, .tooltip.bs-tether-element-attached-top {
-    margin-top: 3px;
-    padding: 5px 0; }
+    margin-top: 0px;
+    padding: 8px 0; }
     .tooltip.tooltip-bottom .tooltip-inner:before, .tooltip.bs-tether-element-attached-top .tooltip-inner:before {
       top: 0;
       left: 50%;
-      margin-left: -5px;
-      border-width: 0 5px 5px;
-      border-bottom-color: #000;
+      margin-left: -8px;
+      border-width: 0 8px 8px;
+      border-bottom-color: #fff;
       content: ""; }
   .tooltip.tooltip-left, .tooltip.bs-tether-element-attached-right {
-    margin-left: -3px;
-    padding: 0 5px; }
+    margin-left: 0px;
+    padding: 0 8px; }
     .tooltip.tooltip-left .tooltip-inner:before, .tooltip.bs-tether-element-attached-right .tooltip-inner:before {
       top: 50%;
       right: 0;
-      margin-top: -5px;
-      border-width: 5px 0 5px 5px;
-      border-left-color: #000;
+      margin-top: -8px;
+      border-width: 8px 0 8px 8px;
+      border-left-color: #fff;
       content: ""; }
 
 .tooltip-inner {
-  padding: 3px 8px;
-  max-width: 200px;
+  padding: 15px 20px;
+  max-width: 400px;
   border-radius: 0.25rem;
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #323232;
   text-align: center; }
   .tooltip-inner:before {
     position: absolute;

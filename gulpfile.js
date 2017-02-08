@@ -11,6 +11,7 @@ var cssnext       = require('postcss-cssnext');
 var short         = require('postcss-short');
 var svginline     = require('postcss-inline-svg');
 var colorFunction = require("postcss-color-function");
+var assets        = require('postcss-assets');
 var mqpacker      = require('css-mqpacker');
 var pixrem        = require('pixrem');
 var rgba_fallback = require('postcss-color-rgba-fallback');
@@ -69,6 +70,9 @@ var processors = [
     short(),
     colorFunction(),
     svginline(),
+    assets({
+      loadPaths: ['./src/images']
+    }),
     autoprefixer({browsers: ['last 5 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']}),
     sorting(),
     pixrem(),
@@ -107,6 +111,18 @@ gulp.task('sass', function() {
 
 gulp.task('bootstrap', function() {
   return gulp.src('./src/sass/bootstrap.+(scss|sass)')
+      .pipe( sourcemaps.init() )
+      .pipe( sass({ includePaths : ['./src/sass'] }) )
+      .pipe( postcss(processors) )
+      .pipe( sourcemaps.write('.') )
+      .pipe( gulp.dest('./src/css') )
+      .pipe(browserSync.reload({
+        stream: true
+      }));
+});
+
+gulp.task('flags', function() {
+  return gulp.src('./src/sass/flags.+(scss|sass)')
       .pipe( sourcemaps.init() )
       .pipe( sass({ includePaths : ['./src/sass'] }) )
       .pipe( postcss(processors) )

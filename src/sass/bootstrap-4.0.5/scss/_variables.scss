@@ -623,15 +623,15 @@ $card-columns-sm-up-column-gap: 1.25rem !default;
 
 // Tooltips
 
-$tooltip-max-width:           200px !default;
-$tooltip-color:               #fff !default;
-$tooltip-bg:                  #000 !default;
-$tooltip-opacity:             .9 !default;
-$tooltip-padding-y:           3px !default;
-$tooltip-padding-x:           8px !default;
-$tooltip-margin:              3px !default;
+$tooltip-max-width:           400px !default;
+$tooltip-color:               #323232 !default;
+$tooltip-bg:                  #fff !default;
+$tooltip-opacity:             1 !default;
+$tooltip-padding-y:           15px !default;
+$tooltip-padding-x:           20px !default;
+$tooltip-margin:              0px !default;
 
-$tooltip-arrow-width:         5px !default;
+$tooltip-arrow-width:         8px !default;
 $tooltip-arrow-color:         $tooltip-bg !default;
 
 

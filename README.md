@@ -1,5 +1,8 @@
-# Gulp Starter Pack
-Gulp starter package to use with PostCss or sass, pug, autoprefixer, compile bootstrap, minify assets and perform other common front-end tasks.
+# Вы-застрахованы.рф HTML/CSS Layout
+Based on gulp starter package to use with PostCss/sass, pug, autoprefixer, compile bootstrap, minify assets and perform other common front-end tasks.
+
+## DEMO link
+http://dpmango.github.io/insurance
 
 ## Getting stated
 __Development:__
@@ -25,8 +28,14 @@ __Production__
 - `clean:dist` - clean dist folder to prevent conflicts before build
 
 ## Installed plugins
+- Normalize.css 5
 - jQuery 3.1.1
 - owl.carousel 2.2.0
 - Magnific Popup 1.1.0
 - Masked input
 - CSS Hamburgers
+
+
+### Push command (gh-pages fix)
+
+gulp build && git add . && git commit -m "draft all pages" && git push origin master && git subtree push --prefix dist origin gh-pages

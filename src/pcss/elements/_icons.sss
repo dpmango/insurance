@@ -34,6 +34,12 @@
   margin-right: 15px
   position: relative
   z-index: 2
+  @media($desktop)
+    transform: scale(.85)
+    margin-left: -10px
+  @media($tablet)
+    transform: scale(.7)
+    margin-left: -20px
   &:hover
     background-color: color(white a(50%))
 .ico-fb
@@ -111,3 +117,56 @@
 .ico-question-calc
   background-image: url('../images/sprite/ico-question-calc.png')
   background-size: 50px 52px
+
+.ico-doc-transport
+  background-image: url('../images/sprite/ico-doc-transport.png')
+  width: 50px
+  height: 64px
+
+.ico-doc-passport
+  background-image: url('../images/sprite/ico-doc-passport.png')
+  width: 48px
+  height: 64px
+
+.ico-doc-zagran
+  background-image: url('../images/sprite/ico-doc-zagran.png')
+  width: 48px
+  height: 64px
+
+
+.ico-location
+  background-image: url('../images/sprite/ico-location.png')
+  width: 26px
+  height: 32px
+
+// INSURANCE COMPNAIES
+.ico-alpha
+  background-image: url('../images/broker-alpha-g.png')
+  width: width('broker-alpha-g.png')
+  height: height('broker-alpha-g.png')
+  &:hover
+    background-image: inline('../images/broker-alpha.png')
+.ico-uralsib
+  background-image: url('../images/broker-uralsib-g.png')
+  width: width('broker-uralsib-g.png')
+  height: height('broker-uralsib-g.png')
+  &:hover
+    background-image: inline('../images/broker-uralsib.png')
+.ico-reso
+  background-image: url('../images/broker-reso-g.png')
+  width: width('broker-reso-g.png')
+  height: height('broker-reso-g.png')
+  &:hover
+    background-image: inline('../images/broker-reso.png')
+.ico-absolute
+  background-image: url('../images/broker-absolute-g.png')
+  width: width('broker-absolute-g.png')
+  height: height('broker-absolute-g.png')
+  &:hover
+    background-image: inline('../images/broker-absolute.png')
+.ico-ingos
+  background-image: url('../images/broker-ingos-g.png')
+  width: width('broker-ingos-g.png')
+  height: height('broker-ingos-g.png')
+  &:hover
+    background-image: inline('../images/broker-ingos.png')

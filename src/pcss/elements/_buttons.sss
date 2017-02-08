@@ -10,8 +10,28 @@ button:focus
   &--green
     background: $colorGreen
     color: white
+    border: 3px solid transparent
+    font-size: 10px
+    text-transform: uppercase
+    font-weight: 700
+    padding: 10px 30px
     &:hover
       color: white
+      background: transparent
+      border-color: $colorGreen
+      color: $colorGreen
+      transform: translate3d(0, -3px, 0)
+
+  &--yellow
+    border: 3px solid $colorYellow
+    background: transparent
+    border-radius: 0
+    text-transform: uppercase
+    &:hover
+      background: $colorYellow
+      transform: scale(1.05)
+      color: $fontColor
+
 
   &--rounded
     border-radius: 30px

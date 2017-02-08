@@ -6,125 +6,108 @@ html
     include shared/header.pug
 
     // HERO::START
-    section.hero(style='background-image: url(images/mainpageHero.png)')
+    section.hero.hero--inner(style='background-image: url(images/heroGreen.png)')
       .container
-        .row
-          .col-sm-12.mt50
-            a(href='#')
-              i.ico.ico-social.ico-fb
-            a(href='#')
-              i.ico.ico-social.ico-vk
-            a(href='#')
-              i.ico.ico-social.ico-ok
-            a(href='#')
-              i.ico.ico-social.ico-insta
+
         .row
           .col-sm-11.text-sm-right
             i.ico.ico-best-price
 
         .row
           .col-sm-12.text-xs-center
-            .heading <span>Страхование</span> без наценки
+            .heading <span>Зеленая карта</span><br> Все страны Европы + СНГ
               .hero__tooltip
-                i.ico.ico-tooltip-big(data-toggle="tooltip" data-placement="top" title="Скидка на заключение договора страхования предоставляется за счет комиссии страхового агентства. Предоставленная скидка  не влияет на качество и количество оказываемых услуг по страховому полису. Полис мгновенно заносится в базу страховой компании")
+                i.ico.ico-tooltip-big(data-toggle="tooltip" data-placement="bottom" title="Скидка на заключение договора страхования предоставляется за счет комиссии страхового агентства. Предоставленная скидка  не влияет на качество и количество оказываемых услуг по страховому полису. Полис мгновенно заносится в базу страховой компании")
 
-        .row
-          .col-sm-12.text-xs-right
-            .hero__messengers
-              .hero__messenger
-                i.ico.ico-viber
-              .hero__messenger
-                i.ico.ico-whatsup
 
-    // section navigation
-    section.navSections
+    // Green
+    section.green
       .container
         .row
-          .navSections__wrapper
-            a(href="#").navSections__item
-              i.ico.ico-navSection.ico-nav-insurance
-              span Страхование <br> туристов >>
-            a(href="#").navSections__item
-              i.ico.ico-navSection.ico-nav-greencard
-              span Зеленая карта >>
-            a(href="#").navSections__item
-              i.ico.ico-navSection.ico-nav-migrants
-              span Страхование <br> мигрантов >>
+          .col-sm-12
+            .heading.heading--small.text-xs-center Выберите количество дней вашей поездки на автомобиле
+            .green__range
+              input#greenRange(type='range' min="1" max='13' step="1" value='2')
+              .green__range__tips
+                span 15 <br> дней
+                span 1 <br> месяц
+                span 2 <br> месяца
+                span 3 <br> месяца
+                span 4 <br> месяцев
+                span 5 <br> месяцев
+                span 6 <br> месяцев
+                span 7 <br> месяцев
+                span 8 <br> месяцев
+                span 9 <br> месяцев
+                span 10 <br> месяцев
+                span 11 <br> месяцев
+                span 12 <br> месяцев
 
-    // section brokers
-    section.brokers
+    section.greenTotal
       .container
         .row
-          .col-sm-12.text-xs-center
-            .heading Ведущие <span>страховые компании</span>
-          .brokers__wrapper
-            img(src="images/broker-alpha.png").img-fluid
-            img(src="images/broker-uralsib.png").img-fluid
-            img(src='images/broker-reso.png').img-fluid
-            img(src='images/broker-absolute.png').img-fluid
-            img(src='images/broker-ingos.png').img-fluid
+          .col-sm-12.text-sm-center
+            span Стоимость:
+            span.btn.btn--green.btn--rounded 4280 <span>руб</span>
+            img(src='images/broker-alpha.png')
 
-    // section why us
-    section.whyUs
+    section.docsRequired
       .container
         .row
-          .col-sm-12.text-xs-center
-            .heading Почему с нами <span>стоит работать</span>
-          .whyUs__wrapper
-            .whyUs__item
-              i.ico.ico-why-price
-              .whyUs__name Гарантия лучшей цены
-              .whyUs__desc на рынке страхования
-            .whyUs__item
-              i.ico.ico-why-docs
-              .whyUs__name Официальное <br> оформление
-              .whyUs__desc на рынке страхования
-            .whyUs__item
-              i.ico.ico-why-economy
-              .whyUs__name Экономия ваших средств
-              .whyUs__desc при выборе страховой компании
+          .col-sm-12
+            .heading.heading--small.text-xs-center Для оформления зеленой карты вам потребуется:
 
-    //section questions
-    section.questions
+            .docsRequired__wrapper
+              .docsRequired__item
+                i.ico.ico-doc-transport
+                span Свидетельство о регистрации <br> транспортного средства
+              .docsRequired__item
+                i.ico.ico-doc-passport
+                span Российский паспорт
+              .docsRequired__item
+                i.ico.ico-doc-zagran
+                span Действующий  загранпаспорт
+
+    // Contact
+    section.contact
       .container
         .row
           .col-sm-12.text-xs-center
-            .heading У вас <span> остались вопросы?</span>
-          .questions__wrapper
-            .questions__item
-              i.ico.ico-question.ico-question-mail
-              span обратная связь
-            .questions__item
-              i.ico.ico-question.ico-question-phone
-              span Заказать звонок
-            .questions__split
-              span или
-            .questions__item
-              i.ico.ico-question.ico-question-calc
-              span рассчитайте полис самостоятельно
+            .heading Оформление <span>за 10 минут</span>
+            span.contact__choicer Выберите удобный Вам офис
+            .contact__wrapper
+              .contact__item
+                i.ico.ico-location
+                span м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва
+                a(href='#').btn.btn--yellow Показать на карте
+              .contact__item
+                i.ico.ico-location
+                span м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва
+                a(href='#').btn.btn--yellow Показать на карте
+              .contact__item
+                i.ico.ico-location
+                span м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва
+                a(href='#').btn.btn--yellow Показать на карте
 
-    //testimonials
-    section.testimonials
-      .container
-        .row
-          .col-sm-12.text-xs-center
-            .heading Отзывы <span>наших клиентов</span>
-          .col-sm-12.col-lg-8.offset-lg-2
-            .owl-carousel#owlTestimonials
-              .testimonials__slide
-                .testimonials__image
-                  img(src="images/testimonial.png")
-                .testimonials__content
-                  .testimonials__name Алексей Семенов
-                  .testimonials__review
-                    p Стратегический рыночный план допускает баинг и селлинг. Охват аудитории стабилизирует маркетинг. Представляется логичным, что привлечение аудитории не критично. Продвижение проекта достижимо в разумные сроки. Концепция развития порождает культурный портрет потребителя. Жизненный цикл продукции, суммируя приведенные примеры, притягивает из ряда вон выходящий сегмент рынка.
-              .testimonials__slide
-                .testimonials__image
-                  img(src="images/testimonial.png")
-                .testimonials__content
-                  .testimonials__name Алексей Семенов
-                  .testimonials__review
-                    p Стратегический рыночный план допускает баинг и селлинг. Охват аудитории стабилизирует маркетинг. Представляется логичным, что привлечение аудитории не критично. Продвижение проекта достижимо в разумные сроки. Концепция развития порождает культурный портрет потребителя. Жизненный цикл продукции, суммируя приведенные примеры, притягивает из ряда вон выходящий сегмент рынка.
+
+      script(src='https://api-maps.yandex.ru/2.1/?lang=ru_RU', type='text/javascript')
+      script(type='text/javascript').
+        ymaps.ready(init);
+        var myMap,
+        myPlacemark;
+        function init(){
+        myMap = new ymaps.Map("map", {
+        center: [55.76, 37.64],
+        zoom: 7
+        });
+        myPlacemark = new ymaps.Placemark([55.76, 37.64], {
+        hintContent: 'Москва!',
+        balloonContent: 'Столица России'
+        });
+        myMap.geoObjects.add(myPlacemark);
+        }
+
+    .contactMap#map
 
 
 

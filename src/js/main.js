@@ -77,6 +77,24 @@ $(document).ready(function(){
 
   // enable tooltips
   $('[data-toggle="tooltip"]').tooltip()
-  
+
+  // range slider
+
+  $('#greenRange').rangeslider({
+    polyfill: false,
+    rangeClass: 'rangeslider',
+    disabledClass: 'rangeslider--disabled',
+    horizontalClass: 'rangeslider--horizontal',
+    verticalClass: 'rangeslider--vertical',
+    fillClass: 'rangeslider__fill',
+    handleClass: 'rangeslider__handle',
+    // Callback function
+    onInit: function() {},
+    // Callback function
+    onSlide: function(position, value) {},
+    // Callback function
+    onSlideEnd: function(position, value) {}
+  });
+
 
 });
