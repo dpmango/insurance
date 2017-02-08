@@ -1,0 +1,113 @@
+// ICONS
+.ico
+  display: inline-block
+  font-style: normal
+  content: ' '
+  background-repeat: no-repeat
+  background-position: center
+  background-size: contain
+  vertical-align: middle
+  transition: all .3s ease-in-out
+
+// mixin
+@define-mixin myIcon $name
+  background: url('../images/$(name).svg') no-repeat center
+  width: 1em
+  height: 1em
+
+.ico-logo
+  background-image: url('../images/logo.png')
+  width: 201px
+  height: 72px
+
+.ico-phone
+  background-image: url('../images/sprite/ico-phone.png')
+  size: 13px
+  &--green
+    background-image: url('../images/sprite/ico-phone--green.png')
+
+.ico-social
+  size: 60px
+  border: 2px solid white
+  border-radius: 50%
+  margin-right: 10px
+  margin-right: 15px
+  position: relative
+  z-index: 2
+  &:hover
+    background-color: color(white a(50%))
+.ico-fb
+  background-image: url('../images/sprite/ico-fb.png')
+  background-size: 15px 33px
+.ico-vk
+  background-image: url('../images/sprite/ico-vk.png')
+  background-size: 34px 19px
+.ico-ok
+  background-image: url('../images/sprite/ico-ok.png')
+  background-size: 19px 33px
+.ico-insta
+  background-image: url('../images/sprite/ico-insta.png')
+  background-size: 27px 26px
+
+.ico-best-price
+  background-image: url('../images/sprite/ico-best-price.png')
+  size: 159px
+
+.ico-tooltip-big
+  background-image: url('../images/sprite/ico-tooltip-big.png')
+  size: 38px 37px
+
+.ico-viber
+  background-image: url('../images/sprite/ico-viber.png')
+  size: 47px 50px
+.ico-whatsup
+  background-image: url('../images/sprite/ico-whatsup.png')
+  size: 45px
+
+.ico-navSection
+  background-color: $colorGreen
+  border-radius: 50%
+  size: 130px
+
+.ico-nav-insurance
+  background-image: url('../images/sprite/ico-nav-insurance.png')
+  background-size: 64px 62px
+
+.ico-nav-greencard
+  background-image: url('../images/sprite/ico-nav-greencard.png')
+  background-size: 64px 46px
+
+.ico-nav-migrants
+  background-image: url('../images/sprite/ico-nav-migrants.png')
+  background-size: 50px 64px
+
+.ico-why-price
+  background-image: url('../images/sprite/ico-why-price.png')
+  width: 64px
+  height: 48px
+
+.ico-why-docs
+  background-image: url('../images/sprite/ico-why-docs.png')
+  width: 45px
+  height: 51px
+
+.ico-why-economy
+  background-image: url('../images/sprite/ico-why-economy.png')
+  width: 46px
+  height: 41px
+
+.ico-question
+  border: 3px solid $colorGreen
+  border-radius: 50%
+  size: 130px
+
+.ico-question-mail
+  background-image: url('../images/sprite/ico-question-mail.png')
+  background-size: 48px 55px
+
+.ico-question-phone
+  background-image: url('../images/sprite/ico-question-phone.png')
+  background-size: 48px 48px
+.ico-question-calc
+  background-image: url('../images/sprite/ico-question-calc.png')
+  background-size: 50px 52px

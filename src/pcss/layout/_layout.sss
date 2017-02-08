@@ -1,0 +1,51 @@
+// LAYOUT
+
+$mobile: width <= 568px
+$mobile-from: width >= 568px
+$tablet: width <= 768px
+$tablet-from: width <= 768px
+$desktop: width <= 1000px
+$desktop-from: width >= 1000px
+$wide: width <= 1200px
+$wide-from: width >= 1200px
+$hd: width <= 1680px
+$hd-from: width >= 1680px
+
+// variables
+$fontColor: #323232
+$colorGreen: #65c134
+
+
+$colorRed: #f45b63
+$colorYellow: #fda737
+$colorOrange: #f46d36
+$darkColor: #101226
+
+*
+  box-sizing: border-box
+
+a
+  color: inherit
+  transition: color .3s ease-in-out
+  &:hover, &:focus, &:visited
+    text-decoration: none
+  &:hover
+    color: $colorGreen
+
+ul
+  list-style: none
+  li
+    display: inline-block
+
+
+body, html
+  background: white
+  color: $fontColor
+  font-family: 'Open Sans', sans-serif
+  font-size: 14px
+  max-width: 100%
+  overflow-x: hidden
+
+.container
+  max-width: 1200px
+  width: 100%
