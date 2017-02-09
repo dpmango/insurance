@@ -77,6 +77,11 @@
     text-align: center
     margin-left: 35px
     margin-right: 35px
+    &:hover
+      .ico-navSection
+        background-color: $colorYellow
+        box-shadow: 0 3px 8px color(black a(30%))
+
     @media($mobile)
       margin-bottom: 20px
     span
@@ -400,62 +405,80 @@
   background-size: cover
   padding-top: 80px
   padding-bottom: 100px
+
   &__wrapper
     background: white
     padding: 50px 7% 20px 7%
-  .form-group
-    margin-bottom: 50px
-    > label
-      display: block
-      font-weight: 700
-      font-size: 22px
-      position: relative
-      margin-bottom: 30px
-      &::before
-        display: inline-block
-        content: ' '
-        position: absolute
-        top: 8px
-        left: -20px
-        background: $colorGreen
-        width: 6px
-        height: 18px
-  .form-control
-    border-color: #acacac
-    padding: 8px 20px
-    font-size: 16px
-    font-weight: 300
-    transition: all .3s ease
+
+.form-group
+  margin-bottom: 50px
+  > label
+    display: block
+    font-weight: 700
+    font-size: 22px
     position: relative
-    &:focus
-      border-color: $colorMute
-    &::-webkit-input-placeholder
-      color: #696969
-    &::-moz-placeholder
-      color: #696969
-    &:-moz-placeholder
-      color: #696969
-    &:-ms-input-placeholder
-      color: #696969
-    &--error
-      input
-        border-color: $colorRed
-      .ui-input__validation
-        display: block
-    &__validation
-      display: none
-      color: $colorRed
-      font-size: 12px
-      position: relative
-      top: auto
-      transform: none
-      right: 0
-      padding-top: 5px
+    margin-bottom: 30px
+    &::before
+      display: inline-block
+      content: ' '
+      position: absolute
+      top: 8px
+      left: -20px
+      background: $colorGreen
+      width: 6px
+      height: 18px
+  small
+    font-size: 14px
+    padding-left: 15px
+    display: inline-block
+    font-weight: 300
+    margin-top: 5px
+    b
+      font-weight: 700
+
+
+
+.form-control
+  border-color: #acacac
+  padding: 8px 20px
+  font-size: 16px
+  font-weight: 300
+  transition: all .3s ease
+  position: relative
+  &:focus
+    border-color: $colorGreen
+  &::-webkit-input-placeholder
+    color: #696969
+  &::-moz-placeholder
+    color: #696969
+  &:-moz-placeholder
+    color: #696969
+  &:-ms-input-placeholder
+    color: #696969
+  &--error
+    border-color: $colorRed
+  &--required
+    color: $colorRed
+    position: absolute
+    top: 0px
+    left: -13px
+    font-size: 14px
+    font-weight: 300
+  &__validation
+    display: block
+    color: $colorRed
+    font-size: 12px
+    position: relative
+    top: auto
+    transform: none
+    right: 0
+    padding-top: 5px
 
 
 .insurancePrice
   padding-top: 80px
   padding-bottom: 120px
+  display: none
   .row.mt50
     margin-left: 2.5%
     margin-right: 2.5%

@@ -3,169 +3,170 @@ html
   include shared/head.pug
 
   body
-    include shared/header.pug
+    .content
+      include shared/header.pug
 
-    // HERO::START
-    section.hero.hero--inner(style='background-image: url(images/heroDocs.png)')
-      .container
-        .row
-          .col-sm-12.text-xs-center
-            .heading <span>Список документов</span><br> для подачи в визовый центр
+      // HERO::START
+      section.hero.hero--inner(style='background-image: url(images/heroDocs.png)')
+        .container
+          .row
+            .col-sm-12.text-xs-center
+              .heading <span>Список документов</span><br> для подачи в визовый центр
 
-    // section navigation
-    section.navSections
-      .container
-        .row
-          .navSections__wrapper
-            a(href="#").navSections__item
-              i.ico.ico-navSection.ico-nav-insurance
-              span Страхование <br> туристов >>
-            a(href="#").navSections__item
-              i.ico.ico-navSection.ico-nav-greencard
-              span Зеленая карта >>
-            a(href="#").navSections__item
-              i.ico.ico-navSection.ico-nav-migrants
-              span Страхование <br> мигрантов >>
+      // section navigation
+      section.navSections
+        .container
+          .row
+            .navSections__wrapper
+              a(href="#").navSections__item
+                i.ico.ico-navSection.ico-nav-insurance
+                span Страхование <br> туристов >>
+              a(href="#").navSections__item
+                i.ico.ico-navSection.ico-nav-greencard
+                span Зеленая карта >>
+              a(href="#").navSections__item
+                i.ico.ico-navSection.ico-nav-migrants
+                span Страхование <br> мигрантов >>
 
-    // DOCS
-    section.docsDesc
-      .container
-        .row
-          .col-sm-12.col-lg-8.offset-lg-2
-            .docsDesc__wrapper
-              .docsDesc__title Европа
-              .docsDesc__countries
-                .docsDesc__countries__row
-                  a(href='#')
-                    i.flag-icon.flag-icon-at
-                    span Австрия
-                  a(href='#')
-                    i.flag-icon.flag-icon-al
-                    span Албания
-                  a(href='#')
-                    i.flag-icon.flag-icon-ad
-                    span Андорра
-                  a(href='#')
-                    i.flag-icon.flag-icon-be
-                    span Бельгия
-                  a(href='#')
-                    i.flag-icon.flag-icon-bg
-                    span Болгария
-                  a(href='#')
-                    i.flag-icon.flag-icon-ba
-                    span Босния и Герцеговина
-                  a(href='#')
-                    i.flag-icon.flag-icon-va
-                    span Ватикан
-                  a(href='#')
-                    i.flag-icon.flag-icon-gb
-                    span Великобритания
-                  a(href='#')
-                    i.flag-icon.flag-icon-hu
-                    span Венгрия
-                  a(href='#')
-                    i.flag-icon.flag-icon-ge
-                    span Германия
-                  a(href='#')
-                    i.flag-icon.flag-icon-gr
-                    span Греция
-                  a(href='#')
-                    i.flag-icon.flag-icon-dk
-                    span Дания
-                  a(href='#')
-                    i.flag-icon.flag-icon-ie
-                    span Ирландия
-                  a(href='#')
-                    i.flag-icon.flag-icon-is
-                    span Исландия
-                // next row
-                .docsDesc__countries__row
-                  a(href='#')
-                    i.flag-icon.flag-icon-at
-                    span Австрия
-                  a(href='#')
-                    i.flag-icon.flag-icon-al
-                    span Албания
-                  a(href='#')
-                    i.flag-icon.flag-icon-ad
-                    span Андорра
-                  a(href='#')
-                    i.flag-icon.flag-icon-be
-                    span Бельгия
-                  a(href='#')
-                    i.flag-icon.flag-icon-bg
-                    span Болгария
-                  a(href='#')
-                    i.flag-icon.flag-icon-ba
-                    span Босния и Герцеговина
-                  a(href='#')
-                    i.flag-icon.flag-icon-va
-                    span Ватикан
-                  a(href='#')
-                    i.flag-icon.flag-icon-gb
-                    span Великобритания
-                  a(href='#')
-                    i.flag-icon.flag-icon-hu
-                    span Венгрия
-                  a(href='#')
-                    i.flag-icon.flag-icon-ge
-                    span Германия
-                  a(href='#')
-                    i.flag-icon.flag-icon-gr
-                    span Греция
-                  a(href='#')
-                    i.flag-icon.flag-icon-dk
-                    span Дания
-                  a(href='#')
-                    i.flag-icon.flag-icon-ie
-                    span Ирландия
-                  a(href='#')
-                    i.flag-icon.flag-icon-is
-                    span Исландия
-                // next row
-                .docsDesc__countries__row
-                  a(href='#')
-                    i.flag-icon.flag-icon-at
-                    span Австрия
-                  a(href='#')
-                    i.flag-icon.flag-icon-al
-                    span Албания
-                  a(href='#')
-                    i.flag-icon.flag-icon-ad
-                    span Андорра
-                  a(href='#')
-                    i.flag-icon.flag-icon-be
-                    span Бельгия
-                  a(href='#')
-                    i.flag-icon.flag-icon-bg
-                    span Болгария
-                  a(href='#')
-                    i.flag-icon.flag-icon-ba
-                    span Босния и Герцеговина
-                  a(href='#')
-                    i.flag-icon.flag-icon-va
-                    span Ватикан
-                  a(href='#')
-                    i.flag-icon.flag-icon-gb
-                    span Великобритания
-                  a(href='#')
-                    i.flag-icon.flag-icon-hu
-                    span Венгрия
-                  a(href='#')
-                    i.flag-icon.flag-icon-ge
-                    span Германия
-                  a(href='#')
-                    i.flag-icon.flag-icon-gr
-                    span Греция
-                  a(href='#')
-                    i.flag-icon.flag-icon-dk
-                    span Дания
-                  a(href='#')
-                    i.flag-icon.flag-icon-ie
-                    span Ирландия
-                  a(href='#')
-                    i.flag-icon.flag-icon-is
-                    span Исландия
+      // DOCS
+      section.docsDesc
+        .container
+          .row
+            .col-sm-12.col-lg-8.offset-lg-2
+              .docsDesc__wrapper
+                .docsDesc__title Европа
+                .docsDesc__countries
+                  .docsDesc__countries__row
+                    a(href='#')
+                      i.flag-icon.flag-icon-at
+                      span Австрия
+                    a(href='#')
+                      i.flag-icon.flag-icon-al
+                      span Албания
+                    a(href='#')
+                      i.flag-icon.flag-icon-ad
+                      span Андорра
+                    a(href='#')
+                      i.flag-icon.flag-icon-be
+                      span Бельгия
+                    a(href='#')
+                      i.flag-icon.flag-icon-bg
+                      span Болгария
+                    a(href='#')
+                      i.flag-icon.flag-icon-ba
+                      span Босния и Герцеговина
+                    a(href='#')
+                      i.flag-icon.flag-icon-va
+                      span Ватикан
+                    a(href='#')
+                      i.flag-icon.flag-icon-gb
+                      span Великобритания
+                    a(href='#')
+                      i.flag-icon.flag-icon-hu
+                      span Венгрия
+                    a(href='#')
+                      i.flag-icon.flag-icon-ge
+                      span Германия
+                    a(href='#')
+                      i.flag-icon.flag-icon-gr
+                      span Греция
+                    a(href='#')
+                      i.flag-icon.flag-icon-dk
+                      span Дания
+                    a(href='#')
+                      i.flag-icon.flag-icon-ie
+                      span Ирландия
+                    a(href='#')
+                      i.flag-icon.flag-icon-is
+                      span Исландия
+                  // next row
+                  .docsDesc__countries__row
+                    a(href='#')
+                      i.flag-icon.flag-icon-at
+                      span Австрия
+                    a(href='#')
+                      i.flag-icon.flag-icon-al
+                      span Албания
+                    a(href='#')
+                      i.flag-icon.flag-icon-ad
+                      span Андорра
+                    a(href='#')
+                      i.flag-icon.flag-icon-be
+                      span Бельгия
+                    a(href='#')
+                      i.flag-icon.flag-icon-bg
+                      span Болгария
+                    a(href='#')
+                      i.flag-icon.flag-icon-ba
+                      span Босния и Герцеговина
+                    a(href='#')
+                      i.flag-icon.flag-icon-va
+                      span Ватикан
+                    a(href='#')
+                      i.flag-icon.flag-icon-gb
+                      span Великобритания
+                    a(href='#')
+                      i.flag-icon.flag-icon-hu
+                      span Венгрия
+                    a(href='#')
+                      i.flag-icon.flag-icon-ge
+                      span Германия
+                    a(href='#')
+                      i.flag-icon.flag-icon-gr
+                      span Греция
+                    a(href='#')
+                      i.flag-icon.flag-icon-dk
+                      span Дания
+                    a(href='#')
+                      i.flag-icon.flag-icon-ie
+                      span Ирландия
+                    a(href='#')
+                      i.flag-icon.flag-icon-is
+                      span Исландия
+                  // next row
+                  .docsDesc__countries__row
+                    a(href='#')
+                      i.flag-icon.flag-icon-at
+                      span Австрия
+                    a(href='#')
+                      i.flag-icon.flag-icon-al
+                      span Албания
+                    a(href='#')
+                      i.flag-icon.flag-icon-ad
+                      span Андорра
+                    a(href='#')
+                      i.flag-icon.flag-icon-be
+                      span Бельгия
+                    a(href='#')
+                      i.flag-icon.flag-icon-bg
+                      span Болгария
+                    a(href='#')
+                      i.flag-icon.flag-icon-ba
+                      span Босния и Герцеговина
+                    a(href='#')
+                      i.flag-icon.flag-icon-va
+                      span Ватикан
+                    a(href='#')
+                      i.flag-icon.flag-icon-gb
+                      span Великобритания
+                    a(href='#')
+                      i.flag-icon.flag-icon-hu
+                      span Венгрия
+                    a(href='#')
+                      i.flag-icon.flag-icon-ge
+                      span Германия
+                    a(href='#')
+                      i.flag-icon.flag-icon-gr
+                      span Греция
+                    a(href='#')
+                      i.flag-icon.flag-icon-dk
+                      span Дания
+                    a(href='#')
+                      i.flag-icon.flag-icon-ie
+                      span Ирландия
+                    a(href='#')
+                      i.flag-icon.flag-icon-is
+                      span Исландия
 
-
-    include shared/footer.pug
+      include shared/footer.pug
+    include shared/modal.pug

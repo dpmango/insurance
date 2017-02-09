@@ -3,112 +3,111 @@ html
   include shared/head.pug
 
   body
-    include shared/header.pug
+    .content
+      include shared/header.pug
 
-    // HERO::START
-    section.hero.hero--inner(style='background-image: url(images/heroGreen.png)')
-      .container
+      // HERO::START
+      section.hero.hero--inner(style='background-image: url(images/heroGreen.png)')
+        .container
 
-        .row
-          .col-sm-11.text-sm-right
-            i.ico.ico-best-price
+          .row
+            .col-sm-11.text-sm-right
+              i.ico.ico-best-price
 
-        .row
-          .col-sm-12.text-xs-center
-            .heading <span>Зеленая карта</span><br> Все страны Европы + СНГ
-              .hero__tooltip
-                i.ico.ico-tooltip-big(data-toggle="tooltip" data-placement="bottom" title="Скидка на заключение договора страхования предоставляется за счет комиссии страхового агентства. Предоставленная скидка  не влияет на качество и количество оказываемых услуг по страховому полису. Полис мгновенно заносится в базу страховой компании")
+          .row
+            .col-sm-12.text-xs-center
+              .heading <span>Зеленая карта</span><br> Все страны Европы + СНГ
+                .hero__tooltip
+                  i.ico.ico-tooltip-big(data-toggle="tooltip" data-placement="bottom" title="Скидка на заключение договора страхования предоставляется за счет комиссии страхового агентства. Предоставленная скидка  не влияет на качество и количество оказываемых услуг по страховому полису. Полис мгновенно заносится в базу страховой компании")
 
+      // Green
+      section.green
+        .container
+          .row
+            .col-sm-12
+              .heading.heading--small.text-xs-center Выберите количество дней вашей поездки на автомобиле
+              .green__range
+                input#greenRange(type='range' min="1" max='13' step="1" value='2')
+                .green__range__tips
+                  span 15 <br> дней
+                  span 1 <br> месяц
+                  span 2 <br> месяца
+                  span 3 <br> месяца
+                  span 4 <br> месяцев
+                  span 5 <br> месяцев
+                  span 6 <br> месяцев
+                  span 7 <br> месяцев
+                  span 8 <br> месяцев
+                  span 9 <br> месяцев
+                  span 10 <br> месяцев
+                  span 11 <br> месяцев
+                  span 12 <br> месяцев
 
-    // Green
-    section.green
-      .container
-        .row
-          .col-sm-12
-            .heading.heading--small.text-xs-center Выберите количество дней вашей поездки на автомобиле
-            .green__range
-              input#greenRange(type='range' min="1" max='13' step="1" value='2')
-              .green__range__tips
-                span 15 <br> дней
-                span 1 <br> месяц
-                span 2 <br> месяца
-                span 3 <br> месяца
-                span 4 <br> месяцев
-                span 5 <br> месяцев
-                span 6 <br> месяцев
-                span 7 <br> месяцев
-                span 8 <br> месяцев
-                span 9 <br> месяцев
-                span 10 <br> месяцев
-                span 11 <br> месяцев
-                span 12 <br> месяцев
+      section.greenTotal
+        .container
+          .row
+            .col-sm-12.text-sm-center
+              span Стоимость:
+              span.btn.btn--green.btn--rounded 4280 <span>руб</span>
+              img(src='images/broker-alpha.png')
 
-    section.greenTotal
-      .container
-        .row
-          .col-sm-12.text-sm-center
-            span Стоимость:
-            span.btn.btn--green.btn--rounded 4280 <span>руб</span>
-            img(src='images/broker-alpha.png')
+      section.docsRequired
+        .container
+          .row
+            .col-sm-12
+              .heading.heading--small.text-xs-center Для оформления зеленой карты вам потребуется:
 
-    section.docsRequired
-      .container
-        .row
-          .col-sm-12
-            .heading.heading--small.text-xs-center Для оформления зеленой карты вам потребуется:
+              .docsRequired__wrapper
+                .docsRequired__item
+                  i.ico.ico-doc-transport
+                  span Свидетельство о регистрации <br> транспортного средства
+                .docsRequired__item
+                  i.ico.ico-doc-passport
+                  span Российский паспорт
+                .docsRequired__item
+                  i.ico.ico-doc-zagran
+                  span Действующий  загранпаспорт
 
-            .docsRequired__wrapper
-              .docsRequired__item
-                i.ico.ico-doc-transport
-                span Свидетельство о регистрации <br> транспортного средства
-              .docsRequired__item
-                i.ico.ico-doc-passport
-                span Российский паспорт
-              .docsRequired__item
-                i.ico.ico-doc-zagran
-                span Действующий  загранпаспорт
-
-    // Contact
-    section.contact
-      .container
-        .row
-          .col-sm-12.text-xs-center
-            .heading Оформление <span>за 10 минут</span>
-            span.contact__choicer Выберите удобный Вам офис
-            .contact__wrapper
-              .contact__item
-                i.ico.ico-location
-                span м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва
-                a(href='#').btn.btn--yellow Показать на карте
-              .contact__item
-                i.ico.ico-location
-                span м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва
-                a(href='#').btn.btn--yellow Показать на карте
-              .contact__item
-                i.ico.ico-location
-                span м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва
-                a(href='#').btn.btn--yellow Показать на карте
-
-
-      script(src='https://api-maps.yandex.ru/2.1/?lang=ru_RU', type='text/javascript')
-      script(type='text/javascript').
-        ymaps.ready(init);
-        var myMap,
-        myPlacemark;
-        function init(){
-        myMap = new ymaps.Map("map", {
-        center: [55.76, 37.64],
-        zoom: 7
-        });
-        myPlacemark = new ymaps.Placemark([55.76, 37.64], {
-        hintContent: 'Москва!',
-        balloonContent: 'Столица России'
-        });
-        myMap.geoObjects.add(myPlacemark);
-        }
-
-    .contactMap#map
+      // Contact
+      section.contact
+        .container
+          .row
+            .col-sm-12.text-xs-center
+              .heading Оформление <span>за 10 минут</span>
+              span.contact__choicer Выберите удобный Вам офис
+              .contact__wrapper
+                .contact__item
+                  i.ico.ico-location
+                  span м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва
+                  a(href='#').btn.btn--yellow Показать на карте
+                .contact__item
+                  i.ico.ico-location
+                  span м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва
+                  a(href='#').btn.btn--yellow Показать на карте
+                .contact__item
+                  i.ico.ico-location
+                  span м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва
+                  a(href='#').btn.btn--yellow Показать на карте
 
 
+        script(src='https://api-maps.yandex.ru/2.1/?lang=ru_RU', type='text/javascript')
+        script(type='text/javascript').
+          ymaps.ready(init);
+          var myMap,
+          myPlacemark;
+          function init(){
+          myMap = new ymaps.Map("map", {
+          center: [55.76, 37.64],
+          zoom: 7
+          });
+          myPlacemark = new ymaps.Placemark([55.76, 37.64], {
+          hintContent: 'Москва!',
+          balloonContent: 'Столица России'
+          });
+          myMap.geoObjects.add(myPlacemark);
+          }
 
-    include shared/footer.pug
+      .contactMap#map
+
+      include shared/footer.pug
+    include shared/modal.pug

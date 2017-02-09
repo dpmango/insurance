@@ -1,0 +1,112 @@
+// MODALS
+.modal#modalServiceSelect
+  .modal__wrapper
+    .modal__content
+      .modal__close
+        i.ico.ico-close
+      .heading.text-xs-center Я хочу <span>застраховать</span>
+
+      .navSections__wrapper.mt40
+        a(href="insurance.html").navSections__item
+          i.ico.ico-navSection.ico-nav-insurance
+          span Страхование <br> туристов >>
+        a(href="green.html").navSections__item
+          i.ico.ico-navSection.ico-nav-greencard
+          span Зеленая карта >>
+        a(href="green.html").navSections__item
+          i.ico.ico-navSection.ico-nav-migrants
+          span Страхование <br> мигрантов >>
+
+.modal#modalInsurance
+  .modal__wrapper
+    .modal__content
+      .modal__close
+        i.ico.ico-close
+      .heading.text-xs-center Выберите <span>удобный для Вас офис</span>
+      .heading__desc.text-xs-center и заполните контактные данные
+
+      .row.mt40
+        .col-sm-7
+          .modal__contact
+            i.ico.ico-location
+            .modal__contact__info
+              span м. Октябрьская
+              p Калужская пл. д.1, к.2 (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 без перерыва
+          .modal__contact
+            i.ico.ico-location
+            .modal__contact__info
+              span м. Красные ворота, м. Комсомольская
+              p Ул. Каланчевская д. 13 <br> (Здание визового центра Финляндии) <br> По будням с 8:00 до 16:00 без перерыва
+          .modal__contact
+            i.ico.ico-location
+            .modal__contact__info
+              span м. Проспект мира
+              p Пр-т Мира, д.62, стр.1 <br> (Здание рядом с визовым центром Франции) <br> По будням с 8:00 до 16:00 без перерыва
+        .col-sm-5
+          .form-group
+            input.form-control.form-control--error(type='text' placeholder='Ваше имя')
+            span.form-control--required *
+          .form-group
+            input.form-control(type='tel' name='phone' placeholder='Номер телефона')
+            span.form-control--required *
+            small На этот номер придет СМС с номером заказа и адресом выбранного офиса
+          .form-group
+            small <b>Для оформления электронного полиса введите ваш Email</b>
+          .form-group
+            input.form-control(type='email' placeholder='Ваш email')
+          .form-group
+            button(type='submit').btn.btn--green.btn--rounded Заказать
+
+          .modal__form__questions Остались вопросы? <span>Звоните!</span>
+          .modal__form__phone 8 495 506 51 55 <span>с 8:00 до 16:00 без перерыва</span>
+
+
+.modal#modalGetPrice
+  .modal__wrapper
+    .modal__content
+      .modal__close
+        i.ico.ico-close
+      .heading.text-xs-center Узнать <span>стоимость</span>
+
+      .form-group
+        textarea.form-control(placeholder='Опишите условия, необходимые для вас:')
+        span.form-control--required *
+      .form-group
+        input.form-control.form-control--error(type='text' placeholder='Ваше имя')
+        span.form-control--required *
+      .form-group
+        input.form-control(type='tel' name='phone' placeholder='Номер телефона')
+        span.form-control--required *
+      .form-group
+        input.form-control(type='email' placeholder='Ваш email')
+        span.form-control--required *
+      .form-group
+        button(type='submit').btn.btn--green.btn--rounded Узнать стоимость
+
+      .modal__form__questions или <span>Позвоните нам!</span>
+      .modal__form__phone 8 495 506 51 55 <span>с 8:00 до 16:00 без перерыва</span>
+
+.modal#modalCallback
+  .modal__wrapper
+    .modal__content
+      .modal__close
+        i.ico.ico-close
+      .heading.text-xs-center Обратная <span>связь</span>
+
+      .form-group
+        textarea.form-control(placeholder='Ваш вопрос')
+        span.form-control--required *
+      .form-group
+        input.form-control.form-control--error(type='text' placeholder='Ваше имя')
+        span.form-control--required *
+      .form-group
+        input.form-control(type='tel' name='phone' placeholder='Номер телефона')
+        span.form-control--required *
+      .form-group
+        input.form-control(type='email' placeholder='Ваш email')
+        span.form-control--required *
+      .form-group
+        button(type='submit').btn.btn--green.btn--rounded Узнать стоимость
+
+      .modal__form__questions или <span>Позвоните нам!</span>
+      .modal__form__phone 8 495 506 51 55 <span>с 8:00 до 16:00 без перерыва</span>

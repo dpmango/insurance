@@ -3,205 +3,210 @@ html
   include shared/head.pug
 
   body
-    include shared/header.pug
+    .content
+      include shared/header.pug
 
-    // HERO::START
-    section.hero.hero--inner(style='background-image: url(images/heroInsurance.png)')
-      .container
-        .row
-          .col-sm-11.text-sm-right
-            i.ico.ico-best-price
+      // HERO::START
+      section.hero.hero--inner(style='background-image: url(images/heroInsurance.png)')
+        .container
+          .row
+            .col-sm-11.text-sm-right
+              i.ico.ico-best-price
 
-        .row
-          .col-sm-12.text-xs-center
-            .heading <span>Страхование</span><br> выезжающих за рубеж
+          .row
+            .col-sm-12.text-xs-center
+              .heading <span>Страхование</span><br> выезжающих за рубеж
 
-    // section brokers
-    section.brokers
-      .container
-        .row
-          .col-sm-12.text-xs-center
-            .heading Ведущие <span>страховые компании</span>
-            .heading__desc Полис гарантированно подходит для подачи в визовые центры
-          .brokers__wrapper
-            i.ico.ico-alpha
-            i.ico.ico-uralsib
-            i.ico.ico-reso
-            i.ico.ico-absolute
-            i.ico.ico-ingos
-
-    //INSURANCE
-    section.insurance
-      .container
-        .row
-          .col-sm-12.col-lg-8.offset-lg-2
-            .insurance__wrapper
-              .form-group
-                label Куда едите ?
-                input.form-control(type="text" placeholder="Укажите название страны:")
-
-              .row
-                .col-sm-6
-                  .form-group
-                    label Тип страховки
-                    .ui-radio
-                      input(type='radio' name='insuranceType' id='insuranceType_1')
-                      label(for='insuranceType_1') Разовая
-                    .ui-radio
-                      input(type='radio' name='insuranceType' id='insuranceType_2')
-                      label(for='insuranceType_2') Многократная
-                .col-sm-6
-                  .form-group
-                    label Валюта полиса
-                    .ui-radio
-                      input(type='radio' name='insuranceCurrency' id='insuranceCurrency_1')
-                      label(for='insuranceCurrency_1') EUR
-                    .ui-radio
-                      input(type='radio' name='insuranceCurrency' id='insuranceCurrency_2')
-                      label(for='insuranceCurrency_2') USD
-
-              .row
-                .col-sm-6
-                  .form-group
-                    label Когда уезжаете
-                    input.form-control.datepicker-here(type="text" data-position="bottom left")
-
-                .col-sm-6
-                  .form-group
-                    label Когда возвращаетесь
-                    input.form-control.datepicker-here(type="text" data-position="bottom left")
-
-              .form-group
-                label Выберите количество дней страхования
-                .green__range
-                  input#greenRange(type='range' min="1" max='7' step="1" value='3')
-                  .green__range__tips
-                    span 30 <br> дней
-                    span 45 <br> дней
-                    span 60 <br> дней
-                    span 90 <br> дней
-                    span 120 <br> дней
-                    span 180 <br> дней
-                    span 365 <br> дней
-              .form-group
-                label Кто едет
-                .row
-                  .col-sm-4
-                    .ui-checkbox
-                      input(type='checkbox' name='insuranceAge' id='insuranceAge_1')
-                      label(for='insuranceAge_1') Взрослые (от 18 до 65)
-                    .ui-select
-                      span Кол-во человек
-                      input(type="hidden")
-                      .ui-selectDrop
-                        span Опция 1
-                        span Опция 1
-                        span Опция 1
-                    .ui-select
-                      span Возраст
-                      input(type="hidden")
-                      .ui-selectDrop
-                        span Опция 1
-                        span Опция 1
-                        span Опция 1
-                  .col-sm-4
-                    .ui-checkbox
-                      input(type='checkbox' name='insuranceAge' id='insuranceAge_2')
-                      label(for='insuranceAge_2') Дети (от 0 до 18)
-                    .ui-select
-                      span Кол-во человек
-                      input(type="hidden")
-                      .ui-selectDrop
-                        span Опция 1
-                        span Опция 1
-                        span Опция 1
-                    .ui-select
-                      span Возраст
-                      input(type="hidden")
-                      .ui-selectDrop
-                        span Опция 1
-                        span Опция 1
-                        span Опция 1
-
-                  .col-sm-4
-                    .ui-checkbox
-                      input(type='checkbox' name='insuranceAge' id='insuranceAge_3')
-                      label(for='insuranceAge_3') Пенсионеры (от 65)
-                    .ui-select
-                      span Кол-во человек
-                      input(type="hidden")
-                      .ui-selectDrop
-                        span Опция 1
-                        span Опция 1
-                        span Опция 1
-                    .ui-select
-                      span Возраст
-                      input(type="hidden")
-                      .ui-selectDrop
-                        span Опция 1
-                        span Опция 1
-                        span Опция 1
-
-              .form-group
-                label Страховое покрытие
-                .row
-                  .col-sm-8.ui-row-checkboxes
-                    .ui-checkbox
-                      input(type='checkbox' name='insuranceAmount' id='insuranceAmount_1')
-                      label(for='insuranceAmount_1') 35 000
-                    .ui-checkbox
-                      input(type='checkbox' name='insuranceAmount' id='insuranceAmount_2')
-                      label(for='insuranceAmount_2') 50 000
-                    .ui-checkbox
-                      input(type='checkbox' name='insuranceAmount' id='insuranceAmount_3')
-                      label(for='insuranceAmount_3') 100 000
-                    .ui-caption
-                      span Страховая сумма на каждого внесенного человека
-                  .col-sm-4
-                    a(href='#').btn.btn--green.btn--rounded Рассчитать
-
-    //INSURANCE
-    section.insurancePrice
-      .container
-        .row
-          .col-sm-12
-            .heading.text-xs-center Специальные цены для групп. <span>Звоните!</span>
-        .row.mt50
-          .col-sm-6.col-lg-4
-            .insurancePrice__head Спокойный отдых
-            .insurancePrice__row
-              i.ico.ico-ingos
-              a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-            .insurancePrice__row
-              i.ico.ico-absolute
-              a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-            .insurancePrice__row
+      // section brokers
+      section.brokers
+        .container
+          .row
+            .col-sm-12.text-xs-center
+              .heading Ведущие <span>страховые компании</span>
+              .heading__desc Полис гарантированно подходит для подачи в визовые центры
+            .brokers__wrapper
               i.ico.ico-alpha
-              a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-            .insurancePrice__row
               i.ico.ico-uralsib
-              a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-            .insurancePrice__row
               i.ico.ico-reso
-              a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-          .col-sm-6.col-lg-4
-            .insurancePrice__head Активный отдых
-            .insurancePrice__row
-              i.ico.ico-ingos
-              a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-            .insurancePrice__row
               i.ico.ico-absolute
-              a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-            .insurancePrice__row
-              i.ico.ico-alpha
-              a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-            .insurancePrice__row
-              i.ico.ico-uralsib
-              a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-            .insurancePrice__row
-              i.ico.ico-reso
-              a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-          .col-sm-6.col-lg-4
-            .insurancePrice__head Опасные виды спорта
-            a(href='#').btn.btn--green.btn--rounded.btn--price <span>Цена по запросу</span>
-    include shared/footer.pug
+              i.ico.ico-ingos
+
+      //INSURANCE
+      section.insurance
+        form(action='').container#insuranceForm
+          .row
+            .col-sm-12.col-lg-10.offset-lg-1.col-xl-8.offset-xl-2
+              .insurance__wrapper
+                .form-group
+                  label Куда едите ?
+                  input.form-control(type="text" placeholder="Укажите название страны:")
+
+                .row
+                  .col-sm-6
+                    .form-group
+                      label Тип страховки
+                      .ui-radio
+                        input(type='radio' name='insuranceType' id='insuranceType_1')
+                        label(for='insuranceType_1') Разовая
+                      .ui-radio
+                        input(type='radio' name='insuranceType' id='insuranceType_2')
+                        label(for='insuranceType_2') Многократная
+                  .col-sm-6
+                    .form-group
+                      label Валюта полиса
+                      .ui-radio
+                        input(type='radio' name='insuranceCurrency' id='insuranceCurrency_1')
+                        label(for='insuranceCurrency_1') EUR
+                      .ui-radio
+                        input(type='radio' name='insuranceCurrency' id='insuranceCurrency_2')
+                        label(for='insuranceCurrency_2') USD
+
+                .row
+                  .col-sm-6
+                    .form-group
+                      label Когда уезжаете
+                      input.form-control.datepicker-here(type="text" data-position="bottom left")
+
+                  .col-sm-6
+                    .form-group
+                      label Когда возвращаетесь
+                      input.form-control.datepicker-here(type="text" data-position="bottom left")
+
+                .form-group
+                  label Выберите количество дней страхования
+                  .row
+                    .col-sm-12.col-lg-10
+                      .green__range
+                        input#greenRange(type='range' min="1" max='7' step="1" value='3')
+                        .green__range__tips
+                          span 30 <br> дней
+                          span 45 <br> дней
+                          span 60 <br> дней
+                          span 90 <br> дней
+                          span 120 <br> дней
+                          span 180 <br> дней
+                          span 365 <br> дней
+                .form-group
+                  label Кто едет
+                  .row
+                    .col-sm-4
+                      .ui-checkbox
+                        input(type='checkbox' name='insuranceAge' id='insuranceAge_1')
+                        label(for='insuranceAge_1') Взрослые (от 18 до 65)
+                      .ui-select
+                        span Кол-во человек
+                        input(type="hidden")
+                        .ui-selectDrop
+                          span Опция 1
+                          span Опция 1
+                          span Опция 1
+                      .ui-select
+                        span Возраст
+                        input(type="hidden")
+                        .ui-selectDrop
+                          span Опция 1
+                          span Опция 1
+                          span Опция 1
+                    .col-sm-4
+                      .ui-checkbox
+                        input(type='checkbox' name='insuranceAge' id='insuranceAge_2')
+                        label(for='insuranceAge_2') Дети (от 0 до 18)
+                      .ui-select
+                        span Кол-во человек
+                        input(type="hidden")
+                        .ui-selectDrop
+                          span Опция 1
+                          span Опция 1
+                          span Опция 1
+                      .ui-select
+                        span Возраст
+                        input(type="hidden")
+                        .ui-selectDrop
+                          span Опция 1
+                          span Опция 1
+                          span Опция 1
+
+                    .col-sm-4
+                      .ui-checkbox
+                        input(type='checkbox' name='insuranceAge' id='insuranceAge_3')
+                        label(for='insuranceAge_3') Пенсионеры (от 65)
+                      .ui-select
+                        span Кол-во человек
+                        input(type="hidden")
+                        .ui-selectDrop
+                          span Опция 1
+                          span Опция 1
+                          span Опция 1
+                      .ui-select
+                        span Возраст
+                        input(type="hidden")
+                        .ui-selectDrop
+                          span Опция 1
+                          span Опция 1
+                          span Опция 1
+
+                .form-group
+                  label Страховое покрытие
+                  .row
+                    .col-sm-8.ui-row-checkboxes
+                      .ui-checkbox
+                        input(type='checkbox' name='insuranceAmount' id='insuranceAmount_1')
+                        label(for='insuranceAmount_1') 35 000
+                      .ui-checkbox
+                        input(type='checkbox' name='insuranceAmount' id='insuranceAmount_2')
+                        label(for='insuranceAmount_2') 50 000
+                      .ui-checkbox
+                        input(type='checkbox' name='insuranceAmount' id='insuranceAmount_3')
+                        label(for='insuranceAmount_3') 100 000
+                      .ui-caption
+                        span Страховая сумма на каждого внесенного человека
+                    .col-sm-4
+                      a(href='#').btn.btn--green.btn--rounded Рассчитать
+
+      //INSURANCE
+      section.insurancePrice
+        .container
+          .row
+            .col-sm-12
+              .heading.text-xs-center Специальные цены для групп. <span>Звоните!</span>
+          .row.mt50
+            .col-sm-6.col-lg-4
+              .insurancePrice__head Спокойный отдых
+              .insurancePrice__row
+                i.ico.ico-ingos
+                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
+              .insurancePrice__row
+                i.ico.ico-absolute
+                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
+              .insurancePrice__row
+                i.ico.ico-alpha
+                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
+              .insurancePrice__row
+                i.ico.ico-uralsib
+                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
+              .insurancePrice__row
+                i.ico.ico-reso
+                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
+            .col-sm-6.col-lg-4
+              .insurancePrice__head Активный отдых
+              .insurancePrice__row
+                i.ico.ico-ingos
+                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
+              .insurancePrice__row
+                i.ico.ico-absolute
+                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
+              .insurancePrice__row
+                i.ico.ico-alpha
+                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
+              .insurancePrice__row
+                i.ico.ico-uralsib
+                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
+              .insurancePrice__row
+                i.ico.ico-reso
+                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
+            .col-sm-6.col-lg-4
+              .insurancePrice__head Опасные виды спорта
+              a(href='#modalGetPrice').btn.btn--green.btn--rounded.btn--price.modal__trigger <span>Цена по запросу</span>
+
+      include shared/footer.pug
+    include shared/modal.pug

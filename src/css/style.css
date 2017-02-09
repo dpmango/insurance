@@ -31,6 +31,15 @@ body, html {
     color: #323232;
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
+    -webkit-transition: -webkit-filter .6s ease;
+    transition: -webkit-filter .6s ease;
+    transition: filter .6s ease;
+    transition: filter .6s ease, -webkit-filter .6s ease;
+}
+.content {}
+.content.blur {
+    -webkit-filter: blur(8px);
+            filter: blur(8px);
 }
 .container {
     max-width: 1200px;
@@ -212,6 +221,8 @@ body, html {
     height: 130px;
     border-radius: 50%;
     background-color: #65c134;
+    -webkit-transition: background .4s ease-in-out;
+    transition: background .4s ease-in-out;
 }
 .ico-nav-insurance {
     background-image: url('../images/sprite/ico-nav-insurance.png');
@@ -1452,88 +1463,6 @@ button:focus {
         -ms-transform: rotate(-90deg);
             transform: rotate(-90deg);
 }
-/* Styles for dialog window */
-#small-dialog {
-    position: relative;
-    margin: 40px auto;
-    padding: 20px 30px;
-    max-width: 600px;
-    background: white;
-    text-align: left;
-}
-/* Fade-zoom animation for first dialog */
-.my-mfp-zoom-in .zoom-anim-dialog {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    opacity: 0;
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-    -webkit-transform: scale(0.8);
-        -ms-transform: scale(0.8);
-            transform: scale(0.8);
-}
-.my-mfp-zoom-in.mfp-ready .zoom-anim-dialog {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    opacity: 1;
-    -webkit-transform: scale(1);
-        -ms-transform: scale(1);
-            transform: scale(1);
-}
-.my-mfp-zoom-in.mfp-removing .zoom-anim-dialog {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    opacity: 0;
-    -webkit-transform: scale(0.8);
-        -ms-transform: scale(0.8);
-            transform: scale(0.8);
-}
-.my-mfp-zoom-in.mfp-bg {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    opacity: 0;
-    -webkit-transition: opacity 0.3s ease-out;
-    transition: opacity 0.3s ease-out;
-}
-.my-mfp-zoom-in.mfp-ready.mfp-bg {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-    opacity: 0.8;
-}
-.my-mfp-zoom-in.mfp-removing.mfp-bg {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    opacity: 0;
-}
-/* Fade-move animation */
-.my-mfp-slide-bottom .zoom-anim-dialog {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    opacity: 0;
-    -webkit-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
-    -webkit-transform: translateY(-20px) perspective(600px) rotateX(10deg);
-            transform: translateY(-20px) perspective(600px) rotateX(10deg);
-}
-.my-mfp-slide-bottom.mfp-ready .zoom-anim-dialog {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    opacity: 1;
-    -webkit-transform: translateY(0) perspective(600px) rotateX(0);
-            transform: translateY(0) perspective(600px) rotateX(0);
-}
-.my-mfp-slide-bottom.mfp-removing .zoom-anim-dialog {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    opacity: 0;
-    -webkit-transform: translateY(-10px) perspective(600px) rotateX(10deg);
-            transform: translateY(-10px) perspective(600px) rotateX(10deg);
-}
-.my-mfp-slide-bottom.mfp-bg {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    opacity: 0;
-    -webkit-transition: opacity 0.3s ease-out;
-    transition: opacity 0.3s ease-out;
-}
-.my-mfp-slide-bottom.mfp-ready.mfp-bg {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-    opacity: 0.8;
-}
-.my-mfp-slide-bottom.mfp-removing.mfp-bg {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    opacity: 0;
-}
 .datepicker--cell-day.-other-month-, .datepicker--cell-year.-other-decade- {
     color: #dedede;
 }
@@ -2706,6 +2635,143 @@ button:focus {
         font-size: 10px;
     }
 }
+/* MODAL */
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    display: none;
+    background: #000000;
+    background: rgba(0, 0, 0, 0.55);
+    -webkit-filter: none !important;
+            filter: none !important;
+}
+.modal .form-group {
+    position: relative;
+    margin-bottom: 10px;
+}
+.modal.active {
+    display: block;
+}
+.modal__wrapper {
+    position: relative;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+}
+.modal__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    overflow-y: scroll;
+    margin: 0px auto;
+    padding: 60px 40px;
+    max-width: 700px;
+    width: 700px;
+    border-radius: 15px;
+    background: white;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+.modal__content .cart__uiGroup {
+    margin-bottom: 0;
+}
+.modal__content .ui-input__validation {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    padding-top: 5px;
+    width: auto;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+}
+.modal__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: 3px solid #c7c7c7;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-transition: background .3s ease;
+    transition: background .3s ease;
+}
+.modal__close .ico-close {
+    width: 30px;
+    height: 30px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAABS2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxMzggNzkuMTU5ODI0LCAyMDE2LzA5LzE0LTAxOjA5OjAxICAgICAgICAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo8P3hwYWNrZXQgZW5kPSJyIj8+IEmuOgAAALVJREFUGJVlzrFKgmEUgOHn/woHp/ppcnDwm5u0qSECR+euILdo6kK6AicvoKAtoftoKGioqUFEIQl1OcLH79nO4YHzVjlnqNDCn8NpYZ0CPeIF7Qbq4xNXCTVGGOK5wH3M0MFNwi+u8VHgy0AnmOCuikbo4g09/OM40C22qej5wj02gb5j30IJB5jGbRFtT/vmVKDXoum80dyucs5neMdp2dRonh7Vdb3CEj8Y75swj9cXeNgBg2woAq75kmcAAAAASUVORK5CYII=');
+    background-size: 10px 10px;
+    cursor: pointer;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.modal__close:hover {
+    background: #65c134;
+}
+.modal__close:hover .ico-close {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAABS2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxMzggNzkuMTU5ODI0LCAyMDE2LzA5LzE0LTAxOjA5OjAxICAgICAgICAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo8P3hwYWNrZXQgZW5kPSJyIj8+IEmuOgAAAJJJREFUGJVtzzEOAWEQhuF3FYpVUlM6wOoUDuAqDqPR2coVdErnEJWWRIfIq/BvMhmmnHky802lAlRAH3jwW33g2StoDeyBOqEGOAML1KF68lsHtVZRG/VW+htKc5zwPKBWrTqY8SsilQhRl+q7oIs66GYRzcK5e878D7XqJD+IOlKvOVPKvOs2rtRtQPHBozr9AHoOGxOaw1m2AAAAAElFTkSuQmCC');
+}
+.modal__contact {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.modal__contact .ico {
+    -webkit-flex: 0 0 30px;
+        -ms-flex: 0 0 30px;
+            flex: 0 0 30px;
+    -webkit-box-flex: 0;
+}
+.modal__contact span {
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.modal__contact p {
+    font-weight: 300;
+}
+.modal__contact__info {
+    -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    margin-left: 10px;
+    -webkit-box-flex: 1;
+}
+.modal__form {}
+.modal__form__questions {
+    margin-top: 10px;
+    font-weight: 300;
+    font-size: 18px;
+}
+.modal__form__questions span {
+    font-weight: 700;
+}
+.modal__form__phone {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 22px;
+}
+.modal__form__phone span {
+    display: block;
+    margin-top: 0px;
+    font-weight: 300;
+    font-size: 14px;
+}
+#modalInsurance .modal__content {
+    max-width: 920px;
+    width: 920px;
+}
+#modalCallback .modal__content, #modalGetPrice .modal__content {
+    max-width: 400px;
+    width: 400px;
+}
 /* HERO */
 .hero {
     position: relative;
@@ -2834,6 +2900,11 @@ button:focus {
     vertical-align: middle;
     font-weight: 700;
     font-size: 18px;
+}
+.navSections__item:hover .ico-navSection {
+    background-color: #f9ee39;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 @media(max-width: 568px) {
     .navSections__item {
@@ -3343,17 +3414,21 @@ button:focus {
     background: url('../images/insuranceSection.png') no-repeat center;
     background-size: cover;
 }
-.insurance .form-group {
+.insurance__wrapper {
+    padding: 50px 7% 20px 7%;
+    background: white;
+}
+.form-group {
     margin-bottom: 50px;
 }
-.insurance .form-group > label {
+.form-group > label {
     position: relative;
     display: block;
     margin-bottom: 30px;
     font-weight: 700;
     font-size: 22px;
 }
-.insurance .form-group > label:before {
+.form-group > label:before {
     position: absolute;
     top: 8px;
     left: -20px;
@@ -3363,7 +3438,17 @@ button:focus {
     background: #65c134;
     content: ' ';
 }
-.insurance .form-control {
+.form-group small {
+    display: inline-block;
+    margin-top: 5px;
+    padding-left: 15px;
+    font-weight: 300;
+    font-size: 14px;
+}
+.form-group small b {
+    font-weight: 700;
+}
+.form-control {
     position: relative;
     padding: 8px 20px;
     border-color: #acacac;
@@ -3372,32 +3457,37 @@ button:focus {
     -webkit-transition: all .3s ease;
     transition: all .3s ease;
 }
-.insurance .form-control:focus {
-    border-color: $colorMute;
+.form-control:focus {
+    border-color: #65c134;
 }
-.insurance .form-control::-webkit-input-placeholder {
+.form-control::-webkit-input-placeholder {
     color: #696969;
 }
-.insurance .form-control::-moz-placeholder {
+.form-control::-moz-placeholder {
     color: #696969;
 }
-.insurance .form-control:-moz-placeholder {
+.form-control:-moz-placeholder {
     color: #696969;
 }
-.insurance .form-control:-ms-input-placeholder {
+.form-control:-ms-input-placeholder {
     color: #696969;
 }
-.insurance .form-control--error input {
+.form-control--error {
     border-color: #f45b63;
 }
-.insurance .form-control--error .ui-input__validation {
-    display: block;
+.form-control--required {
+    position: absolute;
+    top: 0px;
+    left: -13px;
+    color: #f45b63;
+    font-weight: 300;
+    font-size: 14px;
 }
-.insurance .form-control__validation {
+.form-control__validation {
     position: relative;
     top: auto;
     right: 0;
-    display: none;
+    display: block;
     padding-top: 5px;
     color: #f45b63;
     font-size: 12px;
@@ -3405,11 +3495,8 @@ button:focus {
         -ms-transform: none;
             transform: none;
 }
-.insurance__wrapper {
-    padding: 50px 7% 20px 7%;
-    background: white;
-}
 .insurancePrice {
+    display: none;
     padding-top: 80px;
     padding-bottom: 120px;
 }

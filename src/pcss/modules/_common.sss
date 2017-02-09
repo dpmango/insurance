@@ -218,3 +218,108 @@
     font-size: 10px
     letter-spacing: -.5px
     text-align: center
+
+
+// MODAL
+
+.modal
+  display: none
+  position: fixed 0 0 0 0
+  background: color(black a(55%))
+  filter: none !important
+  z-index: 99
+  &.active
+    display: block
+  &__wrapper
+    position: relative
+    width: 100%
+    height: 100%
+    overflow-y: scroll
+  &__content
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    margin: 0px auto
+    background: white
+    border-radius: 15px
+    padding: 60px 40px
+    width: 700px
+    max-width: 700px
+    overflow-y: scroll
+
+    .cart__uiGroup
+      margin-bottom: 0
+    .ui-input__validation
+      position: relative
+      top: auto
+      left: auto
+      right: auto
+      padding-top: 5px
+      width: auto
+      transform: none
+  &__close
+    position: absolute
+    top: 15px
+    right: 15px
+    cursor: pointer
+    border-radius: 50%
+    border: 3px solid #c7c7c7
+    transition: background .3s ease
+    &:hover
+      background: $colorGreen
+      .ico-close
+        background-image: inline('../images/sprite/ico-close-white.png')
+    .ico-close
+      background-image: inline('../images/sprite/ico-close.png')
+      size: 30px
+      background-size: 10px 10px
+      cursor: pointer
+      transition: all .3s ease
+
+  &__contact
+    display: flex
+    font-size: 14px
+    margin-bottom: 10px
+    .ico
+      flex: 0 0 30px
+    &__info
+      margin-left: 10px
+      flex: 1 1 auto
+    span
+      font-weight: 700
+      margin-bottom: 10px
+    p
+      font-weight: 300
+
+  .form-group
+    margin-bottom: 10px
+    position: relative
+    
+  &__form
+    &__questions
+      margin-top: 10px
+      font-size: 18px
+      font-weight: 300
+      span
+        font-weight: 700
+    &__phone
+      font-size: 22px
+      margin-top: 10px
+      font-weight: 700
+      span
+        display: block
+        margin-top: 0px
+        font-size: 14px
+        font-weight: 300
+
+
+#modalInsurance
+  .modal__content
+    width: 920px
+    max-width: 920px
+
+#modalCallback, #modalGetPrice
+  .modal__content
+    width: 400px
+    max-width: 400px

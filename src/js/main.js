@@ -28,46 +28,6 @@ $(document).ready(function(){
     items: 1
   });
 
-  // Magnific Popup
-  $('.popup-with-zoom-anim').magnificPopup({
-    type: 'inline',
-    fixedContentPos: false,
-    fixedBgPos: true,
-    overflowY: 'auto',
-    closeBtnInside: true,
-    preloader: false,
-    midClick: true,
-    removalDelay: 300,
-    mainClass: 'my-mfp-zoom-in'
-  });
-
-  $('.popup-with-move-anim').magnificPopup({
-    type: 'inline',
-    fixedContentPos: false,
-    fixedBgPos: true,
-    overflowY: 'auto',
-    closeBtnInside: true,
-    preloader: false,
-    midClick: true,
-    removalDelay: 300,
-    mainClass: 'my-mfp-slide-bottom'
-  });
-
-  $('.popup-gallery').magnificPopup({
-		delegate: 'a',
-		type: 'image',
-		tLoading: 'Loading image #%curr%...',
-		mainClass: 'mfp-img-mobile',
-		gallery: {
-			enabled: true,
-			navigateByImgClick: true,
-			preload: [0,1]
-		},
-		image: {
-			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-		}
-	});
-
   // Masked input
   $("#date").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
   $("input[name='phone']").mask("9 (999) 999-9999");
@@ -105,6 +65,48 @@ $(document).ready(function(){
     $(this).closest('.ui-select').find('> span').text($(this).text());
     $(this).parent().removeClass('active');
   });
+
+  // Custom modal
+  $('.modal__trigger').on('click', function(e){
+    e.preventDefault();
+    var target = $(this).attr('href');
+    $('.content').addClass('blur');
+    $(target).fadeIn();
+  });
+  $('.modal__close').on('click', function(){
+    $('.content').removeClass('blur');
+    $(this).closest('.modal').fadeOut();
+  });
+
+  $('.insurancePrice__row .btn').on('click', function(e){
+    e.preventDefault();
+    $('.content').addClass('blur');
+    $('#modalInsurance').fadeIn();
+  });
+
+  $(document).mouseup(function (e) {
+    var container = new Array();
+    container.push($('.modal__content'));
+
+    $.each(container, function(key, value) {
+        if (!$(value).is(e.target) && $(value).has(e.target).length === 0) {
+            $('.modal').fadeOut();
+            $('.content').removeClass('blur');
+        }
+    });
+  });
+
+  // INSURANCE FORM VALIDATOR
+  $('#insuranceForm').on('change', function(){
+    console.log('form changed');
+  });
+
+  $('#insuranceForm .btn').on('click', function(){
+    // validate and show prices
+    $('.insurancePrice').fadeIn();
+  });
+
+
 
 
 

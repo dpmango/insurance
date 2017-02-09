@@ -3,43 +3,42 @@ html
   include shared/head.pug
 
   body
-    include shared/header.pug
+    .content
+      include shared/header.pug
 
-    // HERO::START
-    section.hero.hero--inner(style='background-image: url(images/heroDocs.png)')
-      .container
-        .row
-          .col-sm-12.text-xs-center
-            .heading <span>Список документов</span><br> для подачи в визовый центр
+      // HERO::START
+      section.hero.hero--inner(style='background-image: url(images/heroDocs.png)')
+        .container
+          .row
+            .col-sm-12.text-xs-center
+              .heading <span>Список документов</span><br> для подачи в визовый центр
 
-    // section navigation
-    section.navSections
-      .container
-        .row
-          .navSections__wrapper
-            a(href="#").navSections__item
-              i.ico.ico-navSection.ico-nav-insurance
-              span Страхование <br> туристов >>
-            a(href="#").navSections__item
-              i.ico.ico-navSection.ico-nav-greencard
-              span Зеленая карта >>
-            a(href="#").navSections__item
-              i.ico.ico-navSection.ico-nav-migrants
-              span Страхование <br> мигрантов >>
+      // section navigation
+      section.navSections
+        .container
+          .row
+            .navSections__wrapper
+              a(href="#").navSections__item
+                i.ico.ico-navSection.ico-nav-insurance
+                span Страхование <br> туристов >>
+              a(href="#").navSections__item
+                i.ico.ico-navSection.ico-nav-greencard
+                span Зеленая карта >>
+              a(href="#").navSections__item
+                i.ico.ico-navSection.ico-nav-migrants
+                span Страхование <br> мигрантов >>
 
-    // DOCS
-    section.docsDesc
-      .container
-        .row
-          .col-sm-12.col-lg-8.offset-lg-2
-            .docsDesc__wrapper
-              .docsDesc__title Австрия
-              img(src='images/docsAU.png').img-fluid
-              p Коневодство недоступно превышает гидроузел. Ветеринарное свидетельство потенциально. Британский протекторат представляет собой культурный очаг многовекового орошаемого земледелия, здесь часто встречаются лапша с творогом, сметаной и шкварками ("турош чуса"); "ретеш" - рулет из тонкого тоста с яблочной, вишневой, маковой и другими начинками; бисквитно-шоколадный десерт со взбитыми сливками "Шомлойская галушка".
-              p Коневодство недоступно превышает гидроузел. Ветеринарное свидетельство потенциально. Британский протекторат представляет собой культурный очаг многовекового орошаемого земледелия, здесь часто встречаются лапша с творогом, сметаной и шкварками ("турош чуса"); "ретеш" - рулет из тонкого тоста с яблочной, вишневой, маковой и другими начинками; бисквитно-шоколадный десерт со взбитыми сливками "Шомлойская галушка".
-              a(href='#') Назад к списку >>
+      // DOCS
+      section.docsDesc
+        .container
+          .row
+            .col-sm-12.col-lg-8.offset-lg-2
+              .docsDesc__wrapper
+                .docsDesc__title Австрия
+                img(src='images/docsAU.png').img-fluid
+                p Коневодство недоступно превышает гидроузел. Ветеринарное свидетельство потенциально. Британский протекторат представляет собой культурный очаг многовекового орошаемого земледелия, здесь часто встречаются лапша с творогом, сметаной и шкварками ("турош чуса"); "ретеш" - рулет из тонкого тоста с яблочной, вишневой, маковой и другими начинками; бисквитно-шоколадный десерт со взбитыми сливками "Шомлойская галушка".
+                p Коневодство недоступно превышает гидроузел. Ветеринарное свидетельство потенциально. Британский протекторат представляет собой культурный очаг многовекового орошаемого земледелия, здесь часто встречаются лапша с творогом, сметаной и шкварками ("турош чуса"); "ретеш" - рулет из тонкого тоста с яблочной, вишневой, маковой и другими начинками; бисквитно-шоколадный десерт со взбитыми сливками "Шомлойская галушка".
+                a(href='#') Назад к списку >>
 
-
-
-
-    include shared/footer.pug
+      include shared/footer.pug
+    include shared/modal.pug
