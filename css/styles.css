@@ -7014,6 +7014,9 @@ button:focus {
     -webkit-filter: none !important;
             filter: none !important;
 }
+.modal .heading {
+    font-size: 32px;
+}
 .modal .form-group {
     position: relative;
     margin-bottom: 10px;
