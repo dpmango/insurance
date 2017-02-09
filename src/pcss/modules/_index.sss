@@ -391,3 +391,95 @@
 
       &:last-child
         margin-right: 0
+
+
+// INSURANCE
+.insurance
+  margin-top: -40px
+  background: url('../images/insuranceSection.png') no-repeat center
+  background-size: cover
+  padding-top: 80px
+  padding-bottom: 100px
+  &__wrapper
+    background: white
+    padding: 50px 7% 20px 7%
+  .form-group
+    margin-bottom: 50px
+    > label
+      display: block
+      font-weight: 700
+      font-size: 22px
+      position: relative
+      margin-bottom: 30px
+      &::before
+        display: inline-block
+        content: ' '
+        position: absolute
+        top: 8px
+        left: -20px
+        background: $colorGreen
+        width: 6px
+        height: 18px
+  .form-control
+    border-color: #acacac
+    padding: 8px 20px
+    font-size: 16px
+    font-weight: 300
+    transition: all .3s ease
+    position: relative
+    &:focus
+      border-color: $colorMute
+    &::-webkit-input-placeholder
+      color: #696969
+    &::-moz-placeholder
+      color: #696969
+    &:-moz-placeholder
+      color: #696969
+    &:-ms-input-placeholder
+      color: #696969
+    &--error
+      input
+        border-color: $colorRed
+      .ui-input__validation
+        display: block
+    &__validation
+      display: none
+      color: $colorRed
+      font-size: 12px
+      position: relative
+      top: auto
+      transform: none
+      right: 0
+      padding-top: 5px
+
+
+.insurancePrice
+  padding-top: 80px
+  padding-bottom: 120px
+  .row.mt50
+    margin-left: 2.5%
+    margin-right: 2.5%
+    .col-sm-4
+      padding-left: 20px
+      padding-right: 20px
+      .ico
+        max-width: 140px
+  &__head
+    display: block
+    font-weight: 700
+    font-size: 22px
+    position: relative
+    margin-bottom: 30px
+    &::before
+      display: inline-block
+      content: ' '
+      position: absolute
+      top: 8px
+      left: -20px
+      background: $colorGreen
+      width: 6px
+      height: 18px
+  &__row
+    display: flex
+    justify-content: space-between
+    margin-bottom: 20px

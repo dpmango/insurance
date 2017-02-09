@@ -63,6 +63,169 @@
         </div>
       </div>
     </section>
+    <!--INSURANCE-->
+    <section class="insurance">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-lg-8 offset-lg-2">
+            <div class="insurance__wrapper">
+              <div class="form-group">
+                <label>Куда едите ?</label>
+                <input class="form-control" type="text" placeholder="Укажите название страны:">
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Тип страховки</label>
+                    <div class="ui-radio">
+                      <input type="radio" name="insuranceType" id="insuranceType_1">
+                      <label for="insuranceType_1">Разовая</label>
+                    </div>
+                    <div class="ui-radio">
+                      <input type="radio" name="insuranceType" id="insuranceType_2">
+                      <label for="insuranceType_2">Многократная</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Валюта полиса</label>
+                    <div class="ui-radio">
+                      <input type="radio" name="insuranceCurrency" id="insuranceCurrency_1">
+                      <label for="insuranceCurrency_1">EUR</label>
+                    </div>
+                    <div class="ui-radio">
+                      <input type="radio" name="insuranceCurrency" id="insuranceCurrency_2">
+                      <label for="insuranceCurrency_2">USD</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Когда уезжаете</label>
+                    <input class="form-control datepicker-here" type="text" data-position="bottom left">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Когда возвращаетесь</label>
+                    <input class="form-control datepicker-here" type="text" data-position="bottom left">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Выберите количество дней страхования</label>
+                <div class="green__range">
+                  <input id="greenRange" type="range" min="1" max="7" step="1" value="3">
+                  <div class="green__range__tips"><span>30 <br> дней</span><span>45 <br> дней</span><span>60 <br> дней</span><span>90 <br> дней</span><span>120 <br> дней</span><span>180 <br> дней</span><span>365 <br> дней</span></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Кто едет</label>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="ui-checkbox">
+                      <input type="checkbox" name="insuranceAge" id="insuranceAge_1">
+                      <label for="insuranceAge_1">Взрослые (от 18 до 65)</label>
+                    </div>
+                    <div class="ui-select"><span>Кол-во человек</span>
+                      <input type="hidden">
+                      <div class="ui-selectDrop"><span>Опция 1</span><span>Опция 1</span><span>Опция 1</span></div>
+                    </div>
+                    <div class="ui-select"><span>Возраст</span>
+                      <input type="hidden">
+                      <div class="ui-selectDrop"><span>Опция 1</span><span>Опция 1</span><span>Опция 1</span></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="ui-checkbox">
+                      <input type="checkbox" name="insuranceAge" id="insuranceAge_2">
+                      <label for="insuranceAge_2">Дети (от 0 до 18)</label>
+                    </div>
+                    <div class="ui-select"><span>Кол-во человек</span>
+                      <input type="hidden">
+                      <div class="ui-selectDrop"><span>Опция 1</span><span>Опция 1</span><span>Опция 1</span></div>
+                    </div>
+                    <div class="ui-select"><span>Возраст</span>
+                      <input type="hidden">
+                      <div class="ui-selectDrop"><span>Опция 1</span><span>Опция 1</span><span>Опция 1</span></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="ui-checkbox">
+                      <input type="checkbox" name="insuranceAge" id="insuranceAge_3">
+                      <label for="insuranceAge_3">Пенсионеры (от 65)</label>
+                    </div>
+                    <div class="ui-select"><span>Кол-во человек</span>
+                      <input type="hidden">
+                      <div class="ui-selectDrop"><span>Опция 1</span><span>Опция 1</span><span>Опция 1</span></div>
+                    </div>
+                    <div class="ui-select"><span>Возраст</span>
+                      <input type="hidden">
+                      <div class="ui-selectDrop"><span>Опция 1</span><span>Опция 1</span><span>Опция 1</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Страховое покрытие</label>
+                <div class="row">
+                  <div class="col-sm-8 ui-row-checkboxes">
+                    <div class="ui-checkbox">
+                      <input type="checkbox" name="insuranceAmount" id="insuranceAmount_1">
+                      <label for="insuranceAmount_1">35 000</label>
+                    </div>
+                    <div class="ui-checkbox">
+                      <input type="checkbox" name="insuranceAmount" id="insuranceAmount_2">
+                      <label for="insuranceAmount_2">50 000</label>
+                    </div>
+                    <div class="ui-checkbox">
+                      <input type="checkbox" name="insuranceAmount" id="insuranceAmount_3">
+                      <label for="insuranceAmount_3">100 000</label>
+                    </div>
+                    <div class="ui-caption"><span>Страховая сумма на каждого внесенного человека</span></div>
+                  </div>
+                  <div class="col-sm-4"><a class="btn btn--green btn--rounded" href="#">Рассчитать</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--INSURANCE-->
+    <section class="insurancePrice">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="heading text-xs-center">Специальные цены для групп. <span>Звоните!</span></div>
+          </div>
+        </div>
+        <div class="row mt50">
+          <div class="col-sm-6 col-lg-4">
+            <div class="insurancePrice__head">Спокойный отдых</div>
+            <div class="insurancePrice__row"><i class="ico ico-ingos"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
+            <div class="insurancePrice__row"><i class="ico ico-absolute"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
+            <div class="insurancePrice__row"><i class="ico ico-alpha"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
+            <div class="insurancePrice__row"><i class="ico ico-uralsib"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
+            <div class="insurancePrice__row"><i class="ico ico-reso"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <div class="insurancePrice__head">Активный отдых</div>
+            <div class="insurancePrice__row"><i class="ico ico-ingos"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
+            <div class="insurancePrice__row"><i class="ico ico-absolute"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
+            <div class="insurancePrice__row"><i class="ico ico-alpha"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
+            <div class="insurancePrice__row"><i class="ico ico-uralsib"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
+            <div class="insurancePrice__row"><i class="ico ico-reso"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <div class="insurancePrice__head">Опасные виды спорта</div><a class="btn btn--green btn--rounded btn--price" href="#"><span>Цена по запросу</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- FOOTER::START-->
     <footer class="footer">
       <div class="container">
@@ -104,6 +267,7 @@
     <script src="components/bootstrap/js/dist/util.js"></script>
     <script src="components/bootstrap/js/dist/tooltip.js"></script>
     <script src="components/rangeslider.js/dist/rangeslider.min.js"></script>
+    <script src="js/libs/datepicker.min.js"></script>
     <script src="components/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
     <script src="components/owl.carousel/dist/owl.carousel.min.js"></script>
     <script src="js/libs/jquery.maskedinput.min.js"></script>

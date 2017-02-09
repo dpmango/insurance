@@ -96,5 +96,16 @@ $(document).ready(function(){
     onSlideEnd: function(position, value) {}
   });
 
+  // select ui
+  $('.ui-select > span').on('click', function(){
+    // hide all first
+    $(this).parent().find('.ui-selectDrop').addClass('active');
+  });
+  $('.ui-selectDrop span').on('click', function(){
+    $(this).closest('.ui-select').find('> span').text($(this).text());
+    $(this).parent().removeClass('active');
+  });
+
+
 
 });

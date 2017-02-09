@@ -1,0 +1,144 @@
+// UI
+.ui-caption
+  font-size: 12px
+  font-style: italic
+
+.ui-row-checkboxes
+  .ui-checkbox
+    margin-right: 15px
+
+.ui-checkbox
+  display: inline-block
+  input
+    display: none
+    width: 0.1px
+    height: 0.1px
+    opacity: 0
+    position: absolute
+    top: 0
+    left: 0
+    &:checked
+      + label
+        &::before
+          background: url('../images/sprite/checkbox-checked.png')
+        span
+
+  label
+    position: relative
+    cursor: pointer
+    padding-left: 30px
+    font-size: 16px
+    font-weight: 300
+    &::before
+      position: absolute
+      left: 0
+      top: 50%
+      transform: translateY(-50%)
+      display: inline-block
+      content: ' '
+      size: 16px
+      border: 1px solid #DFE0E8
+      border-radius: 2px
+      background: white
+      margin-right: 7px
+      cursor: pointer
+      vertical-align: middle
+      cursor: pointer
+      transition: all .3s ease-in-out
+
+.ui-radio
+  display: inline-block
+  margin-right: 10%
+  input
+    display: none
+    width: 0.1px
+    height: 0.1px
+    opacity: 0
+    position: absolute
+    top: 0
+    left: 0
+    &:checked
+      + label
+        &::before
+          box-shadow: inset 0px 0px 0 3px white, 0 0 0 1px #aeaeae
+        span
+
+  label
+    position: relative
+    cursor: pointer
+    padding-left: 30px
+    font-size: 16px
+    font-weight: 300
+    &::before
+      position: absolute
+      left: 0
+      top: 50%
+      transform: translateY(-50%)
+      display: inline-block
+      content: ' '
+      size: 16px
+      cursor: pointer
+      vertical-align: middle
+      cursor: pointer
+      transition: all .3s ease-in-out
+      border-radius: 50%
+      background: #282828
+      box-shadow: inset 0px 0px 0 8px white, 0 0 0 1px #aeaeae
+
+.ui-select
+  display: block
+  position: relative
+  margin-bottom: 10px
+  margin-top: 10px
+  &:last-child
+    margin-top: 0
+  > span
+    cursor: pointer
+    display: block
+    width: 100%
+    border: 1px solid #acacac
+    border-radius: 0.25rem
+    background: white url('../images/sprite/selectDrop.png') no-repeat 95% center
+    padding: 8px 20px
+    font-weight: 300
+    font-size: 16px
+    position: relative
+    z-index: 1
+    transition: background-size .3s ease-out
+
+.ui-selectDrop
+  position: absolute
+  top: 40px
+  left: 0
+  width: 100%
+  height: 0.1px
+  overflow: hidden
+  opacity: 0
+  max-height: 300px
+  z-index: 10
+  background: white
+  border: 1px solid #acacac
+  &.active
+    width: 100%
+    height: auto
+    opacity: 1
+    overflow-y: scroll
+
+  span
+    display: block
+    cursor: pointer
+    border-bottom: 1px solid color(#DFE0E8 a(50%))
+    padding: 10px 0px
+    margin-left: 15px
+    margin-right: 15px
+    font-size: 14px
+    transition: color .4s ease-in-out
+    &:hover
+      color: $colorGreen
+
+.form-control.datepicker-here
+  background-image: url('../images/sprite/ico-input.png')
+  background-repeat: no-repeat
+  background-position: 12px center
+  padding-left: 40px
+  max-width: 260px
