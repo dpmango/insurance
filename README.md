@@ -38,4 +38,4 @@ __Production__
 
 ### Push command (gh-pages fix)
 
-gulp build && git add . && git commit -m "ready for demo" && git push origin master && git subtree push --prefix dist origin gh-pages
+gulp build && git add . && git commit -m "fixed contact flex child" && git push origin master && git subtree push --prefix dist origin gh-pages
