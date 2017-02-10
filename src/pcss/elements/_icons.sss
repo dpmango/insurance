@@ -19,6 +19,8 @@
   background-image: url('../images/logo.png')
   width: 201px
   height: 72px
+  @media($mobile)
+    width: 150px
 
 .ico-phone
   background-image: url('../images/sprite/ico-phone.png')
@@ -39,7 +41,8 @@
     margin-left: -10px
   @media($tablet)
     transform: scale(.7)
-    margin-left: -20px
+    margin-left: -15px
+    margin-right: 5px
   &:hover
     background-color: color(white a(50%))
 .ico-fb
@@ -66,15 +69,24 @@
 .ico-viber
   background-image: url('../images/sprite/ico-viber.png')
   size: 47px 50px
+  &:hover
+    opacity: .7
 .ico-whatsup
   background-image: url('../images/sprite/ico-whatsup.png')
   size: 45px
+  &:hover
+    opacity: .7
 
 .ico-navSection
   background-color: $colorGreen
   border-radius: 50%
   size: 130px
   transition: background .4s ease-in-out
+  @media($tablet)
+    size: 115px
+  @media($mobile)
+    size: 100px
+
 
 .ico-nav-insurance
   background-image: url('../images/sprite/ico-nav-insurance.png')
@@ -107,6 +119,10 @@
   border: 3px solid $colorGreen
   border-radius: 50%
   size: 130px
+  @media($tablet)
+    size: 115px
+  @media($mobile)
+    size: 100px
 
 .ico-question-mail
   background-image: url('../images/sprite/ico-question-mail.png')

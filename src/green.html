@@ -39,10 +39,10 @@
         </div>
       </header>
       <!-- HERO::START-->
-      <section class="hero hero--inner" style="background-image: url(images/heroGreen.png);">
+      <section class="hero hero--inner hero--with-ico" style="background-image: url(images/heroGreen.png);">
         <div class="container">
           <div class="row">
-            <div class="col-sm-11 text-sm-right"><i class="ico ico-best-price"></i></div>
+            <div class="col-sm-12 col-md-11 text-xs-center text-md-right"><i class="ico ico-best-price"></i></div>
           </div>
           <div class="row">
             <div class="col-sm-12 text-xs-center">
@@ -61,7 +61,7 @@
               <div class="heading heading--small text-xs-center">Выберите количество дней вашей поездки на автомобиле</div>
               <div class="green__range">
                 <input id="greenRange" type="range" min="1" max="13" step="1" value="2">
-                <div class="green__range__tips"><span>15 <br> дней</span><span>1 <br> месяц</span><span>2 <br> месяца</span><span>3 <br> месяца</span><span>4 <br> месяцев</span><span>5 <br> месяцев</span><span>6 <br> месяцев</span><span>7 <br> месяцев</span><span>8 <br> месяцев</span><span>9 <br> месяцев</span><span>10 <br> месяцев</span><span>11 <br> месяцев</span><span>12 <br> месяцев</span></div>
+                <div class="green__range__tips"><span data-value="1">15 <br> <span>дней</span><span class='m'>д.</span></span><span data-value="2">1 <br> <span>месяц</span><span class='m'>м.</span></span><span data-value="3">2 <br> <span>месяца</span><span class='m'>м.</span></span><span data-value="4">3 <br> <span>месяца</span><span class='m'>м.</span></span><span data-value="5">4 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="6">5 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="7">6 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="8">7 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="9">8 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="10">9 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="11">10 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="12">11 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="13">12 <br> <span>месяцев</span><span class='m'>м.</span></span></div>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@
       <section class="greenTotal">
         <div class="container">
           <div class="row">
-            <div class="col-sm-12 text-sm-center"><span>Стоимость:</span><span class="btn btn--green btn--rounded">4280 <span>руб</span></span><img src="images/broker-alpha.png"></div>
+            <div class="col-sm-12 text-sm-center"><span>Стоимость:</span><a class="btn btn--green btn--rounded modal__trigger" href="#modalInsurance">4280 <span>руб</span></a><img src="images/broker-alpha.png"></div>
           </div>
         </div>
       </section>
@@ -95,9 +95,9 @@
             <div class="col-sm-12 text-xs-center">
               <div class="heading">Оформление <span>за 10 минут</span></div><span class="contact__choicer">Выберите удобный Вам офис</span>
               <div class="contact__wrapper">
-                <div class="contact__item"><i class="ico ico-location"></i><span>м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва</span><a class="btn btn--yellow" href="#">Показать на карте</a></div>
-                <div class="contact__item"><i class="ico ico-location"></i><span>м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва</span><a class="btn btn--yellow" href="#">Показать на карте</a></div>
-                <div class="contact__item"><i class="ico ico-location"></i><span>м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва</span><a class="btn btn--yellow" href="#">Показать на карте</a></div>
+                <div class="contact__item"><i class="ico ico-location"></i><span>М Павелецкая <br> Ул. Летниковская 11/10 стр. 1, 5-й этаж оф. 29 (здание визового центра Испании)<br> По будням с 8:00 до 16:00 без перерыва</span><a class="btn btn--yellow" href="#">Показать на карте</a></div>
+                <div class="contact__item"><i class="ico ico-location"></i><span>м. Красные ворота, м. Комсомольская <br> Ул. Каланчевская д. 13 <br> (Здание визового центра Финляндии) <br> По будням с 8:00 до 16:00 без перерыва</span><a class="btn btn--yellow" href="#">Показать на карте</a></div>
+                <div class="contact__item"><i class="ico ico-location"></i><span>м. Проспект мира <br> Пр-т Мира, д.62, стр.1 <br> (Здание рядом с визовым центром Франции) <br> По будням с 8:00 до 16:00 без перерыва</span><a class="btn btn--yellow" href="#">Показать на карте</a></div>
               </div>
             </div>
           </div>
@@ -166,6 +166,7 @@
       <script src="js/libs/datepicker.min.js"></script>
       <script src="components/owl.carousel/dist/owl.carousel.min.js"></script>
       <script src="js/libs/jquery.maskedinput.min.js"></script>
+      <script src="js/libs/autocompleate.js"></script>
       <script src="js/main.js"></script>
       <!--endbuild-->
     </div>
@@ -187,17 +188,17 @@
           <div class="heading__desc text-xs-center">и заполните контактные данные</div>
           <div class="row mt40">
             <div class="col-sm-7">
-              <div class="modal__contact"><i class="ico ico-location"></i>
-                <div class="modal__contact__info"><span>м. Октябрьская</span>
-                  <p>Калужская пл. д.1, к.2 (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 без перерыва</p>
+              <div class="modal__contact" data-contact="1"><i class="ico ico-location"></i>
+                <div class="modal__contact__info"><span>М Павелецкая</span>
+                  <p>Ул. Летниковская 11/10 стр. 1, 5-й этаж оф. 29 (здание визового центра Испании)<br> По будням с 8:00 до 16:00 без перерыва</p>
                 </div>
               </div>
-              <div class="modal__contact"><i class="ico ico-location"></i>
+              <div class="modal__contact active" data-contact="2"><i class="ico ico-location"></i>
                 <div class="modal__contact__info"><span>м. Красные ворота, м. Комсомольская</span>
                   <p>Ул. Каланчевская д. 13 <br> (Здание визового центра Финляндии) <br> По будням с 8:00 до 16:00 без перерыва</p>
                 </div>
               </div>
-              <div class="modal__contact"><i class="ico ico-location"></i>
+              <div class="modal__contact" data-contact="3"><i class="ico ico-location"></i>
                 <div class="modal__contact__info"><span>м. Проспект мира</span>
                   <p>Пр-т Мира, д.62, стр.1 <br> (Здание рядом с визовым центром Франции) <br> По будням с 8:00 до 16:00 без перерыва</p>
                 </div>
@@ -217,6 +218,7 @@
               <div class="form-group">
                 <button class="btn btn--green btn--rounded" type="submit">Заказать</button>
               </div>
+              <div class="modal__form__validation">Выберите офис и заполните все необходимые поля</div>
               <div class="modal__form__questions">Остались вопросы? <span>Звоните!</span></div>
               <div class="modal__form__phone">8 495 506 51 55 <span>с 8:00 до 16:00 без перерыва</span></div>
             </div>
@@ -265,6 +267,25 @@
           </div>
           <div class="form-group">
             <input class="form-control" type="email" placeholder="Ваш email"><span class="form-control--required">*</span>
+          </div>
+          <div class="form-group">
+            <button class="btn btn--green btn--rounded" type="submit">Узнать стоимость</button>
+          </div>
+          <div class="modal__form__questions">или <span>Позвоните нам!</span></div>
+          <div class="modal__form__phone">8 495 506 51 55 <span>с 8:00 до 16:00 без перерыва</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="modalZvonok">
+      <div class="modal__wrapper">
+        <div class="modal__content">
+          <div class="modal__close"><i class="ico ico-close"></i></div>
+          <div class="heading text-xs-center">Заказать <span>звонок</span></div>
+          <div class="form-group">
+            <input class="form-control form-control--error" type="text" placeholder="Ваше имя"><span class="form-control--required">*</span>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="tel" name="phone" placeholder="Номер телефона"><span class="form-control--required">*</span>
           </div>
           <div class="form-group">
             <button class="btn btn--green btn--rounded" type="submit">Узнать стоимость</button>

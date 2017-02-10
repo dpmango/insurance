@@ -2,6 +2,11 @@
 .ui-caption
   font-size: 12px
   font-style: italic
+  a
+    font-weight: 700
+    padding-left: 5px
+    padding-right: 5px
+
 
 .ui-row-checkboxes
   .ui-checkbox
@@ -29,6 +34,10 @@
     padding-left: 30px
     font-size: 16px
     font-weight: 300
+    @media($desktop)
+      padding-left: 25px
+    @media($desktop)
+      font-size: 14px
     &::before
       position: absolute
       left: 0
@@ -69,6 +78,9 @@
     padding-left: 30px
     font-size: 16px
     font-weight: 300
+    @media($desktop)
+      padding-left: 25px
+      font-size: 14px
     &::before
       position: absolute
       left: 0
@@ -142,3 +154,26 @@
   background-position: 12px center
   padding-left: 40px
   max-width: 260px
+
+
+// AUTOCOMPLEATE
+.autocomplete-suggestions
+  border: 1px solid #acacac
+  background: #FFF
+  overflow: auto
+  border-bottom-left-radius: 5px
+  border-bottom-right-radius: 5px
+.autocomplete-suggestion
+  padding: 2px 5px
+  white-space: nowrap
+  overflow: hidden
+  cursor: pointer
+.autocomplete-selected
+  background: #F0F0F0
+.autocomplete-suggestions strong
+  color: $colorGreen
+.autocomplete-group
+  padding: 2px 5px
+  strong
+    display: block
+    border-bottom: 1px solid #000

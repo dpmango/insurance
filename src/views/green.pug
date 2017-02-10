@@ -7,11 +7,11 @@ html
       include shared/header.pug
 
       // HERO::START
-      section.hero.hero--inner(style='background-image: url(images/heroGreen.png)')
+      section.hero.hero--inner.hero--with-ico(style='background-image: url(images/heroGreen.png)')
         .container
 
           .row
-            .col-sm-11.text-sm-right
+            .col-sm-12.col-md-11.text-xs-center.text-md-right
               i.ico.ico-best-price
 
           .row
@@ -29,26 +29,26 @@ html
               .green__range
                 input#greenRange(type='range' min="1" max='13' step="1" value='2')
                 .green__range__tips
-                  span 15 <br> дней
-                  span 1 <br> месяц
-                  span 2 <br> месяца
-                  span 3 <br> месяца
-                  span 4 <br> месяцев
-                  span 5 <br> месяцев
-                  span 6 <br> месяцев
-                  span 7 <br> месяцев
-                  span 8 <br> месяцев
-                  span 9 <br> месяцев
-                  span 10 <br> месяцев
-                  span 11 <br> месяцев
-                  span 12 <br> месяцев
+                  span(data-value='1') 15 <br> <span>дней</span><span class='m'>д.</span>
+                  span(data-value='2') 1 <br> <span>месяц</span><span class='m'>м.</span>
+                  span(data-value='3') 2 <br> <span>месяца</span><span class='m'>м.</span>
+                  span(data-value='4') 3 <br> <span>месяца</span><span class='m'>м.</span>
+                  span(data-value='5') 4 <br> <span>месяцев</span><span class='m'>м.</span>
+                  span(data-value='6') 5 <br> <span>месяцев</span><span class='m'>м.</span>
+                  span(data-value='7') 6 <br> <span>месяцев</span><span class='m'>м.</span>
+                  span(data-value='8') 7 <br> <span>месяцев</span><span class='m'>м.</span>
+                  span(data-value='9') 8 <br> <span>месяцев</span><span class='m'>м.</span>
+                  span(data-value='10') 9 <br> <span>месяцев</span><span class='m'>м.</span>
+                  span(data-value='11') 10 <br> <span>месяцев</span><span class='m'>м.</span>
+                  span(data-value='12') 11 <br> <span>месяцев</span><span class='m'>м.</span>
+                  span(data-value='13') 12 <br> <span>месяцев</span><span class='m'>м.</span>
 
       section.greenTotal
         .container
           .row
             .col-sm-12.text-sm-center
               span Стоимость:
-              span.btn.btn--green.btn--rounded 4280 <span>руб</span>
+              a(href='#modalInsurance').btn.btn--green.btn--rounded.modal__trigger 4280 <span>руб</span>
               img(src='images/broker-alpha.png')
 
       section.docsRequired
@@ -78,15 +78,15 @@ html
               .contact__wrapper
                 .contact__item
                   i.ico.ico-location
-                  span м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва
+                  span М Павелецкая <br> Ул. Летниковская 11/10 стр. 1, 5-й этаж оф. 29 (здание визового центра Испании)<br> По будням с 8:00 до 16:00 без перерыва
                   a(href='#').btn.btn--yellow Показать на карте
                 .contact__item
                   i.ico.ico-location
-                  span м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва
+                  span м. Красные ворота, м. Комсомольская <br> Ул. Каланчевская д. 13 <br> (Здание визового центра Финляндии) <br> По будням с 8:00 до 16:00 без перерыва
                   a(href='#').btn.btn--yellow Показать на карте
                 .contact__item
                   i.ico.ico-location
-                  span м. Октябрьская, Калужская пл. д.1, к.2 <br> (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 <br> без перерыва
+                  span м. Проспект мира <br> Пр-т Мира, д.62, стр.1 <br> (Здание рядом с визовым центром Франции) <br> По будням с 8:00 до 16:00 без перерыва
                   a(href='#').btn.btn--yellow Показать на карте
 
 

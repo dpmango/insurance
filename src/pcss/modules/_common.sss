@@ -3,6 +3,9 @@
   background: white
   height: 105px
   padding-top: 15px
+  @media($mobile)
+    height: 90px
+    padding-top: 10px
   &__flex
     display: flex
     justify-content: space-between
@@ -15,6 +18,9 @@
   &__logo
     flex: 0 0 201px
     margin-right: 30px
+    @media($mobile)
+      flex: 1 1 auto
+      margin-right: 15px
   &__nav
     flex: 1 1 auto
     font-weight: 700
@@ -47,12 +53,18 @@
   &__phone
     flex: 1 0 200px
     text-align: right
+    @media($mobile)
+      flex: 1 1 auto
+    @media(width <= 375px)
+      display: none
     &__num
       font-weight: 300
       font-size: 22px
       display: inline-block
       @media(width <= 1120px)
         display: block
+      @media($mobile)
+        display: none
 
       span
         margin-left: 10px
@@ -72,6 +84,8 @@
     opacity: 0
     transform: translate3d(-100%, 0, 0)
     transition: transform .4s ease-out
+    @media($mobile)
+      top: 10px
     &.active
       opacity: 1
       transform: translate3d(0, 0, 0)
@@ -142,6 +156,8 @@
     text-align: left
     @media($mobile)
       text-align: center
+    @media(width <= 375px)
+      display: block
     .btn
       margin-left: 15px
       margin-top: 10px
@@ -246,7 +262,15 @@
     padding: 60px 40px
     width: 700px
     max-width: 700px
+    max-height: 95vh
     overflow-y: scroll
+    @media($tablet)
+      padding-top: 50px
+      padding: 40px 30px
+      width: 100%
+    @media($mobile)
+      padding-top: 50px
+      padding: 30px 20px
     .cart__uiGroup
       margin-bottom: 0
     .ui-input__validation
@@ -259,7 +283,11 @@
       transform: none
   .heading
     font-size: 32px
-    
+    @media($tablet)
+      font-size: 28px
+    @media($mobile)
+      font-size: 24px
+
   &__close
     position: absolute
     top: 15px
@@ -283,6 +311,20 @@
     display: flex
     font-size: 14px
     margin-bottom: 10px
+    padding: 10px
+    transition: all .4s ease-in-out
+    cursor: pointer
+    border: 2px solid transparent
+    border-radius: 5px
+    .ico
+      filter: grayscale(1)
+    &:hover
+      border-color: color($colorGreen a(50%))
+    &.active
+      border-color: $colorGreen
+      .ico
+        filter: none
+
     .ico
       flex: 0 0 30px
     &__info
@@ -293,6 +335,7 @@
       margin-bottom: 10px
     p
       font-weight: 300
+      margin-bottom: 0
 
   .form-group
     margin-bottom: 10px
@@ -300,7 +343,7 @@
 
   &__form
     &__questions
-      margin-top: 10px
+      margin-top: 20px
       font-size: 18px
       font-weight: 300
       span
@@ -314,14 +357,32 @@
         margin-top: 0px
         font-size: 14px
         font-weight: 300
+    &__validation
+      margin-top: 20px
+      margin-bottom: 10px
+      background: #f9ff9f url('../images/sprite/ico-alert-red.png') no-repeat 20px center
+      padding: 15px 20px
+      padding-left: 70px
+      border-radius: 8px
+      color: #d20000
+      font-size: 14px
+      font-weight: 300
+
 
 
 #modalInsurance
   .modal__content
     width: 920px
     max-width: 920px
+    @media($desktop)
+      width: 100%
 
-#modalCallback, #modalGetPrice
+
+#modalCallback, #modalGetPrice, #modalZvonok
+  .heading
+    margin-bottom: 30px
   .modal__content
     width: 400px
     max-width: 400px
+    @media(width <= 450px)
+      width: 100%

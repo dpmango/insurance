@@ -20,7 +20,7 @@ html
               a(href='#')
                 i.ico.ico-social.ico-insta
           .row
-            .col-sm-11.text-sm-right
+            .col-sm-12.col-md-11.text-xs-center.text-md-right
               i.ico.ico-best-price
 
           .row
@@ -33,9 +33,9 @@ html
             .col-sm-12.text-xs-right
               .hero__messengers
                 .hero__messenger
-                  i.ico.ico-viber
+                  i.ico.ico-viber(data-toggle="tooltip" data-placement="left" title="Написать на viber")
                 .hero__messenger
-                  i.ico.ico-whatsup
+                  i.ico.ico-whatsup(data-toggle="tooltip" data-placement="left" title="Написать на whats up")
 
       // section navigation
       section.navSections
@@ -92,15 +92,15 @@ html
             .col-sm-12.text-xs-center
               .heading У вас <span> остались вопросы?</span>
             .questions__wrapper
-              .questions__item
+              a(href='#modalCallback').questions__item.modal__trigger
                 i.ico.ico-question.ico-question-mail
                 span обратная связь
-              .questions__item
+              a(href='#modalZvonok').questions__item.modal__trigger
                 i.ico.ico-question.ico-question-phone
                 span Заказать звонок
               .questions__split
                 span или
-              .questions__item
+              a(href='#modalServiceSelect').questions__item.modal__trigger
                 i.ico.ico-question.ico-question-calc
                 span рассчитайте полис самостоятельно
 
@@ -129,5 +129,5 @@ html
 
 
       include shared/footer.pug
-      
+
     include shared/modal.pug

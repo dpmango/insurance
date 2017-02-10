@@ -21,6 +21,7 @@ var vmin          = require('postcss-vmin');
 var will_change   = require('postcss-will-change');
 var flexbugs      = require('postcss-flexbugs-fixes');
 var cssnano       = require('cssnano');
+var spritesmith   = require('gulp.spritesmith');
 var sass          = require('gulp-sass');
 var sassGlob      = require('gulp-sass-glob');
 var useref        = require('gulp-useref');
@@ -176,6 +177,17 @@ gulp.task('images', function(){
       interlaced: true
     })))
   .pipe(gulp.dest('dist/images'))
+});
+
+gulp.task('sprite', function () {
+  var spriteData = gulp.src('./src/img/sprite/*.png')
+      .pipe(spritesmith({
+          /* this whole image path is used in css background declarations */
+          imgName: '../img/sprite.png',
+          cssName: 'sprite.css'
+      }));
+  spriteData.img.pipe(gulp.dest('img'));
+  spriteData.css.pipe(gulp.dest('css'));
 });
 
 gulp.task('fonts', function() {

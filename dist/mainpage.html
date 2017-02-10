@@ -39,7 +39,7 @@
             <div class="col-sm-12 mt50"><a href="#"><i class="ico ico-social ico-fb"></i></a><a href="#"><i class="ico ico-social ico-vk"></i></a><a href="#"><i class="ico ico-social ico-ok"></i></a><a href="#"><i class="ico ico-social ico-insta"></i></a></div>
           </div>
           <div class="row">
-            <div class="col-sm-11 text-sm-right"><i class="ico ico-best-price"></i></div>
+            <div class="col-sm-12 col-md-11 text-xs-center text-md-right"><i class="ico ico-best-price"></i></div>
           </div>
           <div class="row">
             <div class="col-sm-12 text-xs-center">
@@ -51,8 +51,8 @@
           <div class="row">
             <div class="col-sm-12 text-xs-right">
               <div class="hero__messengers">
-                <div class="hero__messenger"><i class="ico ico-viber"></i></div>
-                <div class="hero__messenger"><i class="ico ico-whatsup"></i></div>
+                <div class="hero__messenger"><i class="ico ico-viber" data-toggle="tooltip" data-placement="left" title="Написать на viber"></i></div>
+                <div class="hero__messenger"><i class="ico ico-whatsup" data-toggle="tooltip" data-placement="left" title="Написать на whats up"></i></div>
               </div>
             </div>
           </div>
@@ -108,11 +108,8 @@
             <div class="col-sm-12 text-xs-center">
               <div class="heading">У вас <span> остались вопросы?</span></div>
             </div>
-            <div class="questions__wrapper">
-              <div class="questions__item"><i class="ico ico-question ico-question-mail"></i><span>обратная связь</span></div>
-              <div class="questions__item"><i class="ico ico-question ico-question-phone"></i><span>Заказать звонок</span></div>
-              <div class="questions__split"><span>или</span></div>
-              <div class="questions__item"><i class="ico ico-question ico-question-calc"></i><span>рассчитайте полис самостоятельно</span></div>
+            <div class="questions__wrapper"><a class="questions__item modal__trigger" href="#modalCallback"><i class="ico ico-question ico-question-mail"></i><span>обратная связь</span></a><a class="questions__item modal__trigger" href="#modalZvonok"><i class="ico ico-question ico-question-phone"></i><span>Заказать звонок</span></a>
+              <div class="questions__split"><span>или</span></div><a class="questions__item modal__trigger" href="#modalServiceSelect"><i class="ico ico-question ico-question-calc"></i><span>рассчитайте полис самостоятельно</span></a>
             </div>
           </div>
         </div>
@@ -204,17 +201,17 @@
           <div class="heading__desc text-xs-center">и заполните контактные данные</div>
           <div class="row mt40">
             <div class="col-sm-7">
-              <div class="modal__contact"><i class="ico ico-location"></i>
-                <div class="modal__contact__info"><span>м. Октябрьская</span>
-                  <p>Калужская пл. д.1, к.2 (Здание визового центра Испании) <br> По будням с 8:00 до 16:00 без перерыва</p>
+              <div class="modal__contact" data-contact="1"><i class="ico ico-location"></i>
+                <div class="modal__contact__info"><span>М Павелецкая</span>
+                  <p>Ул. Летниковская 11/10 стр. 1, 5-й этаж оф. 29 (здание визового центра Испании)<br> По будням с 8:00 до 16:00 без перерыва</p>
                 </div>
               </div>
-              <div class="modal__contact"><i class="ico ico-location"></i>
+              <div class="modal__contact active" data-contact="2"><i class="ico ico-location"></i>
                 <div class="modal__contact__info"><span>м. Красные ворота, м. Комсомольская</span>
                   <p>Ул. Каланчевская д. 13 <br> (Здание визового центра Финляндии) <br> По будням с 8:00 до 16:00 без перерыва</p>
                 </div>
               </div>
-              <div class="modal__contact"><i class="ico ico-location"></i>
+              <div class="modal__contact" data-contact="3"><i class="ico ico-location"></i>
                 <div class="modal__contact__info"><span>м. Проспект мира</span>
                   <p>Пр-т Мира, д.62, стр.1 <br> (Здание рядом с визовым центром Франции) <br> По будням с 8:00 до 16:00 без перерыва</p>
                 </div>
@@ -234,6 +231,7 @@
               <div class="form-group">
                 <button class="btn btn--green btn--rounded" type="submit">Заказать</button>
               </div>
+              <div class="modal__form__validation">Выберите офис и заполните все необходимые поля</div>
               <div class="modal__form__questions">Остались вопросы? <span>Звоните!</span></div>
               <div class="modal__form__phone">8 495 506 51 55 <span>с 8:00 до 16:00 без перерыва</span></div>
             </div>
@@ -282,6 +280,25 @@
           </div>
           <div class="form-group">
             <input class="form-control" type="email" placeholder="Ваш email"><span class="form-control--required">*</span>
+          </div>
+          <div class="form-group">
+            <button class="btn btn--green btn--rounded" type="submit">Узнать стоимость</button>
+          </div>
+          <div class="modal__form__questions">или <span>Позвоните нам!</span></div>
+          <div class="modal__form__phone">8 495 506 51 55 <span>с 8:00 до 16:00 без перерыва</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="modalZvonok">
+      <div class="modal__wrapper">
+        <div class="modal__content">
+          <div class="modal__close"><i class="ico ico-close"></i></div>
+          <div class="heading text-xs-center">Заказать <span>звонок</span></div>
+          <div class="form-group">
+            <input class="form-control form-control--error" type="text" placeholder="Ваше имя"><span class="form-control--required">*</span>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="tel" name="phone" placeholder="Номер телефона"><span class="form-control--required">*</span>
           </div>
           <div class="form-group">
             <button class="btn btn--green btn--rounded" type="submit">Узнать стоимость</button>

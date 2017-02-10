@@ -7,10 +7,10 @@ html
       include shared/header.pug
 
       // HERO::START
-      section.hero.hero--inner(style='background-image: url(images/heroInsurance.png)')
+      section.hero.hero--inner.hero--with-ico(style='background-image: url(images/heroInsurance.png)')
         .container
           .row
-            .col-sm-11.text-sm-right
+            .col-sm-12.col-md-11.text-xs-center.text-md-right
               i.ico.ico-best-price
 
           .row
@@ -39,8 +39,12 @@ html
               .insurance__wrapper
                 .form-group
                   label Куда едите ?
-                  input.form-control(type="text" placeholder="Укажите название страны:")
-
+                  input.form-control#autocompleate(type="text" placeholder="Укажите название страны:")
+                  .ui-caption.mt10.insurance__quicklinks
+                    span Например:
+                    a(href='#' data-country='Шенген') Шенген
+                    a(href='#' data-country='Весь мир') Весь мир
+                    a(href='#' data-country='Франция') Франция...
                 .row
                   .col-sm-6
                     .form-group
@@ -77,15 +81,15 @@ html
                   .row
                     .col-sm-12.col-lg-10
                       .green__range
-                        input#greenRange(type='range' min="1" max='7' step="1" value='3')
+                        input#greenRange(type='range' min="1" max='7' step="1" value='2')
                         .green__range__tips
-                          span 30 <br> дней
-                          span 45 <br> дней
-                          span 60 <br> дней
-                          span 90 <br> дней
-                          span 120 <br> дней
-                          span 180 <br> дней
-                          span 365 <br> дней
+                          span(data-value='1') 30 <br> <span>дней</span><span class='m'>д.</span>
+                          span(data-value='2') 45 <br> <span>дней</span><span class='m'>д.</span>
+                          span(data-value='3') 60 <br> <span>дней</span><span class='m'>д.</span>
+                          span(data-value='4') 90 <br> <span>дней</span><span class='m'>д.</span>
+                          span(data-value='5') 120 <br> <span>дней</span><span class='m'>д.</span>
+                          span(data-value='6') 180 <br> <span>дней</span><span class='m'>д.</span>
+                          span(data-value='7') 365 <br> <span>дней</span><span class='m'>д.</span>
                 .form-group
                   label Кто едет
                   .row
