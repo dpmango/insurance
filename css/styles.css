@@ -8053,7 +8053,11 @@ button:focus {
 }
 @media(max-width: 768px) {
     .contact__item {
-        margin-bottom: 30px;
+        -webkit-flex: 1 1 auto;
+            -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+        margin-bottom: 20px;
+        -webkit-box-flex: 1;
     }
 }
 .contactMap {
