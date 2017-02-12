@@ -2232,7 +2232,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   position: absolute;
   z-index: 1070;
   display: block;
-  border-radius: 10px;
   text-align: left;
   text-align: start;
   text-decoration: none;
@@ -2246,7 +2245,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
-  font-size: 0.875rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -2299,8 +2297,10 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 .tooltip-inner {
   padding: 15px 20px;
   max-width: 400px;
-  border-radius: 0.25rem;
+  border-radius: 12px !important;
   background-color: #fff;
+  -webkit-box-shadow: 0px 3px 18px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 3px 18px rgba(0, 0, 0, 0.5);
   color: #323232;
   text-align: center; }
   .tooltip-inner:before {
@@ -4575,6 +4575,11 @@ body, html {
     height: 37px;
     background-image: url('../images/sprite/ico-tooltip-big.png');
 }
+.ico-tooltip-gray {
+    width: 28px;
+    height: 27px;
+    background-image: url('../images/sprite/ico-tooltip-gray.png');
+}
 .ico-viber {
     width: 47px;
     height: 50px;
@@ -4750,7 +4755,7 @@ button:focus {
     color: white;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 10px;
+    font-size: 12px;
 }
 @media(max-width: 568px) {
     .btn--green {
@@ -6858,6 +6863,7 @@ button:focus {
 .heading {
     font-weight: 300;
     font-size: 46px;
+    line-height: 1.3;
 }
 .heading span {
     font-weight: 700;
@@ -6890,12 +6896,18 @@ button:focus {
     margin-top: 15px;
     margin-bottom: 30px;
     font-weight: 300;
-    font-size: 20px;
+    font-size: 22px;
+}
+@media(max-width: 992px) {
+    .heading__desc {
+        font-size: 20px;
+    }
 }
 @media(max-width: 568px) {
     .heading__desc {
         margin-top: 10px;
         margin-bottom: 20px;
+        font-size: 18px;
     }
 }
 .heading__desc--bigger {
@@ -7111,15 +7123,18 @@ button:focus {
 }
 .modal__wrapper {
     position: relative;
-    overflow-y: scroll;
     width: 100%;
     height: 100%;
+}
+@media(max-width: 768px) {
+    .modal__wrapper {
+        overflow-y: scroll;
+    }
 }
 .modal__content {
     position: absolute;
     top: 50%;
     left: 50%;
-    overflow-y: scroll;
     margin: 0px auto;
     padding: 60px 40px;
     max-width: 700px;
@@ -7147,6 +7162,7 @@ button:focus {
 }
 @media(max-width: 768px) {
     .modal__content {
+        overflow-y: scroll;
         padding: 40px 30px;
         padding-top: 50px;
         width: 100%;
@@ -7313,10 +7329,14 @@ button:focus {
 .hero .heading {
     position: relative;
     z-index: 2;
+    margin-top: 35px;
 }
 .hero--inner {
     padding-top: 120px;
     height: 420px;
+}
+.hero--inner .heading {
+    margin-top: 0;
 }
 @media(max-width: 768px) {
     .hero--inner {
@@ -7382,6 +7402,7 @@ button:focus {
 .hero__messengers {
     position: relative;
     z-index: 2;
+    margin-top: 10px;
 }
 @media(max-width: 768px) {
     .hero__messengers {
@@ -7389,8 +7410,27 @@ button:focus {
     }
 }
 .hero__messenger {
+    position: relative;
     margin-bottom: 23px;
     cursor: pointer;
+}
+.hero__messenger span {
+    position: absolute;
+    top: 0;
+    right: -50px;
+    display: none;
+    padding: 14px 30px;
+    background: #3c3f40;
+    color: white;
+    font-weight: 300;
+    font-size: 20px;
+}
+.hero__messenger:last-child span {
+    top: auto;
+    bottom: 0;
+}
+.hero__messenger.active span {
+    display: block;
 }
 @media(max-width: 768px) {
     .hero__messenger {
@@ -7794,7 +7834,22 @@ button:focus {
 .green {
     margin-top: 80px;
 }
-.green .green__range {}
+.green .green__range {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    opacity: 1;
+}
+.green .green__range__tips {
+    margin-right: -30px;
+    margin-left: -30px;
+}
+.green .green__range__tips > span {
+    -webkit-flex: 0 1 7.67%;
+        -ms-flex: 0 1 7.67%;
+            flex: 0 1 7.67%;
+    padding-right: 10px;
+    padding-left: 10px;
+    -webkit-box-flex: 0;
+}
 @media(max-width: 992px) {
     .green {
         margin-top: 60px;
@@ -7876,14 +7931,26 @@ button:focus {
         display: inline-block;
     }
 }
-@media(min-width: 992px) {
-    .green .green__range .rangeslider__handle {
+@media(max-width: 992px) {
+    .green .green__range__tips {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+}
+@media(max-width: 568px) {
+    .green .green__range__tips {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+@media($1desktop-from) {
+    .green .green__range__tips .rangeslider__handle {
         margin-left: -3%;
     }
-    .green .green__range .rangeslider__handle:after {
+    .green .green__range__tips .rangeslider__handle:after {
         z-index: 9;
     }
-    .green .green__range .rangeslider__handle:before {
+    .green .green__range__tips .rangeslider__handle:before {
         position: absolute;
         top: 7px;
         right: -30px;
@@ -7905,6 +7972,16 @@ button:focus {
 .greenTotal .btn {
     margin-right: 40px;
     margin-left: 25px;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 12px;
+}
+.greenTotal .btn span {
+    letter-spacing: 2px;
+    font-size: 18px;
+}
+.greenTotal img {
+    width: 190px;
 }
 @media(max-width: 992px) {
     .greenTotal {
@@ -8192,6 +8269,9 @@ button:focus {
     margin-right: 0;
 }
 /* INSURANCE */
+#insuranceMultiple {
+    display: none;
+}
 .insurance {
     margin-top: -40px;
     padding-top: 80px;
@@ -8199,7 +8279,17 @@ button:focus {
     background: url('../images/insuranceSection.png') no-repeat center;
     background-size: cover;
 }
-.insurance .btn {}
+.insurance .btn {
+    padding-right: 45px;
+    padding-left: 45px;
+    font-size: 14px;
+}
+.insurance .ui-checkbox label {
+    letter-spacing: -.5px;
+}
+.insurance .hero__tooltip {
+    top: -20px;
+}
 @media(max-width: 992px) {
     .insurance {
         padding-top: 60px;
@@ -8213,20 +8303,28 @@ button:focus {
     }
 }
 .insurance__wrapper {
-    padding: 50px 7% 20px 7%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 60px 100px 20px 80px;
+    max-width: 830px;
     background: white;
+}
+@media(max-width: 900px) {
+    .insurance__wrapper {
+        padding-right: 7%;
+        padding-left: 7%;
+        max-width: 100%;
+    }
 }
 @media(max-width: 768px) {
     .insurance__wrapper {
-        margin-right: 0;
-        margin-left: 0;
+        margin-right: auto;
+        margin-left: auto;
         padding-top: 40px;
     }
 }
 @media(max-width: 568px) {
     .insurance__wrapper {
-        margin-right: -15px;
-        margin-left: -15px;
         padding-top: 20px;
     }
 }
@@ -8240,7 +8338,7 @@ button:focus {
     }
 }
 .form-group {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 .form-group > label {
     position: relative;
@@ -8269,6 +8367,12 @@ button:focus {
 .form-group small b {
     font-weight: 700;
 }
+.form-group .green__range__tips {
+    font-size: 16px;
+}
+.form-group .ui-row-checkboxes .ui-checkbox label {
+    font-size: 18px;
+}
 @media(max-width: 768px) {
     .form-group {
         margin-bottom: 30px;
@@ -8282,6 +8386,11 @@ button:focus {
 @media(max-width: 768px) {
     .form-group > label:before {
         top: 5px;
+    }
+}
+@media(max-width: 992px) {
+    .form-group .green__range__tips > span {
+        font-size: 14px;
     }
 }
 .form-control {
@@ -8413,7 +8522,7 @@ button:focus {
 
 .ui-caption {
     font-style: italic;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .ui-caption a {
