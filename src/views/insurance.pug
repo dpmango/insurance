@@ -35,51 +35,54 @@ html
       section.insurance
         form(action='').container#insuranceForm
           .row
-            .col-sm-12.col-lg-10.offset-lg-1.col-xl-8.offset-xl-2
+            .col-sm-12
               .insurance__wrapper
                 .form-group
                   label Куда едите ?
-                  input.form-control#autocompleate(type="text" placeholder="Укажите название страны:")
+                  input.form-control#autocompleate(type="text" placeholder="Укажите название страны:" name='insuranceCountry')
                   .ui-caption.mt10.insurance__quicklinks
                     span Например:
-                    a(href='#' data-country='Шенген') Шенген
-                    a(href='#' data-country='Весь мир') Весь мир
+                    a(href='#' data-country='Шенген') Шенген,
+                    a(href='#' data-country='Весь мир') Весь мир,
                     a(href='#' data-country='Франция') Франция...
                 .row
                   .col-sm-6
                     .form-group
                       label Тип страховки
                       .ui-radio
-                        input(type='radio' name='insuranceType' id='insuranceType_1')
+                        input(type='radio' name='insuranceType' id='insuranceType_1' value='insuranceType_1' checked)
                         label(for='insuranceType_1') Разовая
                       .ui-radio
-                        input(type='radio' name='insuranceType' id='insuranceType_2')
+                        input(type='radio' name='insuranceType' id='insuranceType_2' value='insuranceType_2')
                         label(for='insuranceType_2') Многократная
                   .col-sm-6
                     .form-group
                       label Валюта полиса
                       .ui-radio
-                        input(type='radio' name='insuranceCurrency' id='insuranceCurrency_1')
+                        input(type='radio' name='insuranceCurrency' id='insuranceCurrency_1' value='insuranceCurrency_1' checked)
                         label(for='insuranceCurrency_1') EUR
                       .ui-radio
-                        input(type='radio' name='insuranceCurrency' id='insuranceCurrency_2')
+                        input(type='radio' name='insuranceCurrency' id='insuranceCurrency_2' value='insuranceCurrency_1')
                         label(for='insuranceCurrency_2') USD
 
                 .row
                   .col-sm-6
                     .form-group
                       label Когда уезжаете
-                      input.form-control.datepicker-here(type="text" data-position="bottom left")
+                      input.form-control.datepicker-here(type="text" data-position="bottom left" name="insuranceDateFrom")
 
                   .col-sm-6
                     .form-group
                       label Когда возвращаетесь
-                      input.form-control.datepicker-here(type="text" data-position="bottom left")
+                      input.form-control.datepicker-here(type="text" data-position="bottom left" name="insuranceDateTo")
 
-                .form-group
+                .form-group#insuranceMultiple
                   label Выберите количество дней страхования
+                    .hero__tooltip
+                      i.ico.ico-tooltip-gray(data-toggle="tooltip" data-placement="bottom" title="Выберите суммарное количество дней которое вы планируете находиться за границей в течение года. Многократная страховка удобнее в использовании и дешевле нескольких однократных страховок при многократных поездках")
+
                   .row
-                    .col-sm-12.col-lg-10
+                    .col-sm-12.col-lg-12
                       .green__range
                         input#greenRange(type='range' min="1" max='7' step="1" value='2')
                         .green__range__tips

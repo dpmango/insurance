@@ -36,7 +36,13 @@ $(document).ready(function(){
 
 
   // enable tooltips
-  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip();
+
+  $('.hero__messenger').on('click', function(){
+    $(this).toggleClass('active');
+  });
+
+
 
   // range slider
 
@@ -107,6 +113,36 @@ $(document).ready(function(){
     });
   });
 
+  /////////////
+  // GREN CARD
+  /////////////
+
+  // get parms list
+  var greenPriceList = [];
+
+  $.ajax({
+    type: 'GET',
+    url: 'json/green.json',
+    data: { get_param: 'value' },
+    dataType: 'json',
+    success: function (data) {
+      $.each(data, function(index, element) {
+          greenPriceList.push(element);
+      });
+    }
+  });
+
+  // listen form change
+  $('#greenForm').on('change', function(e){
+    var selected = $('#greenRange').val();
+    setPrice = greenPriceList[selected - 1];
+    $('.greenTotal .btn--price span').text(setPrice);
+  });
+
+  /////////////
+  // INSURANCE
+  /////////////
+
   // INSURANCE LOOKUP
   $('#autocompleate').autocomplete({
 	    lookup: countries,
@@ -120,9 +156,65 @@ $(document).ready(function(){
     $('#autocompleate').val(selectedCountry);
   });
 
+  // Datepicker
+  Date.prototype.format = function (mask, utc) {
+    return dateFormat(this, mask, utc);
+  };
+
+  var date = new Date();
+  var currDate = date.getDate() + '.' + (date.getMonth() + 1) + '.' +  date.getFullYear();
+
+  $('input[name="insuranceDateFrom"]').attr("placeholder", currDate);
+  var dateFrom = $('input[name="insuranceDateFrom"]').datepicker({
+    // Можно выбрать тольо даты, идущие за сегодняшним днем, включая сегодня
+    position: 'bottom left',
+    minDate: new Date(),
+    onSelect: function(formattedDate, date, inst){
+      dateTo.update('minDate', new Date() )
+    }
+  }).data('datepicker');
+
+  var dateTo = $('input[name="insuranceDateTo"]').datepicker({
+    // Можно выбрать тольо даты, идущие за сегодняшним днем, включая сегодня
+    position: 'bottom left',
+    minDate: new Date()
+  }).data('datepicker');
+
+
   // INSURANCE FORM VALIDATOR
   $('#insuranceForm').on('change', function(){
-    console.log('form changed');
+    var country = $('input[name="insuranceCountry"]').val();
+    var type = $('input[name="insuranceType"]:checked').val();
+    var currency = $('input[name="insuranceCurrency"]:checked').val();
+    var dateFrom = $('input[name="insuranceDateFrom"]').val();
+    var dateTo = $('input[name="insuranceDateTo"]').val();
+    var range = $('#greenRange').val();
+    var ageReg = $('#insuranceAge_1').val();
+    var ageChild = $('#insuranceAge_2').val();
+    var ageOld = $('#insuranceAge_3').val();
+    var amount35 = $('#insuranceAmount_1').val();
+    var amount50 = $('#insuranceAmount_2').val();
+    var amount100 = $('#insuranceAmount_3').val();
+
+    console.log(country);
+    console.log(type);
+    console.log(currency);
+    console.log(dateFrom);
+    console.log(dateTo);
+    console.log(range);
+    console.log(ageReg);
+    console.log(ageChild);
+    console.log(ageOld);
+    console.log(amount35);
+    console.log(amount50);
+    console.log(amount100);
+
+    if (type === 'insuranceType_2'){
+      $('#insuranceMultiple').fadeIn();
+    } else {
+      $('#insuranceMultiple').fadeOut();
+    }
+
   });
 
   $('#insuranceForm .btn').on('click', function(){

@@ -51,20 +51,20 @@
       <section class="green">
         <div class="container">
           <div class="row">
-            <div class="col-sm-12">
+            <form class="col-sm-12" id="greenForm">
               <div class="heading heading--small text-xs-center">Выберите количество дней вашей поездки на автомобиле</div>
               <div class="green__range">
                 <input id="greenRange" type="range" min="1" max="13" step="1" value="2">
                 <div class="green__range__tips"><span data-value="1">15 <br> <span>дней</span><span class='m'>д.</span></span><span data-value="2">1 <br> <span>месяц</span><span class='m'>м.</span></span><span data-value="3">2 <br> <span>месяца</span><span class='m'>м.</span></span><span data-value="4">3 <br> <span>месяца</span><span class='m'>м.</span></span><span data-value="5">4 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="6">5 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="7">6 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="8">7 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="9">8 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="10">9 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="11">10 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="12">11 <br> <span>месяцев</span><span class='m'>м.</span></span><span data-value="13">12 <br> <span>месяцев</span><span class='m'>м.</span></span></div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </section>
       <section class="greenTotal">
         <div class="container">
           <div class="row">
-            <div class="col-sm-12 text-sm-center"><span>Стоимость:</span><a class="btn btn--green btn--rounded modal__trigger" href="#modalInsurance">4280 <span>руб</span></a><img src="images/broker-alpha.png"></div>
+            <div class="col-sm-12 text-sm-center"><span>Стоимость:</span><a class="btn btn--green btn--rounded btn--price modal__trigger" href="#modalInsurance"><span>4280</span> руб</a><img src="images/broker-alpha.png"></div>
           </div>
         </div>
       </section>
@@ -97,23 +97,6 @@
           </div>
         </div>
         <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-        <script type="text/javascript">
-          ymaps.ready(init);
-          var myMap,
-          myPlacemark;
-          function init(){
-          myMap = new ymaps.Map("map", {
-          center: [55.76, 37.64],
-          zoom: 7
-          });
-          myPlacemark = new ymaps.Placemark([55.76, 37.64], {
-          hintContent: 'Москва!',
-          balloonContent: 'Столица России'
-          });
-          myMap.geoObjects.add(myPlacemark);
-          }
-          
-        </script>
       </section>
       <div class="contactMap" id="map"></div>
       <!-- FOOTER::START-->

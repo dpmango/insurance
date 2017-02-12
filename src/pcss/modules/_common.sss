@@ -109,6 +109,7 @@
 // heading
 .heading
   font-size: 46px
+  line-height: 1.3
   font-weight: 300
   @media($desktop)
     font-size: 38px
@@ -126,9 +127,12 @@
   &__desc
     margin-top: 15px
     margin-bottom: 30px
-    font-size: 20px
+    font-size: 22px
     font-weight: 300
+    @media($desktop)
+      font-size: 20px
     @media($mobile)
+      font-size: 18px
       margin-bottom: 20px
       margin-top: 10px
     &--bigger
@@ -250,7 +254,8 @@
     position: relative
     width: 100%
     height: 100%
-    overflow-y: scroll
+    @media($tablet)
+      overflow-y: scroll
   &__content
     position: absolute
     top: 50%
@@ -263,8 +268,8 @@
     width: 700px
     max-width: 700px
     max-height: 95vh
-    overflow-y: scroll
     @media($tablet)
+      overflow-y: scroll
       padding-top: 50px
       padding: 40px 30px
       width: 100%

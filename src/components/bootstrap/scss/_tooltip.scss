@@ -78,7 +78,7 @@
   color: $tooltip-color;
   text-align: center;
   background-color: $tooltip-bg;
-  @include border-radius($border-radius);
+  border-radius: 15px;
 
   &::before {
     position: absolute;

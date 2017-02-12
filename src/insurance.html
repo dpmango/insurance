@@ -67,23 +67,23 @@
       <section class="insurance">
         <form class="container" action="" id="insuranceForm">
           <div class="row">
-            <div class="col-sm-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+            <div class="col-sm-12">
               <div class="insurance__wrapper">
                 <div class="form-group">
                   <label>Куда едите ?</label>
-                  <input class="form-control" id="autocompleate" type="text" placeholder="Укажите название страны:">
-                  <div class="ui-caption mt10 insurance__quicklinks"><span>Например:</span><a href="#" data-country="Шенген">Шенген</a><a href="#" data-country="Весь мир">Весь мир</a><a href="#" data-country="Франция">Франция...</a></div>
+                  <input class="form-control" id="autocompleate" type="text" placeholder="Укажите название страны:" name="insuranceCountry">
+                  <div class="ui-caption mt10 insurance__quicklinks"><span>Например:</span><a href="#" data-country="Шенген">Шенген,</a><a href="#" data-country="Весь мир">Весь мир,</a><a href="#" data-country="Франция">Франция...</a></div>
                 </div>
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Тип страховки</label>
                       <div class="ui-radio">
-                        <input type="radio" name="insuranceType" id="insuranceType_1">
+                        <input type="radio" name="insuranceType" id="insuranceType_1" value="insuranceType_1" checked>
                         <label for="insuranceType_1">Разовая</label>
                       </div>
                       <div class="ui-radio">
-                        <input type="radio" name="insuranceType" id="insuranceType_2">
+                        <input type="radio" name="insuranceType" id="insuranceType_2" value="insuranceType_2">
                         <label for="insuranceType_2">Многократная</label>
                       </div>
                     </div>
@@ -92,11 +92,11 @@
                     <div class="form-group">
                       <label>Валюта полиса</label>
                       <div class="ui-radio">
-                        <input type="radio" name="insuranceCurrency" id="insuranceCurrency_1">
+                        <input type="radio" name="insuranceCurrency" id="insuranceCurrency_1" value="insuranceCurrency_1" checked>
                         <label for="insuranceCurrency_1">EUR</label>
                       </div>
                       <div class="ui-radio">
-                        <input type="radio" name="insuranceCurrency" id="insuranceCurrency_2">
+                        <input type="radio" name="insuranceCurrency" id="insuranceCurrency_2" value="insuranceCurrency_1">
                         <label for="insuranceCurrency_2">USD</label>
                       </div>
                     </div>
@@ -106,20 +106,22 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Когда уезжаете</label>
-                      <input class="form-control datepicker-here" type="text" data-position="bottom left">
+                      <input class="form-control datepicker-here" type="text" data-position="bottom left" name="insuranceDateFrom">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Когда возвращаетесь</label>
-                      <input class="form-control datepicker-here" type="text" data-position="bottom left">
+                      <input class="form-control datepicker-here" type="text" data-position="bottom left" name="insuranceDateTo">
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label>Выберите количество дней страхования</label>
+                <div class="form-group" id="insuranceMultiple">
+                  <label>Выберите количество дней страхования
+                    <div class="hero__tooltip"><i class="ico ico-tooltip-gray" data-toggle="tooltip" data-placement="bottom" title="Выберите суммарное количество дней которое вы планируете находиться за границей в течение года. Многократная страховка удобнее в использовании и дешевле нескольких однократных страховок при многократных поездках"></i></div>
+                  </label>
                   <div class="row">
-                    <div class="col-sm-12 col-lg-10">
+                    <div class="col-sm-12 col-lg-12">
                       <div class="green__range">
                         <input id="greenRange" type="range" min="1" max="7" step="1" value="2">
                         <div class="green__range__tips"><span data-value="1">30 <br> <span>дней</span><span class='m'>д.</span></span><span data-value="2">45 <br> <span>дней</span><span class='m'>д.</span></span><span data-value="3">60 <br> <span>дней</span><span class='m'>д.</span></span><span data-value="4">90 <br> <span>дней</span><span class='m'>д.</span></span><span data-value="5">120 <br> <span>дней</span><span class='m'>д.</span></span><span data-value="6">180 <br> <span>дней</span><span class='m'>д.</span></span><span data-value="7">365 <br> <span>дней</span><span class='m'>д.</span></span></div>
@@ -277,6 +279,7 @@
       <script src="js/libs/jquery.maskedinput.min.js"></script>
       <script src="js/libs/autocompleate.js"></script>
       <script src="js/main.js"></script>
+      <script src="js/maps.js"></script>
       <!--endbuild-->
     </div>
     <!-- MODALS-->

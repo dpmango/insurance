@@ -2232,7 +2232,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   position: absolute;
   z-index: 1070;
   display: block;
-  border-radius: 10px;
   text-align: left;
   text-align: start;
   text-decoration: none;
@@ -2246,7 +2245,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
-  font-size: 0.875rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -2299,8 +2297,10 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 .tooltip-inner {
   padding: 15px 20px;
   max-width: 400px;
-  border-radius: 0.25rem;
+  border-radius: 12px !important;
   background-color: #fff;
+  -webkit-box-shadow: 0px 3px 18px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 3px 18px rgba(0, 0, 0, 0.5);
   color: #323232;
   text-align: center; }
   .tooltip-inner:before {

@@ -24,7 +24,7 @@ html
       section.green
         .container
           .row
-            .col-sm-12
+            form#greenForm.col-sm-12
               .heading.heading--small.text-xs-center Выберите количество дней вашей поездки на автомобиле
               .green__range
                 input#greenRange(type='range' min="1" max='13' step="1" value='2')
@@ -48,7 +48,7 @@ html
           .row
             .col-sm-12.text-sm-center
               span Стоимость:
-              a(href='#modalInsurance').btn.btn--green.btn--rounded.modal__trigger 4280 <span>руб</span>
+              a(href='#modalInsurance').btn.btn--green.btn--rounded.btn--price.modal__trigger <span>4280</span> руб
               img(src='images/broker-alpha.png')
 
       section.docsRequired
@@ -91,21 +91,6 @@ html
 
 
         script(src='https://api-maps.yandex.ru/2.1/?lang=ru_RU', type='text/javascript')
-        script(type='text/javascript').
-          ymaps.ready(init);
-          var myMap,
-          myPlacemark;
-          function init(){
-          myMap = new ymaps.Map("map", {
-          center: [55.76, 37.64],
-          zoom: 7
-          });
-          myPlacemark = new ymaps.Placemark([55.76, 37.64], {
-          hintContent: 'Москва!',
-          balloonContent: 'Столица России'
-          });
-          myMap.geoObjects.add(myPlacemark);
-          }
 
       .contactMap#map
 
