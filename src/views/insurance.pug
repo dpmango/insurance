@@ -156,19 +156,19 @@ html
                   label Страховое покрытие
                   .row
                     .col-sm-8.ui-row-checkboxes
-                      .ui-checkbox
-                        input(type='checkbox' name='insuranceAmount' id='insuranceAmount_1')
-                        label(for='insuranceAmount_1') 35 000
-                      .ui-checkbox
-                        input(type='checkbox' name='insuranceAmount' id='insuranceAmount_2')
+                      .ui-radio
+                        input(type='radio' name='insuranceAmount' id='insuranceAmount_1' value='30 000')
+                        label(for='insuranceAmount_1') 30 000
+                      .ui-radio
+                        input(type='radio' name='insuranceAmount' id='insuranceAmount_2' value='50 000')
                         label(for='insuranceAmount_2') 50 000
-                      .ui-checkbox
-                        input(type='checkbox' name='insuranceAmount' id='insuranceAmount_3')
+                      .ui-radio
+                        input(type='radio' name='insuranceAmount' id='insuranceAmount_3' value='100 000')
                         label(for='insuranceAmount_3') 100 000
                       .ui-caption
                         span Страховая сумма на каждого внесенного человека
                     .col-sm-4
-                      a(href='#').btn.btn--green.btn--rounded Рассчитать
+                      a(href='#').btn.btn--green.btn--rounded.invalid Рассчитать
 
       //INSURANCE
       section.insurancePrice
@@ -179,38 +179,38 @@ html
           .row.mt50
             .col-sm-6.col-lg-4
               .insurancePrice__head Спокойный отдых
-              .insurancePrice__row
+              .insurancePrice__row#ingosRegularPrice
                 i.ico.ico-ingos.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-              .insurancePrice__row
+                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+              .insurancePrice__row#absoluteRegularPrice
                 i.ico.ico-absolute.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-              .insurancePrice__row
+                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+              .insurancePrice__row#alphaRegularPrice
                 i.ico.ico-alpha.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-              .insurancePrice__row
+                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+              .insurancePrice__row#uralsibRegularPrice
                 i.ico.ico-uralsib.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-              .insurancePrice__row
+                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+              .insurancePrice__row#resoRegularPrice
                 i.ico.ico-reso.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
+                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
             .col-sm-6.col-lg-4
               .insurancePrice__head Активный отдых
-              .insurancePrice__row
+              .insurancePrice__row#ingosActivePrice
                 i.ico.ico-ingos.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-              .insurancePrice__row
+                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+              .insurancePrice__row#absoluteActivePrice
                 i.ico.ico-absolute.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-              .insurancePrice__row
+                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+              .insurancePrice__row#alphaActivePrice
                 i.ico.ico-alpha.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-              .insurancePrice__row
+                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+              .insurancePrice__row#uralsibActivePrice
                 i.ico.ico-uralsib.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
-              .insurancePrice__row
+                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+              .insurancePrice__row#resoActivePrice
                 i.ico.ico-reso.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price 4066 <span>руб.</span>
+                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
             .col-sm-6.col-lg-4
               .insurancePrice__head Опасные виды спорта
               a(href='#modalGetPrice').btn.btn--green.btn--rounded.btn--price.modal__trigger <span>Цена по запросу</span>

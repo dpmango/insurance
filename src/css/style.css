@@ -423,6 +423,17 @@ button:focus {
 .btn--rounded {
     border-radius: 30px;
 }
+.btn.invalid {
+    background: #000000;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+}
+.btn.invalid:hover {
+    border-color: transparent;
+    color: white;
+    -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+}
 .hamburger {
     display: inline-block;
     overflow: visible;
@@ -4108,6 +4119,13 @@ button:focus {
 }
 .insurancePrice .row.mt50 .col-sm-4 .ico {
     max-width: 140px;
+}
+.insurancePrice .btn {
+    font-size: 12px;
+}
+.insurancePrice .btn span {
+    letter-spacing: 2px;
+    font-size: 18px;
 }
 @media(max-width: 768px) {
     .insurancePrice {

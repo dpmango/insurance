@@ -143,7 +143,21 @@ $(document).ready(function(){
   // INSURANCE
   /////////////
 
-  // INSURANCE LOOKUP
+  // PARSE PARAMS
+  var params = {};
+
+  $.ajax({
+    type: 'GET',
+    url: 'json/insurance.json',
+    data: { get_param: 'value' },
+    dataType: 'json',
+    success: function (data) {
+      params = data;
+      console.log(params);
+    }
+  });
+
+  // INSURANCE LOOKUP && QUICK LINKS
   $('#autocompleate').autocomplete({
 	    lookup: countries,
 	    onSelect: function (suggestion) {
@@ -181,8 +195,9 @@ $(document).ready(function(){
   }).data('datepicker');
 
 
-  // INSURANCE FORM VALIDATOR
+  // INSURANCE FORM LOGIC
   $('#insuranceForm').on('change', function(){
+    // PARSE ALL VALUES
     var country = $('input[name="insuranceCountry"]').val();
     var type = $('input[name="insuranceType"]:checked').val();
     var currency = $('input[name="insuranceCurrency"]:checked').val();
@@ -192,34 +207,171 @@ $(document).ready(function(){
     var ageReg = $('#insuranceAge_1').val();
     var ageChild = $('#insuranceAge_2').val();
     var ageOld = $('#insuranceAge_3').val();
-    var amount35 = $('#insuranceAmount_1').val();
-    var amount50 = $('#insuranceAmount_2').val();
-    var amount100 = $('#insuranceAmount_3').val();
+    var amount = $('input[name="insuranceAmount"]:checked').val();
 
-    console.log(country);
-    console.log(type);
-    console.log(currency);
-    console.log(dateFrom);
-    console.log(dateTo);
-    console.log(range);
-    console.log(ageReg);
-    console.log(ageChild);
-    console.log(ageOld);
-    console.log(amount35);
-    console.log(amount50);
-    console.log(amount100);
+    // set defaults and program type
+    var ingosRegularPrice = 100 * params.ingos.programA;
+    var absoluteRegularPrice = 100 * params.absolute.programA;
+    var alphaRegularPrice = params.alpha.basePrice * params.alpha.programA;
+    var uralsibRegularPrice = 100 * params.uralsib.programA;
+    var resoRegularPrice = 100 * params.reso.programA;
 
+    var ingosActivePrice = 100 * params.ingos.programB;
+    var absoluteActivePrice = 100 * params.absolute.programB;
+    var alphaActivePrice = 100 * params.alpha.programB;
+    var uralsibActivePrice = 100 * params.uralsib.programB;
+    var resoActivePrice = 100 * params.reso.programB;
+
+    // DEVELOPMENT - DEBUG
+    // console.log(country);
+    // console.log(type);
+    // console.log(currency);
+    // console.log(dateFrom);
+    // console.log(dateTo);
+    // console.log(range);
+    // console.log(ageReg);
+    // console.log(ageChild);
+    // console.log(ageOld);
+    //console.log(amount);
+
+    // SHOW RELEVANT FORM TYPE SINGLE -- MULTI
     if (type === 'insuranceType_2'){
       $('#insuranceMultiple').fadeIn();
     } else {
       $('#insuranceMultiple').fadeOut();
     }
 
+    // VALIDATOR
+
+    if (true == true) {
+      $('#insuranceForm .btn').removeClass('invalid');
+      // basically all later code should be here. But it's not for development purposes
+    } else {
+      $('#insuranceForm .btn').addClass('invalid');
+    }
+
+    // CALCULATE PRICE
+    //////////////////
+
+    // LOCATION
+
+    if (jQuery.inArray( country, params.ingos.countriesA ) > -1 ) {
+      ingosRegularPrice = ingosRegularPrice * params.ingos.countriesAmultiply;
+      ingosActivePrice = ingosActivePrice * params.ingos.countriesAmultiply;
+    } else if (jQuery.inArray( country, params.ingos.countriesB ) > -1 ){
+      ingosRegularPrice = ingosRegularPrice * params.ingos.countriesBmultiply;
+      ingosActivePrice = ingosActivePrice * params.ingos.countriesBmultiply;
+    } else {
+      console.log('Not a country ?');
+    }
+
+    if (jQuery.inArray( country, params.absolute.countriesA ) > -1 ) {
+      absoluteRegularPrice = absoluteRegularPrice * params.absolute.countriesAmultiply;
+      absoluteActivePrice = absoluteActivePrice * params.absolute.countriesAmultiply;
+    } else if (jQuery.inArray( country, params.ingos.countriesB ) > -1 ){
+      absoluteRegularPrice = absoluteRegularPrice * params.absolute.countriesBmultiply;
+      absoluteActivePrice = absoluteActivePrice * params.absolute.countriesBmultiply;
+    } else {
+      console.log('Not a country ?');
+    }
+
+    if (jQuery.inArray( country, params.alpha.countriesA ) > -1 ) {
+      alphaRegularPrice = alphaRegularPrice * params.alpha.countriesAmultiply;
+      alphaActivePrice = alphaActivePrice * params.alpha.countriesAmultiply;
+    } else if (jQuery.inArray( country, params.alpha.countriesB ) > -1 ){
+      alphaRegularPrice = alphaRegularPrice * params.alpha.countriesBmultiply;
+      alphaActivePrice = alphaActivePrice * params.alpha.countriesBmultiply;
+    } else {
+      console.log('Not a country ?')
+    }
+
+    if (jQuery.inArray( country, params.uralsib.countriesA ) > -1 ) {
+      uralsibRegularPrice = uralsibRegularPrice * params.uralsib.countriesAmultiply;
+      uralsibActivePrice = uralsibActivePrice * params.uralsib.countriesAmultiply;
+    } else if (jQuery.inArray( country, params.ingos.countriesB ) > -1 ){
+      uralsibRegularPrice = uralsibRegularPrice * params.uralsib.countriesBmultiply;
+      uralsibActivePrice = uralsibActivePrice * params.uralsib.countriesBmultiply;
+    } else {
+      console.log('Not a country ?');
+    }
+
+    if (jQuery.inArray( country, params.reso.countriesA ) > -1 ) {
+      resoRegularPrice = uralsibRegularPrice * params.reso.countriesAmultiply;
+      resoActivePrice = resoActivePrice * params.reso.countriesAmultiply;
+    } else if (jQuery.inArray( country, params.reso.countriesB ) > -1 ){
+      resoRegularPrice = uralsibRegularPrice * params.reso.countriesBmultiply;
+      resoActivePrice = resoActivePrice * params.reso.countriesBmultiply;
+    } else {
+      console.log('Not a country ?');
+    }
+
+    // COVERAGE
+    if (amount === "30 000"){
+      ingosRegularPrice = ingosRegularPrice * params.ingos.coverA;
+      absoluteRegularPrice = absoluteRegularPrice * params.absolute.coverA;
+      alphaRegularPrice = alphaRegularPrice * params.alpha.coverA;
+      uralsibRegularPrice = uralsibRegularPrice * params.uralsib.coverA;
+      resoRegularPrice = resoRegularPrice * params.reso.coverA;
+
+      ingosActivePrice = ingosActivePrice * params.ingos.coverA;
+      absoluteActivePrice = absoluteActivePrice * params.absolute.coverA;
+      alphaActivePrice = alphaActivePrice * params.alpha.coverA;
+      uralsibActivePrice = uralsibActivePrice * params.uralsib.coverA;
+      resoActivePrice = resoActivePrice * params.reso.coverA;
+    } else if (amount === "50 000") {
+      ingosRegularPrice = ingosRegularPrice * params.ingos.coverB;
+      absoluteRegularPrice = absoluteRegularPrice * params.absolute.coverB;
+      alphaRegularPrice = alphaRegularPrice * params.alpha.coverB;
+      uralsibRegularPrice = uralsibRegularPrice * params.uralsib.coverB;
+      resoRegularPrice = resoRegularPrice * params.reso.coverB;
+
+      ingosActivePrice = ingosActivePrice * params.ingos.coverB;
+      absoluteActivePrice = absoluteActivePrice * params.absolute.coverB;
+      alphaActivePrice = alphaActivePrice * params.alpha.coverB;
+      uralsibActivePrice = uralsibActivePrice * params.uralsib.coverB;
+      resoActivePrice = resoActivePrice * params.reso.coverB;
+    } else if (amount === "100 000") {
+      ingosRegularPrice = ingosRegularPrice * params.ingos.coverC;
+      absoluteRegularPrice = absoluteRegularPrice * params.absolute.coverC;
+      alphaRegularPrice = alphaRegularPrice * params.alpha.coverC;
+      uralsibRegularPrice = uralsibRegularPrice * params.uralsib.coverC;
+      resoRegularPrice = resoRegularPrice * params.reso.coverC;
+
+      ingosActivePrice = ingosActivePrice * params.ingos.coverC;
+      absoluteActivePrice = absoluteActivePrice * params.absolute.coverC;
+      alphaActivePrice = alphaActivePrice * params.alpha.coverC;
+      uralsibActivePrice = uralsibActivePrice * params.uralsib.coverC;
+      resoActivePrice = resoActivePrice * params.reso.coverC;
+    }
+
+
+    // SET PRICE
+    ////////////
+
+    // regular prices
+    $('#ingosRegularPrice .btn span').text(ingosRegularPrice);
+    $('#absoluteRegularPrice .btn span').text(absoluteRegularPrice);
+    $('#alphaRegularPrice .btn span').text(alphaRegularPrice);
+    $('#uralsibRegularPrice .btn span').text(uralsibRegularPrice);
+    $('#resoRegularPrice .btn span').text(resoRegularPrice);
+    //active prices
+    $('#ingosActivePrice .btn span').text(ingosActivePrice);
+    $('#absoluteActivePrice .btn span').text(absoluteActivePrice);
+    $('#alphaActivePrice .btn span').text(alphaActivePrice);
+    $('#uralsibActivePrice .btn span').text(uralsibActivePrice);
+    $('#resoActivePrice .btn span').text(resoActivePrice);
+
   });
 
-  $('#insuranceForm .btn').on('click', function(){
-    // validate and show prices
-    $('.insurancePrice').fadeIn();
+  $('#insuranceForm .btn').on('click', function(e){
+    if ( $(this).is('.invalid') ){
+      e.preventDefault();
+      return false;
+    } else {
+      e.preventDefault();
+      // validate and show prices
+      $('.insurancePrice').fadeIn();
+    }
   });
 
   // modal order
@@ -230,13 +382,14 @@ $(document).ready(function(){
     $(this).addClass('active');
   });
 
+  // ... DO some ajax to php and amoCrm ...
 
 
 });
 
 
 
-////// СПИСОК СТРАН
+////// СПИСОК СТРАН для LOOKUP
 var countries = [
 	{ value: 'Шенген' },
 	{ value: 'Весь мир' },

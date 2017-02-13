@@ -39,6 +39,13 @@ button:focus
       transform: scale(1.05)
       color: $fontColor
 
-
   &--rounded
     border-radius: 30px
+
+  &.invalid
+    background: color(black a(30%))
+    cursor: not-allowed
+    &:hover
+      border-color: transparent
+      color: white
+      transform: translate3d(0,0,0)
