@@ -162,7 +162,7 @@ $(document).ready(function(){
   };
 
   var date = new Date();
-  var currDate = date.getDate() + '.' + (date.getMonth() + 1) + '.' +  date.getFullYear();
+  var currDate = date.getDate() + '.0' + (date.getMonth() + 1) + '.' +  date.getFullYear();
 
   $('input[name="insuranceDateFrom"]').attr("placeholder", currDate);
   var dateFrom = $('input[name="insuranceDateFrom"]').datepicker({
