@@ -97,8 +97,12 @@ $(document).ready(function(){
 
   $('.insurancePrice__row .btn').on('click', function(e){
     e.preventDefault();
-    $('.content').addClass('blur');
-    $('#modalInsurance').fadeIn();
+    if ($(this).parent().is('.inactive')){
+
+    } else{
+      $('.content').addClass('blur');
+      $('#modalInsurance').fadeIn();
+    }
   });
 
   $(document).mouseup(function (e) {
@@ -162,12 +166,17 @@ $(document).ready(function(){
 	    lookup: countries,
 	    onSelect: function (suggestion) {
 	    	$(this).val(suggestion.value);
+        $('#insuranceForm').trigger('change');
 	    }
 	});
+  $('#autocompleate').keydown(function (e) {
+    $('#insuranceForm').trigger('change');
+  });
 
   $('.insurance__quicklinks a').on('click', function(){
     var selectedCountry = $(this).data('country');
     $('#autocompleate').val(selectedCountry);
+    $('#insuranceForm').trigger('change');
   });
 
   // Datepicker
@@ -184,23 +193,29 @@ $(document).ready(function(){
     position: 'bottom left',
     minDate: new Date(),
     onSelect: function(formattedDate, date, inst){
-      dateTo.update('minDate', new Date() )
+      dateTo.update('minDate', new Date() );
+      $('#insuranceForm').trigger('change');
     }
   }).data('datepicker');
 
   var dateTo = $('input[name="insuranceDateTo"]').datepicker({
     // Можно выбрать тольо даты, идущие за сегодняшним днем, включая сегодня
     position: 'bottom left',
-    minDate: new Date()
+    minDate: new Date(),
+    onSelect: function(formattedDate, date, inst){
+      $('#insuranceForm').trigger('change');
+    }
   }).data('datepicker');
 
 
   // INSURANCE FORM LOGIC
   $('#insuranceForm').on('change', function(){
+    console.clear();
     // PARSE ALL VALUES
     var country = $('input[name="insuranceCountry"]').val();
     var type = $('input[name="insuranceType"]:checked').val();
-    var currency = $('input[name="insuranceCurrency"]:checked').val();
+    ///// this is dummy val - why we might need that ?
+    // var currency = $('input[name="insuranceCurrency"]:checked').val();
     var dateFrom = $('input[name="insuranceDateFrom"]').val();
     var dateTo = $('input[name="insuranceDateTo"]').val();
     var range = $('#greenRange').val();
@@ -210,6 +225,12 @@ $(document).ready(function(){
     var amount = $('input[name="insuranceAmount"]:checked').val();
 
     // set defaults and program type
+    var ingosAvailable = true;
+    var absoluteAvailable = true;
+    var alphaAvailable = true;
+    var uralsibAvailable = true;
+    var resoAvailable = true;
+
     var ingosRegularPrice = 100 * params.ingos.programA;
     var absoluteRegularPrice = 100 * params.absolute.programA;
     var alphaRegularPrice = params.alpha.basePrice * params.alpha.programA;
@@ -226,8 +247,8 @@ $(document).ready(function(){
     // console.log(country);
     // console.log(type);
     // console.log(currency);
-    // console.log(dateFrom);
-    // console.log(dateTo);
+    console.log(dateFrom);
+    console.log(dateTo);
     // console.log(range);
     // console.log(ageReg);
     // console.log(ageChild);
@@ -261,6 +282,8 @@ $(document).ready(function(){
     } else if (jQuery.inArray( country, params.ingos.countriesB ) > -1 ){
       ingosRegularPrice = ingosRegularPrice * params.ingos.countriesBmultiply;
       ingosActivePrice = ingosActivePrice * params.ingos.countriesBmultiply;
+    } else if (jQuery.inArray( country, params.ingos.countriesBlackList ) > -1 ){
+      ingosAvailable = false;
     } else {
       console.log('Not a country ?');
     }
@@ -349,17 +372,61 @@ $(document).ready(function(){
     ////////////
 
     // regular prices
-    $('#ingosRegularPrice .btn span').text(ingosRegularPrice);
-    $('#absoluteRegularPrice .btn span').text(absoluteRegularPrice);
-    $('#alphaRegularPrice .btn span').text(alphaRegularPrice);
-    $('#uralsibRegularPrice .btn span').text(uralsibRegularPrice);
-    $('#resoRegularPrice .btn span').text(resoRegularPrice);
-    //active prices
-    $('#ingosActivePrice .btn span').text(ingosActivePrice);
-    $('#absoluteActivePrice .btn span').text(absoluteActivePrice);
-    $('#alphaActivePrice .btn span').text(alphaActivePrice);
-    $('#uralsibActivePrice .btn span').text(uralsibActivePrice);
-    $('#resoActivePrice .btn span').text(resoActivePrice);
+    if (ingosAvailable){
+      $('#ingosRegularPrice').removeClass("inactive");
+      $('#ingosActivePrice').removeClass("inactive");
+      $('#ingosRegularPrice .btn span').text(ingosRegularPrice);
+      $('#ingosActivePrice .btn span').text(ingosActivePrice);
+    } else{
+      $('#ingosRegularPrice').addClass("inactive");
+      $('#ingosActivePrice').addClass("inactive");
+      $('#ingosRegularPrice .btn span').text("0");
+      $('#ingosActivePrice .btn span').text("0");
+    }
+    if (absoluteAvailable){
+      $('#absoluteRegularPrice').removeClass("inactive");
+      $('#absoluteActivePrice').removeClass("inactive");
+      $('#absoluteRegularPrice .btn span').text(absoluteRegularPrice);
+      $('#absoluteActivePrice .btn span').text(absoluteActivePrice);
+    } else{
+      $('#absoluteRegularPrice').addClass("inactive");
+      $('#absoluteActivePrice').addClass("inactive");
+      $('#absoluteRegularPrice .btn span').text("0")
+      $('#absoluteActivePrice .btn span').text("0")
+    }
+    if (alphaAvailable){
+      $('#alphaRegularPrice').removeClass("inactive");
+      $('#alphaActivePrice').removeClass("inactive");
+      $('#alphaRegularPrice .btn span').text(alphaRegularPrice);
+      $('#alphaActivePrice .btn span').text(alphaActivePrice);
+    } else{
+      $('#alphaRegularPrice').addClass("inactive");
+      $('#alphaActivePrice').addClass("inactive");
+      $('#alphaRegularPrice .btn span').text("0")
+      $('#alphaActivePrice .btn span').text("0")
+    }
+    if (uralsibAvailable){
+      $('#uralsibRegularPrice').removeClass("inactive");
+      $('#uralsibActivePrice').removeClass("inactive");
+      $('#uralsibRegularPrice .btn span').text(uralsibRegularPrice);
+      $('#uralsibActivePrice .btn span').text(uralsibActivePrice);
+    } else{
+      $('#uralsibRegularPrice').addClass("inactive");
+      $('#uralsibActivePrice').addClass("inactive");
+      $('#uralsibRegularPrice .btn span').text("0")
+      $('#uralsibActivePrice .btn span').text("0")
+    }
+    if (resoAvailable){
+      $('#resoRegularPrice').removeClass("inactive");
+      $('#resoActivePrice').removeClass("inactive");
+      $('#resoRegularPrice .btn span').text(resoRegularPrice);
+      $('#resoActivePrice .btn span').text(resoActivePrice);
+    } else{
+      $('#resoRegularPrice').addClass("inactive");
+      $('#resoActivePrice').addClass("inactive");
+      $('#resoRegularPrice .btn span').text("0")
+      $('#resoActivePrice .btn span').text("0")
+    }
 
   });
 
