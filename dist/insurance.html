@@ -126,44 +126,44 @@
                 <div class="form-group">
                   <label>Кто едет</label>
                   <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4" id="calcAgeReg">
                       <div class="ui-checkbox">
-                        <input type="checkbox" name="insuranceAge" id="insuranceAge_1">
+                        <input type="checkbox" name="insuranceAge" id="insuranceAge_1" value="1">
                         <label for="insuranceAge_1">Взрослые (от 18 до 65)</label>
                       </div>
-                      <div class="ui-select"><span>Кол-во человек</span>
+                      <div class="ui-select ui-select--people"><span>Кол-во человек</span>
                         <input type="hidden">
-                        <div class="ui-selectDrop"><span>Опция 1</span><span>Опция 1</span><span>Опция 1</span></div>
+                        <div class="ui-selectDrop"><span>1 человек</span><span>2 человека</span><span>3 человека</span><span>4 человека</span><span>5 человек</span></div>
                       </div>
-                      <div class="ui-select"><span>Возраст</span>
+                      <div class="ui-select ui-select--age"><span>Возраст</span>
                         <input type="hidden">
                         <div class="ui-selectDrop"><span>Опция 1</span><span>Опция 1</span><span>Опция 1</span></div>
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4" id="calcAgeChild">
                       <div class="ui-checkbox">
-                        <input type="checkbox" name="insuranceAge" id="insuranceAge_2">
+                        <input type="checkbox" name="insuranceAge" id="insuranceAge_2" value="1">
                         <label for="insuranceAge_2">Дети (от 0 до 18)</label>
                       </div>
-                      <div class="ui-select"><span>Кол-во человек</span>
+                      <div class="ui-select ui-select--people"><span>Кол-во человек</span>
                         <input type="hidden">
-                        <div class="ui-selectDrop"><span>Опция 1</span><span>Опция 1</span><span>Опция 1</span></div>
+                        <div class="ui-selectDrop"><span>1 человек</span><span>2 человека</span><span>3 человека</span><span>4 человека</span><span>5 человек</span></div>
                       </div>
-                      <div class="ui-select"><span>Возраст</span>
+                      <div class="ui-select ui-select--age"><span>Возраст</span>
                         <input type="hidden">
                         <div class="ui-selectDrop"><span>Опция 1</span><span>Опция 1</span><span>Опция 1</span></div>
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4" id="calcAgeOld">
                       <div class="ui-checkbox">
-                        <input type="checkbox" name="insuranceAge" id="insuranceAge_3">
+                        <input type="checkbox" name="insuranceAge" id="insuranceAge_3" value="1">
                         <label for="insuranceAge_3">Пенсионеры (от 65)</label>
                       </div>
-                      <div class="ui-select"><span>Кол-во человек</span>
+                      <div class="ui-select ui-select--people"><span>Кол-во человек</span>
                         <input type="hidden">
-                        <div class="ui-selectDrop"><span>Опция 1</span><span>Опция 1</span><span>Опция 1</span></div>
+                        <div class="ui-selectDrop"><span>1 человек</span><span>2 человека</span><span>3 человека</span><span>4 человека</span><span>5 человек</span></div>
                       </div>
-                      <div class="ui-select"><span>Возраст</span>
+                      <div class="ui-select ui-select--age"><span>Возраст</span>
                         <input type="hidden">
                         <div class="ui-selectDrop"><span>Опция 1</span><span>Опция 1</span><span>Опция 1</span></div>
                       </div>
@@ -174,21 +174,21 @@
                   <label>Страховое покрытие</label>
                   <div class="row">
                     <div class="col-sm-8 ui-row-checkboxes">
-                      <div class="ui-checkbox">
-                        <input type="checkbox" name="insuranceAmount" id="insuranceAmount_1">
-                        <label for="insuranceAmount_1">35 000</label>
+                      <div class="ui-radio">
+                        <input type="radio" name="insuranceAmount" id="insuranceAmount_1" value="30 000" checked>
+                        <label for="insuranceAmount_1">30 000</label>
                       </div>
-                      <div class="ui-checkbox">
-                        <input type="checkbox" name="insuranceAmount" id="insuranceAmount_2">
+                      <div class="ui-radio">
+                        <input type="radio" name="insuranceAmount" id="insuranceAmount_2" value="50 000">
                         <label for="insuranceAmount_2">50 000</label>
                       </div>
-                      <div class="ui-checkbox">
-                        <input type="checkbox" name="insuranceAmount" id="insuranceAmount_3">
+                      <div class="ui-radio">
+                        <input type="radio" name="insuranceAmount" id="insuranceAmount_3" value="100 000">
                         <label for="insuranceAmount_3">100 000</label>
                       </div>
                       <div class="ui-caption"><span>Страховая сумма на каждого внесенного человека</span></div>
                     </div>
-                    <div class="col-sm-4"><a class="btn btn--green btn--rounded" href="#">Рассчитать</a></div>
+                    <div class="col-sm-4"><a class="btn btn--green btn--rounded invalid" href="#">Рассчитать</a></div>
                   </div>
                 </div>
               </div>
@@ -207,19 +207,23 @@
           <div class="row mt50">
             <div class="col-sm-6 col-lg-4">
               <div class="insurancePrice__head">Спокойный отдых</div>
-              <div class="insurancePrice__row"><i class="ico ico-ingos color"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
-              <div class="insurancePrice__row"><i class="ico ico-absolute color"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
-              <div class="insurancePrice__row"><i class="ico ico-alpha color"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
-              <div class="insurancePrice__row"><i class="ico ico-uralsib color"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
-              <div class="insurancePrice__row"><i class="ico ico-reso color"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
+              <div id="regularPrices">
+                <div class="insurancePrice__row" id="ingosRegularPrice"><i class="ico ico-ingos color"></i><a class="btn btn--green btn--rounded btn--price" href="#"><span></span> руб.</a></div>
+                <div class="insurancePrice__row" id="absoluteRegularPrice"><i class="ico ico-absolute color"></i><a class="btn btn--green btn--rounded btn--price" href="#"><span></span> руб.</a></div>
+                <div class="insurancePrice__row" id="alphaRegularPrice"><i class="ico ico-alpha color"></i><a class="btn btn--green btn--rounded btn--price" href="#"><span></span> руб.</a></div>
+                <div class="insurancePrice__row" id="uralsibRegularPrice"><i class="ico ico-uralsib color"></i><a class="btn btn--green btn--rounded btn--price" href="#"><span></span> руб.</a></div>
+                <div class="insurancePrice__row" id="resoRegularPrice"><i class="ico ico-reso color"></i><a class="btn btn--green btn--rounded btn--price" href="#"><span></span> руб.</a></div>
+              </div>
             </div>
             <div class="col-sm-6 col-lg-4">
               <div class="insurancePrice__head">Активный отдых</div>
-              <div class="insurancePrice__row"><i class="ico ico-ingos color"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
-              <div class="insurancePrice__row"><i class="ico ico-absolute color"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
-              <div class="insurancePrice__row"><i class="ico ico-alpha color"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
-              <div class="insurancePrice__row"><i class="ico ico-uralsib color"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
-              <div class="insurancePrice__row"><i class="ico ico-reso color"></i><a class="btn btn--green btn--rounded btn--price" href="#">4066 <span>руб.</span></a></div>
+              <div id="activePrices">
+                <div class="insurancePrice__row" id="ingosActivePrice"><i class="ico ico-ingos color"></i><a class="btn btn--green btn--rounded btn--price" href="#"><span></span> руб.</a></div>
+                <div class="insurancePrice__row" id="absoluteActivePrice"><i class="ico ico-absolute color"></i><a class="btn btn--green btn--rounded btn--price" href="#"><span></span> руб.</a></div>
+                <div class="insurancePrice__row" id="alphaActivePrice"><i class="ico ico-alpha color"></i><a class="btn btn--green btn--rounded btn--price" href="#"><span></span> руб.</a></div>
+                <div class="insurancePrice__row" id="uralsibActivePrice"><i class="ico ico-uralsib color"></i><a class="btn btn--green btn--rounded btn--price" href="#"><span></span> руб.</a></div>
+                <div class="insurancePrice__row" id="resoActivePrice"><i class="ico ico-reso color"></i><a class="btn btn--green btn--rounded btn--price" href="#"><span></span> руб.</a></div>
+              </div>
             </div>
             <div class="col-sm-6 col-lg-4">
               <div class="insurancePrice__head">Опасные виды спорта</div><a class="btn btn--green btn--rounded btn--price modal__trigger" href="#modalGetPrice"><span>Цена по запросу</span></a>

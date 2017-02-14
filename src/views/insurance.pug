@@ -96,36 +96,40 @@ html
                 .form-group
                   label Кто едет
                   .row
-                    .col-sm-4
+                    .col-sm-4#calcAgeReg
                       .ui-checkbox
-                        input(type='checkbox' name='insuranceAge' id='insuranceAge_1')
+                        input(type='checkbox' name='insuranceAge' id='insuranceAge_1' value='1')
                         label(for='insuranceAge_1') Взрослые (от 18 до 65)
-                      .ui-select
+                      .ui-select.ui-select--people
                         span Кол-во человек
                         input(type="hidden")
                         .ui-selectDrop
-                          span Опция 1
-                          span Опция 1
-                          span Опция 1
-                      .ui-select
+                          span 1 человек
+                          span 2 человека
+                          span 3 человека
+                          span 4 человека
+                          span 5 человек
+                      .ui-select.ui-select--age
                         span Возраст
                         input(type="hidden")
                         .ui-selectDrop
                           span Опция 1
                           span Опция 1
                           span Опция 1
-                    .col-sm-4
+                    .col-sm-4#calcAgeChild
                       .ui-checkbox
-                        input(type='checkbox' name='insuranceAge' id='insuranceAge_2')
+                        input(type='checkbox' name='insuranceAge' id='insuranceAge_2' value='1')
                         label(for='insuranceAge_2') Дети (от 0 до 18)
-                      .ui-select
+                      .ui-select.ui-select--people
                         span Кол-во человек
                         input(type="hidden")
                         .ui-selectDrop
-                          span Опция 1
-                          span Опция 1
-                          span Опция 1
-                      .ui-select
+                          span 1 человек
+                          span 2 человека
+                          span 3 человека
+                          span 4 человека
+                          span 5 человек
+                      .ui-select.ui-select--age
                         span Возраст
                         input(type="hidden")
                         .ui-selectDrop
@@ -133,18 +137,20 @@ html
                           span Опция 1
                           span Опция 1
 
-                    .col-sm-4
+                    .col-sm-4#calcAgeOld
                       .ui-checkbox
-                        input(type='checkbox' name='insuranceAge' id='insuranceAge_3')
+                        input(type='checkbox' name='insuranceAge' id='insuranceAge_3' value='1')
                         label(for='insuranceAge_3') Пенсионеры (от 65)
-                      .ui-select
+                      .ui-select.ui-select--people
                         span Кол-во человек
                         input(type="hidden")
                         .ui-selectDrop
-                          span Опция 1
-                          span Опция 1
-                          span Опция 1
-                      .ui-select
+                          span 1 человек
+                          span 2 человека
+                          span 3 человека
+                          span 4 человека
+                          span 5 человек
+                      .ui-select.ui-select--age
                         span Возраст
                         input(type="hidden")
                         .ui-selectDrop
@@ -157,7 +163,7 @@ html
                   .row
                     .col-sm-8.ui-row-checkboxes
                       .ui-radio
-                        input(type='radio' name='insuranceAmount' id='insuranceAmount_1' value='30 000')
+                        input(type='radio' name='insuranceAmount' id='insuranceAmount_1' value='30 000' checked)
                         label(for='insuranceAmount_1') 30 000
                       .ui-radio
                         input(type='radio' name='insuranceAmount' id='insuranceAmount_2' value='50 000')
@@ -179,38 +185,40 @@ html
           .row.mt50
             .col-sm-6.col-lg-4
               .insurancePrice__head Спокойный отдых
-              .insurancePrice__row#ingosRegularPrice
-                i.ico.ico-ingos.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
-              .insurancePrice__row#absoluteRegularPrice
-                i.ico.ico-absolute.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
-              .insurancePrice__row#alphaRegularPrice
-                i.ico.ico-alpha.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
-              .insurancePrice__row#uralsibRegularPrice
-                i.ico.ico-uralsib.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
-              .insurancePrice__row#resoRegularPrice
-                i.ico.ico-reso.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+              #regularPrices
+                .insurancePrice__row#ingosRegularPrice
+                  i.ico.ico-ingos.color
+                  a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+                .insurancePrice__row#absoluteRegularPrice
+                  i.ico.ico-absolute.color
+                  a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+                .insurancePrice__row#alphaRegularPrice
+                  i.ico.ico-alpha.color
+                  a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+                .insurancePrice__row#uralsibRegularPrice
+                  i.ico.ico-uralsib.color
+                  a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+                .insurancePrice__row#resoRegularPrice
+                  i.ico.ico-reso.color
+                  a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
             .col-sm-6.col-lg-4
               .insurancePrice__head Активный отдых
-              .insurancePrice__row#ingosActivePrice
-                i.ico.ico-ingos.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
-              .insurancePrice__row#absoluteActivePrice
-                i.ico.ico-absolute.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
-              .insurancePrice__row#alphaActivePrice
-                i.ico.ico-alpha.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
-              .insurancePrice__row#uralsibActivePrice
-                i.ico.ico-uralsib.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
-              .insurancePrice__row#resoActivePrice
-                i.ico.ico-reso.color
-                a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+              #activePrices
+                .insurancePrice__row#ingosActivePrice
+                  i.ico.ico-ingos.color
+                  a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+                .insurancePrice__row#absoluteActivePrice
+                  i.ico.ico-absolute.color
+                  a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+                .insurancePrice__row#alphaActivePrice
+                  i.ico.ico-alpha.color
+                  a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+                .insurancePrice__row#uralsibActivePrice
+                  i.ico.ico-uralsib.color
+                  a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
+                .insurancePrice__row#resoActivePrice
+                  i.ico.ico-reso.color
+                  a(href='#').btn.btn--green.btn--rounded.btn--price <span></span> руб.
             .col-sm-6.col-lg-4
               .insurancePrice__head Опасные виды спорта
               a(href='#modalGetPrice').btn.btn--green.btn--rounded.btn--price.modal__trigger <span>Цена по запросу</span>

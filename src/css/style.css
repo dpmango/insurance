@@ -449,6 +449,14 @@ button:focus {
     -webkit-transform: translate3d(0,0,0);
             transform: translate3d(0,0,0);
 }
+.inactive .btn {
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 0 !important;
+}
+.inactive .btn span {
+    font-size: 12px !important;
+}
 .hamburger {
     display: inline-block;
     overflow: visible;
@@ -4128,11 +4136,11 @@ button:focus {
     margin-right: 2.5%;
     margin-left: 2.5%;
 }
-.insurancePrice .row.mt50 .col-sm-4 {
-    padding-right: 20px;
-    padding-left: 20px;
+.insurancePrice .row.mt50 .col-sm-6 {
+    padding-right: 25px;
+    padding-left: 25px;
 }
-.insurancePrice .row.mt50 .col-sm-4 .ico {
+.insurancePrice .row.mt50 .col-sm-6 .ico {
     max-width: 140px;
 }
 .insurancePrice .btn {
@@ -4161,7 +4169,7 @@ button:focus {
     }
 }
 @media(max-width: 768px) {
-    .insurancePrice .row.mt50 .col-sm-4 {
+    .insurancePrice .row.mt50 .col-sm-6 {
         padding-right: 15px;
         padding-left: 15px;
     }
@@ -4363,6 +4371,10 @@ button:focus {
 
 .ui-select:last-child {
     margin-top: 0;
+}
+
+.ui-select--people, .ui-select--age {
+    display: none;
 }
 
 .ui-selectDrop {

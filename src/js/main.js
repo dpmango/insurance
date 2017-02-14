@@ -81,6 +81,7 @@ $(document).ready(function(){
   $('.ui-selectDrop span').on('click', function(){
     $(this).closest('.ui-select').find('> span').text($(this).text());
     $(this).parent().removeClass('active');
+    $(this).closest('.ui-select').find('input[type="hidden"]').text($(this).text());
   });
 
   // Custom modal
@@ -180,14 +181,6 @@ $(document).ready(function(){
   });
 
   // Datepicker
-  Date.prototype.format = function (mask, utc) {
-    return dateFormat(this, mask, utc);
-  };
-
-  var date = new Date();
-  var currDate = date.getDate() + '.0' + (date.getMonth() + 1) + '.' +  date.getFullYear();
-
-  $('input[name="insuranceDateFrom"]').attr("placeholder", currDate);
   var dateFrom = $('input[name="insuranceDateFrom"]').datepicker({
     // Можно выбрать тольо даты, идущие за сегодняшним днем, включая сегодня
     position: 'bottom left',
@@ -207,22 +200,36 @@ $(document).ready(function(){
     }
   }).data('datepicker');
 
+  dateFrom.selectDate( new Date() );
+
+  function parseDate(str) {
+    var mdy = str.split('.');
+    return new Date(mdy[2], mdy[1] - 1, mdy[0]);
+  }
+
+  function daydiff(first, second) {
+    return Math.round((second-first)/(1000*60*60*24));
+  }
+
 
   // INSURANCE FORM LOGIC
   $('#insuranceForm').on('change', function(){
     console.clear();
+    console.log('form changed');
     // PARSE ALL VALUES
     var country = $('input[name="insuranceCountry"]').val();
     var type = $('input[name="insuranceType"]:checked').val();
-    ///// this is dummy val - why we might need that ?
+    ////// this is dummy val - why we might need that ?
     // var currency = $('input[name="insuranceCurrency"]:checked').val();
     var dateFrom = $('input[name="insuranceDateFrom"]').val();
     var dateTo = $('input[name="insuranceDateTo"]').val();
     var range = $('#greenRange').val();
-    var ageReg = $('#insuranceAge_1').val();
-    var ageChild = $('#insuranceAge_2').val();
-    var ageOld = $('#insuranceAge_3').val();
+    var ageReg = $('#insuranceAge_1:checked').val();
+    var ageChild = $('#insuranceAge_2:checked').val();
+    var ageOld = $('#insuranceAge_3:checked').val();
     var amount = $('input[name="insuranceAmount"]:checked').val();
+    var dateDiff = 1;
+    var ready = false;
 
     // set defaults and program type
     var ingosAvailable = true;
@@ -231,24 +238,18 @@ $(document).ready(function(){
     var uralsibAvailable = true;
     var resoAvailable = true;
 
-    var ingosRegularPrice = 100 * params.ingos.programA;
-    var absoluteRegularPrice = 100 * params.absolute.programA;
-    var alphaRegularPrice = params.alpha.basePrice * params.alpha.programA;
-    var uralsibRegularPrice = 100 * params.uralsib.programA;
-    var resoRegularPrice = 100 * params.reso.programA;
-
-    var ingosActivePrice = 100 * params.ingos.programB;
-    var absoluteActivePrice = 100 * params.absolute.programB;
-    var alphaActivePrice = 100 * params.alpha.programB;
-    var uralsibActivePrice = 100 * params.uralsib.programB;
-    var resoActivePrice = 100 * params.reso.programB;
+    var ingosPrice = 0 * parseInt(params.ingos.programA);
+    var absolutePrice = 0 * parseInt(params.absolute.programA);
+    var alphaPrice = 0 * parseInt(params.alpha.programA);
+    var uralsibPrice = 0 * parseInt(params.uralsib.programA);
+    var resoPrice = 0 * parseInt(params.reso.programA);
 
     // DEVELOPMENT - DEBUG
-    // console.log(country);
+    //console.log(country);
     // console.log(type);
     // console.log(currency);
-    console.log(dateFrom);
-    console.log(dateTo);
+    // console.log(dateFrom);
+    // console.log(dateTo);
     // console.log(range);
     // console.log(ageReg);
     // console.log(ageChild);
@@ -262,170 +263,234 @@ $(document).ready(function(){
       $('#insuranceMultiple').fadeOut();
     }
 
-    // VALIDATOR
+    // VALIDATOR + CALC FUNCS
 
-    if (true == true) {
+    if (type == 'insuranceType_2') {
+      // MULTIPLE TYPE LOGIC
+      if (range != ""){
+        ingosPrice = ingosPrice + parseInt(params.uralsib.multiPrice[range - 1]);
+        absolutePrice = absolutePrice + parseInt(params.absolute.multiPrice[range - 1]);
+        alphaPrice = alphaPrice + parseInt(params.alpha.multiPrice[range -1]);
+        uralsibPrice = uralsibPrice + parseInt(params.uralsib.multiPrice[range - 1]);
+        resoPrice = resoPrice + parseInt(params.reso.multiPrice[range - 1]);
+      }
+
+      if (country != ""){
+        calcLocation();
+      }
+      calcCover();
+      calcAge();
+
+      if (country != "" && range != "") {
+        ready = true;
+      } else {
+        ready = false;
+      }
+    } else {
+      // SINGLE LOGIC
+      if (dateFrom != "" && dateTo != ""){
+        dateDiff = daydiff(parseDate(dateFrom), parseDate(dateTo));
+
+        ingosPrice = ingosPrice + parseInt(params.uralsib.singlePrices[dateDiff]);
+        absolutePrice = absolutePrice + parseInt(params.absolute.singlePrices[dateDiff]);
+        alphaPrice = alphaPrice + parseInt(params.alpha.singlePrices[dateDiff]);
+        uralsibPrice = uralsibPrice + parseInt(params.uralsib.singlePrices[dateDiff]);
+        resoPrice = resoPrice + parseInt(params.reso.singlePrices[dateDiff]);
+      }
+
+      if (country != ""){
+        calcLocation();
+      }
+      calcCover();
+      calcAge();
+
+      if (country != "" && dateFrom != "" && dateTo != "") {
+        ready = true;
+      } else {
+        ready = false;
+      }
+    }
+
+    // VALIDATE and set price
+    if (ready) {
+      calcSetPrice();
       $('#insuranceForm .btn').removeClass('invalid');
-      // basically all later code should be here. But it's not for development purposes
     } else {
       $('#insuranceForm .btn').addClass('invalid');
     }
+
 
     // CALCULATE PRICE
     //////////////////
 
     // LOCATION
+    function calcLocation(){
+      if (jQuery.inArray( country, params.ingos.countriesA ) > -1 ) {
+        ingosPrice = ingosPrice * params.ingos.countriesAmultiply;
+      } else if (jQuery.inArray( country, params.ingos.countriesB ) > -1 ){
+        ingosPrice = ingosPrice * params.ingos.countriesBmultiply;
+      } else if (jQuery.inArray( country, params.ingos.countriesBlackList ) > -1 ){
+        ingosAvailable = false;
+      } else {
+        ingosAvailable = false;
+      }
 
-    if (jQuery.inArray( country, params.ingos.countriesA ) > -1 ) {
-      ingosRegularPrice = ingosRegularPrice * params.ingos.countriesAmultiply;
-      ingosActivePrice = ingosActivePrice * params.ingos.countriesAmultiply;
-    } else if (jQuery.inArray( country, params.ingos.countriesB ) > -1 ){
-      ingosRegularPrice = ingosRegularPrice * params.ingos.countriesBmultiply;
-      ingosActivePrice = ingosActivePrice * params.ingos.countriesBmultiply;
-    } else if (jQuery.inArray( country, params.ingos.countriesBlackList ) > -1 ){
-      ingosAvailable = false;
-    } else {
-      console.log('Not a country ?');
-    }
+      if (jQuery.inArray( country, params.absolute.countriesA ) > -1 ) {
+        absolutePrice = absolutePrice * params.absolute.countriesAmultiply;
+      } else if (jQuery.inArray( country, params.ingos.countriesB ) > -1 ){
+        absolutePrice = absolutePrice * params.absolute.countriesBmultiply;
+      } else {
+        absoluteAvailable = false;
+      }
 
-    if (jQuery.inArray( country, params.absolute.countriesA ) > -1 ) {
-      absoluteRegularPrice = absoluteRegularPrice * params.absolute.countriesAmultiply;
-      absoluteActivePrice = absoluteActivePrice * params.absolute.countriesAmultiply;
-    } else if (jQuery.inArray( country, params.ingos.countriesB ) > -1 ){
-      absoluteRegularPrice = absoluteRegularPrice * params.absolute.countriesBmultiply;
-      absoluteActivePrice = absoluteActivePrice * params.absolute.countriesBmultiply;
-    } else {
-      console.log('Not a country ?');
-    }
+      if (jQuery.inArray( country, params.alpha.countriesA ) > -1 ) {
+        alphaPrice = alphaPrice * params.alpha.countriesAmultiply;
+      } else if (jQuery.inArray( country, params.alpha.countriesB ) > -1 ){
+        alphaPrice = alphaPrice * params.alpha.countriesBmultiply;
+      } else {
+        alphaAvailable = false;
+      }
 
-    if (jQuery.inArray( country, params.alpha.countriesA ) > -1 ) {
-      alphaRegularPrice = alphaRegularPrice * params.alpha.countriesAmultiply;
-      alphaActivePrice = alphaActivePrice * params.alpha.countriesAmultiply;
-    } else if (jQuery.inArray( country, params.alpha.countriesB ) > -1 ){
-      alphaRegularPrice = alphaRegularPrice * params.alpha.countriesBmultiply;
-      alphaActivePrice = alphaActivePrice * params.alpha.countriesBmultiply;
-    } else {
-      console.log('Not a country ?')
-    }
+      if (jQuery.inArray( country, params.uralsib.countriesA ) > -1 ) {
+        uralsibPrice = uralsibPrice * params.uralsib.countriesAmultiply;
+      } else if (jQuery.inArray( country, params.ingos.countriesB ) > -1 ){
+        uralsibPrice = uralsibPrice * params.uralsib.countriesBmultiply;
+      } else {
+        uralsibAvailable = false;
+      }
 
-    if (jQuery.inArray( country, params.uralsib.countriesA ) > -1 ) {
-      uralsibRegularPrice = uralsibRegularPrice * params.uralsib.countriesAmultiply;
-      uralsibActivePrice = uralsibActivePrice * params.uralsib.countriesAmultiply;
-    } else if (jQuery.inArray( country, params.ingos.countriesB ) > -1 ){
-      uralsibRegularPrice = uralsibRegularPrice * params.uralsib.countriesBmultiply;
-      uralsibActivePrice = uralsibActivePrice * params.uralsib.countriesBmultiply;
-    } else {
-      console.log('Not a country ?');
-    }
-
-    if (jQuery.inArray( country, params.reso.countriesA ) > -1 ) {
-      resoRegularPrice = uralsibRegularPrice * params.reso.countriesAmultiply;
-      resoActivePrice = resoActivePrice * params.reso.countriesAmultiply;
-    } else if (jQuery.inArray( country, params.reso.countriesB ) > -1 ){
-      resoRegularPrice = uralsibRegularPrice * params.reso.countriesBmultiply;
-      resoActivePrice = resoActivePrice * params.reso.countriesBmultiply;
-    } else {
-      console.log('Not a country ?');
+      if (jQuery.inArray( country, params.reso.countriesA ) > -1 ) {
+        resoPrice = uralsibPrice * params.reso.countriesAmultiply;
+      } else if (jQuery.inArray( country, params.reso.countriesB ) > -1 ){
+        resoPrice = uralsibPrice * params.reso.countriesBmultiply;
+      } else {
+        resoAvailable = false;
+      }
     }
 
     // COVERAGE
-    if (amount === "30 000"){
-      ingosRegularPrice = ingosRegularPrice * params.ingos.coverA;
-      absoluteRegularPrice = absoluteRegularPrice * params.absolute.coverA;
-      alphaRegularPrice = alphaRegularPrice * params.alpha.coverA;
-      uralsibRegularPrice = uralsibRegularPrice * params.uralsib.coverA;
-      resoRegularPrice = resoRegularPrice * params.reso.coverA;
-
-      ingosActivePrice = ingosActivePrice * params.ingos.coverA;
-      absoluteActivePrice = absoluteActivePrice * params.absolute.coverA;
-      alphaActivePrice = alphaActivePrice * params.alpha.coverA;
-      uralsibActivePrice = uralsibActivePrice * params.uralsib.coverA;
-      resoActivePrice = resoActivePrice * params.reso.coverA;
-    } else if (amount === "50 000") {
-      ingosRegularPrice = ingosRegularPrice * params.ingos.coverB;
-      absoluteRegularPrice = absoluteRegularPrice * params.absolute.coverB;
-      alphaRegularPrice = alphaRegularPrice * params.alpha.coverB;
-      uralsibRegularPrice = uralsibRegularPrice * params.uralsib.coverB;
-      resoRegularPrice = resoRegularPrice * params.reso.coverB;
-
-      ingosActivePrice = ingosActivePrice * params.ingos.coverB;
-      absoluteActivePrice = absoluteActivePrice * params.absolute.coverB;
-      alphaActivePrice = alphaActivePrice * params.alpha.coverB;
-      uralsibActivePrice = uralsibActivePrice * params.uralsib.coverB;
-      resoActivePrice = resoActivePrice * params.reso.coverB;
-    } else if (amount === "100 000") {
-      ingosRegularPrice = ingosRegularPrice * params.ingos.coverC;
-      absoluteRegularPrice = absoluteRegularPrice * params.absolute.coverC;
-      alphaRegularPrice = alphaRegularPrice * params.alpha.coverC;
-      uralsibRegularPrice = uralsibRegularPrice * params.uralsib.coverC;
-      resoRegularPrice = resoRegularPrice * params.reso.coverC;
-
-      ingosActivePrice = ingosActivePrice * params.ingos.coverC;
-      absoluteActivePrice = absoluteActivePrice * params.absolute.coverC;
-      alphaActivePrice = alphaActivePrice * params.alpha.coverC;
-      uralsibActivePrice = uralsibActivePrice * params.uralsib.coverC;
-      resoActivePrice = resoActivePrice * params.reso.coverC;
+    function calcCover(){
+      if (amount === "30 000"){
+        ingosPrice = ingosPrice * params.ingos.coverA;
+        absolutePrice = absolutePrice * params.absolute.coverA;
+        alphaPrice = alphaPrice * params.alpha.coverA;
+        uralsibPrice = uralsibPrice * params.uralsib.coverA;
+        resoPrice = resoPrice * params.reso.coverA;
+      } else if (amount === "50 000") {
+        ingosPrice = ingosPrice * params.ingos.coverB;
+        absolutePrice = absolutePrice * params.absolute.coverB;
+        alphaPrice = alphaPrice * params.alpha.coverB;
+        uralsibPrice = uralsibPrice * params.uralsib.coverB;
+        resoPrice = resoPrice * params.reso.coverB;
+      } else if (amount === "100 000") {
+        ingosPrice = ingosPrice * params.ingos.coverC;
+        absolutePrice = absolutePrice * params.absolute.coverC;
+        alphaPrice = alphaPrice * params.alpha.coverC;
+        uralsibPrice = uralsibPrice * params.uralsib.coverC;
+        resoPrice = resoPrice * params.reso.coverC;
+      }
     }
 
+    function calcAge(){
+      // regular age
+      if (ageReg == 1){
+        $('#calcAgeReg .ui-select--people').fadeIn();
+      } else{
+        $('#calcAgeReg .ui-select--people').fadeOut();
+      }
+      // child age
+      if (ageChild == 1){
+        $('#calcAgeChild .ui-select--people').fadeIn();
+      } else{
+        $('#calcAgeChild .ui-select--people').fadeOut();
+      }
+      // old age
+      if (ageOld == 1){
+        $('#calcAgeOld .ui-select--people').fadeIn();
+      }else{
+        $('#calcAgeOld .ui-select--people').fadeOut();
+      }
+
+    }
 
     // SET PRICE
     ////////////
+    function setPriceActive(company){
+      $('#' + company + 'RegularPrice').removeClass("inactive");
+      console.log('#' + company + 'RegularPrice');
+      $('#' + company + 'ActivePrice').removeClass("inactive");
+      $('#' + company + 'RegularPrice .btn span').text(ingosPrice);
+      $('#' + company + 'ActivePrice .btn span').text(ingosPrice * params[company].programB);
+    }
 
-    // regular prices
-    if (ingosAvailable){
-      $('#ingosRegularPrice').removeClass("inactive");
-      $('#ingosActivePrice').removeClass("inactive");
-      $('#ingosRegularPrice .btn span').text(ingosRegularPrice);
-      $('#ingosActivePrice .btn span').text(ingosActivePrice);
-    } else{
-      $('#ingosRegularPrice').addClass("inactive");
-      $('#ingosActivePrice').addClass("inactive");
-      $('#ingosRegularPrice .btn span').text("0");
-      $('#ingosActivePrice .btn span').text("0");
-    }
-    if (absoluteAvailable){
-      $('#absoluteRegularPrice').removeClass("inactive");
-      $('#absoluteActivePrice').removeClass("inactive");
-      $('#absoluteRegularPrice .btn span').text(absoluteRegularPrice);
-      $('#absoluteActivePrice .btn span').text(absoluteActivePrice);
-    } else{
-      $('#absoluteRegularPrice').addClass("inactive");
-      $('#absoluteActivePrice').addClass("inactive");
-      $('#absoluteRegularPrice .btn span').text("0")
-      $('#absoluteActivePrice .btn span').text("0")
-    }
-    if (alphaAvailable){
-      $('#alphaRegularPrice').removeClass("inactive");
-      $('#alphaActivePrice').removeClass("inactive");
-      $('#alphaRegularPrice .btn span').text(alphaRegularPrice);
-      $('#alphaActivePrice .btn span').text(alphaActivePrice);
-    } else{
-      $('#alphaRegularPrice').addClass("inactive");
-      $('#alphaActivePrice').addClass("inactive");
-      $('#alphaRegularPrice .btn span').text("0")
-      $('#alphaActivePrice .btn span').text("0")
-    }
-    if (uralsibAvailable){
-      $('#uralsibRegularPrice').removeClass("inactive");
-      $('#uralsibActivePrice').removeClass("inactive");
-      $('#uralsibRegularPrice .btn span').text(uralsibRegularPrice);
-      $('#uralsibActivePrice .btn span').text(uralsibActivePrice);
-    } else{
-      $('#uralsibRegularPrice').addClass("inactive");
-      $('#uralsibActivePrice').addClass("inactive");
-      $('#uralsibRegularPrice .btn span').text("0")
-      $('#uralsibActivePrice .btn span').text("0")
-    }
-    if (resoAvailable){
-      $('#resoRegularPrice').removeClass("inactive");
-      $('#resoActivePrice').removeClass("inactive");
-      $('#resoRegularPrice .btn span').text(resoRegularPrice);
-      $('#resoActivePrice .btn span').text(resoActivePrice);
-    } else{
-      $('#resoRegularPrice').addClass("inactive");
-      $('#resoActivePrice').addClass("inactive");
-      $('#resoRegularPrice .btn span').text("0")
-      $('#resoActivePrice .btn span').text("0")
+    function calcSetPrice(){
+      if (ingosAvailable){
+        setPriceActive('ingos');
+      } else{
+        $('#ingosRegularPrice').addClass("inactive");
+        $('#ingosActivePrice').addClass("inactive");
+        $('#ingosRegularPrice .btn span').text("недоступно");
+        $('#ingosActivePrice .btn span').text("недоступно");
+      }
+      if (absoluteAvailable){
+        $('#absoluteRegularPrice').removeClass("inactive");
+        $('#absoluteActivePrice').removeClass("inactive");
+        $('#absoluteRegularPrice .btn span').text(absolutePrice);
+        $('#absoluteActivePrice .btn span').text(absolutePrice * params.absolute.programB);
+      } else{
+        $('#absoluteRegularPrice').addClass("inactive");
+        $('#absoluteActivePrice').addClass("inactive");
+        $('#absoluteRegularPrice .btn span').text("недоступно")
+        $('#absoluteActivePrice .btn span').text("недоступно")
+      }
+      if (alphaAvailable){
+        $('#alphaRegularPrice').removeClass("inactive");
+        $('#alphaActivePrice').removeClass("inactive");
+        $('#alphaRegularPrice .btn span').text(alphaPrice);
+        $('#alphaActivePrice .btn span').text(alphaPrice * params.alpha.programB);
+      } else{
+        $('#alphaRegularPrice').addClass("inactive");
+        $('#alphaActivePrice').addClass("inactive");
+        $('#alphaRegularPrice .btn span').text("недоступно")
+        $('#alphaActivePrice .btn span').text("недоступно")
+      }
+      if (uralsibAvailable){
+        $('#uralsibRegularPrice').removeClass("inactive");
+        $('#uralsibActivePrice').removeClass("inactive");
+        $('#uralsibRegularPrice .btn span').text(uralsibPrice);
+        $('#uralsibActivePrice .btn span').text(uralsibPrice * params.uralsib.programB);
+      } else{
+        $('#uralsibRegularPrice').addClass("inactive");
+        $('#uralsibActivePrice').addClass("inactive");
+        $('#uralsibRegularPrice .btn span').text("недоступно")
+        $('#uralsibActivePrice .btn span').text("недоступно")
+      }
+      if (resoAvailable){
+        $('#resoRegularPrice').removeClass("inactive");
+        $('#resoActivePrice').removeClass("inactive");
+        $('#resoRegularPrice .btn span').text(resoPrice);
+        $('#resoActivePrice .btn span').text(resoPrice * params.reso.programB);
+      } else{
+        $('#resoRegularPrice').addClass("inactive");
+        $('#resoActivePrice').addClass("inactive");
+        $('#resoRegularPrice .btn span').text("недоступно")
+        $('#resoActivePrice .btn span').text("недоступно")
+      }
+
+      function sortUsingNestedText(parent, childSelector) {
+        var items = parent.children(childSelector).sort(function(a, b) {
+          var vA = parseInt($('.btn span', a).text());
+          var vB = parseInt($('.btn span', b).text());
+          return (vA < vB) ? -1 : (vA > vB) ? 1 : 0;
+        });
+        parent.append(items);
+      }
+
+      setTimeout(function(){
+        sortUsingNestedText($('#regularPrices'), ".insurancePrice__row");
+        sortUsingNestedText($('#activePrices'), ".insurancePrice__row");
+      }, 500);
+
     }
 
   });
