@@ -81,7 +81,8 @@ $(document).ready(function(){
   $('.ui-selectDrop span').on('click', function(){
     $(this).closest('.ui-select').find('> span').text($(this).text());
     $(this).parent().removeClass('active');
-    $(this).closest('.ui-select').find('input[type="hidden"]').text($(this).text());
+    $(this).closest('.ui-select').find('input[type="hidden"]').val(parseInt($(this).text()));
+    $('#insuranceForm').trigger('change');
   });
 
   // Custom modal
@@ -238,11 +239,11 @@ $(document).ready(function(){
     var uralsibAvailable = true;
     var resoAvailable = true;
 
-    var ingosPrice = 0 * parseInt(params.ingos.programA);
-    var absolutePrice = 0 * parseInt(params.absolute.programA);
-    var alphaPrice = 0 * parseInt(params.alpha.programA);
-    var uralsibPrice = 0 * parseInt(params.uralsib.programA);
-    var resoPrice = 0 * parseInt(params.reso.programA);
+    var ingosPrice = 0;
+    var absolutePrice = 0;
+    var alphaPrice = 0;
+    var uralsibPrice = 0;
+    var resoPrice = 0;
 
     // DEVELOPMENT - DEBUG
     //console.log(country);
@@ -391,90 +392,128 @@ $(document).ready(function(){
       }
     }
 
+    // AGE
     function calcAge(){
+      // PARSE ARRAY OF AGES
       // regular age
+      var selectedAges = [];
       if (ageReg == 1){
         $('#calcAgeReg .ui-select--people').fadeIn();
+        // parsing number of selected and push n times
+        var ageRegNum = $('#calcAgeReg .ui-select--people input[type="hidden"]').val();
+        for(var i = 0; i < ageRegNum; i++){
+          selectedAges.push("64");
+        }
       } else{
         $('#calcAgeReg .ui-select--people').fadeOut();
       }
-      // child age
+      // CHILD AGE
       if (ageChild == 1){
         $('#calcAgeChild .ui-select--people').fadeIn();
+        // show ages selector n times
+        var ageChildNum = $('#calcAgeChild .ui-select--people input[type="hidden"]').val();
+        $('#calcAgeChild .ui-select--age').hide().removeClass('expect-num');
+        $('#calcAgeChild .ui-select--age:lt('+ ageChildNum +')').show().addClass('expect-num');
+        // parse and push each expected number
+        $.each( $('#calcAgeChild .ui-select--age.expect-num'), function( key, value ) {
+          selectedAges.push($(this).find('input[type="hidden"]').val());
+        });
       } else{
         $('#calcAgeChild .ui-select--people').fadeOut();
       }
-      // old age
+      // OLDER AGE
       if (ageOld == 1){
         $('#calcAgeOld .ui-select--people').fadeIn();
+        // show ages selector n times
+        var ageOldNum = $('#calcAgeOld .ui-select--people input[type="hidden"]').val();
+        $('#calcAgeOld .ui-select--age').hide().removeClass('expect-num');
+        $('#calcAgeOld .ui-select--age:lt('+ ageOldNum +')').show().addClass('expect-num');
+        // parse and push each expected number
+        $.each( $('#calcAgeOld .ui-select--age.expect-num'), function( key, value ) {
+          selectedAges.push($(this).find('input[type="hidden"]').val());
+        });
       }else{
         $('#calcAgeOld .ui-select--people').fadeOut();
       }
+
+      // LOOP THROUGH EACH AGE AND SET PRICE
+      $.each(selectedAges, function(ageIndex, ageValue) {
+        // define testing age and diff prototype
+        var testAge = new Number(ageValue);
+        Number.prototype.between = function(min,max){
+          return this > min - 1 && this < max + 1;
+        };
+
+        // loop over each param age and return coeff
+        function parseAgeCoeff(company){
+          var retval;
+          $.each(params[company].ages, function() {
+            var key = Object.keys(this)[0];
+            var value = this[key];
+            if (testAge.between(parseInt(key.split('-')[0]), parseInt(key.split('-')[1]))) {
+              console.log('this age coef', value);
+              retval = value;
+              return false;
+            }
+          });
+          return retval;
+        }
+        if (testAge != ""){
+          ingosPrice = ingosPrice * parseAgeCoeff('ingos');
+          absolutePrice = absolutePrice * parseAgeCoeff('absolute');
+          alphaPrice = alphaPrice * parseAgeCoeff('alpha');
+          uralsibPrice = uralsibPrice * parseAgeCoeff('uralsib');
+          resoPrice = resoPrice * parseAgeCoeff('reso');
+
+          console.log(ingosPrice);
+          // seems to be no return
+        }
+
+      });
 
     }
 
     // SET PRICE
     ////////////
-    function setPriceActive(company){
+    function setPriceActive(company, price){
       $('#' + company + 'RegularPrice').removeClass("inactive");
-      console.log('#' + company + 'RegularPrice');
       $('#' + company + 'ActivePrice').removeClass("inactive");
-      $('#' + company + 'RegularPrice .btn span').text(ingosPrice);
-      $('#' + company + 'ActivePrice .btn span').text(ingosPrice * params[company].programB);
+      $('#' + company + 'RegularPrice .btn span').text(price);
+      $('#' + company + 'ActivePrice .btn span').text(price * params[company].programB);
+      // DEVELOPMENT - need data value forn unactive of 999999 to fix sorting
+    }
+    function setPriceNonActive(company, price){
+      $('#' + company + 'RegularPrice').addClass("inactive");
+      $('#' + company + 'ActivePrice').addClass("inactive");
+      $('#' + company + 'RegularPrice .btn span').text("недоступно");
+      $('#' + company + 'ActivePrice .btn span').text("недоступно");
     }
 
     function calcSetPrice(){
       if (ingosAvailable){
-        setPriceActive('ingos');
+        setPriceActive('ingos', ingosPrice);
       } else{
-        $('#ingosRegularPrice').addClass("inactive");
-        $('#ingosActivePrice').addClass("inactive");
-        $('#ingosRegularPrice .btn span').text("недоступно");
-        $('#ingosActivePrice .btn span').text("недоступно");
+        setPriceNonActive('ingos', ingosPrice);
       }
       if (absoluteAvailable){
-        $('#absoluteRegularPrice').removeClass("inactive");
-        $('#absoluteActivePrice').removeClass("inactive");
-        $('#absoluteRegularPrice .btn span').text(absolutePrice);
-        $('#absoluteActivePrice .btn span').text(absolutePrice * params.absolute.programB);
+        setPriceActive('absolute', absolutePrice);
       } else{
-        $('#absoluteRegularPrice').addClass("inactive");
-        $('#absoluteActivePrice').addClass("inactive");
-        $('#absoluteRegularPrice .btn span').text("недоступно")
-        $('#absoluteActivePrice .btn span').text("недоступно")
+        setPriceNonActive('absolute', absolutePrice);
       }
       if (alphaAvailable){
-        $('#alphaRegularPrice').removeClass("inactive");
-        $('#alphaActivePrice').removeClass("inactive");
-        $('#alphaRegularPrice .btn span').text(alphaPrice);
-        $('#alphaActivePrice .btn span').text(alphaPrice * params.alpha.programB);
+        setPriceActive('alpha', alphaPrice);
       } else{
-        $('#alphaRegularPrice').addClass("inactive");
-        $('#alphaActivePrice').addClass("inactive");
-        $('#alphaRegularPrice .btn span').text("недоступно")
-        $('#alphaActivePrice .btn span').text("недоступно")
+        setPriceNonActive('alpha', alphaPrice);
       }
       if (uralsibAvailable){
-        $('#uralsibRegularPrice').removeClass("inactive");
-        $('#uralsibActivePrice').removeClass("inactive");
-        $('#uralsibRegularPrice .btn span').text(uralsibPrice);
-        $('#uralsibActivePrice .btn span').text(uralsibPrice * params.uralsib.programB);
+        setPriceActive('uralsib', uralsibPrice);
       } else{
-        $('#uralsibRegularPrice').addClass("inactive");
-        $('#uralsibActivePrice').addClass("inactive");
-        $('#uralsibRegularPrice .btn span').text("недоступно")
-        $('#uralsibActivePrice .btn span').text("недоступно")
+        setPriceNonActive('uralsib', uralsibPrice);
       }
       if (resoAvailable){
-        $('#resoRegularPrice').removeClass("inactive");
-        $('#resoActivePrice').removeClass("inactive");
-        $('#resoRegularPrice .btn span').text(resoPrice);
-        $('#resoActivePrice .btn span').text(resoPrice * params.reso.programB);
+        setPriceActive('reso', resoPrice);
       } else{
-        $('#resoRegularPrice').addClass("inactive");
-        $('#resoActivePrice').addClass("inactive");
-        $('#resoRegularPrice .btn span').text("недоступно")
-        $('#resoActivePrice .btn span').text("недоступно")
+        setPriceNonActive('reso', resoPrice);
       }
 
       function sortUsingNestedText(parent, childSelector) {
@@ -489,11 +528,12 @@ $(document).ready(function(){
       setTimeout(function(){
         sortUsingNestedText($('#regularPrices'), ".insurancePrice__row");
         sortUsingNestedText($('#activePrices'), ".insurancePrice__row");
-      }, 500);
+      }, 350);
 
     }
 
   });
+
 
   $('#insuranceForm .btn').on('click', function(e){
     if ( $(this).is('.invalid') ){
