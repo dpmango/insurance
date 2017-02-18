@@ -152,7 +152,6 @@ gulp.task('pug', function buildHTML() {
 gulp.task('useref', function(){
   return gulp.src('./src/*.html')
     .pipe(useref())
-    .pipe(gulpIf('*.js', uglify()))
     .pipe(gulp.dest('dist'));
 });
 
